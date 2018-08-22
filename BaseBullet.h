@@ -16,11 +16,11 @@ public:
 protected:
 	//攻击力
 	CC_SYNTHESIZE(int, maxForce, MaxForce);
-	//塔的子弹攻击范围
+	//娃娃的子弹攻击范围
 	CC_SYNTHESIZE(int, bulletScope, BulletScope);
 	//子弹类型
 	CC_SYNTHESIZE(int, bulletType, BulletType);
-	//出现动作
+	//子弹出现动作
 	CC_SYNTHESIZE(Spawn*, bulletAction, BulletAction);
 
 	Sprite* bullteSprite;
