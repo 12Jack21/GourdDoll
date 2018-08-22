@@ -12,4 +12,6 @@ bool SoundManager::checkEffectState()
 	{
 		return false;
 	}
+	
 }
+

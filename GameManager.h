@@ -18,7 +18,7 @@ public:
 
 	void setInstanceByTag(int tag);
 	void eraseAll();
-
+	
 private:
 	static GameManager * instance;
 
