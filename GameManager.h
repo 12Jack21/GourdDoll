@@ -21,5 +21,5 @@ public:
 	
 private:
 	static GameManager * instance;
-
+	int GOURD;
 };
