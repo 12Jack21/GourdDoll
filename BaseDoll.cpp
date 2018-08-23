@@ -57,3 +57,30 @@ void BaseDoll::checkNearestMonster() {
 void BaseDoll::hideUpdateMenu() {
 	isUpdateMenuShown = false;
 }
+
+void BaseDoll::onTouchEnded(Touch * t, Event *e) {
+	auto target = static_cast<Sprite *>(e->getCurrentTarget());
+	Point locationInNode = target->convertTouchToNodeSpace(t);
+
+	Size size = target->getContentSize();
+	Rect rect = Rect(0, 0, size.width, size.height);
+	if (rect.containPoint(locationInNode)) {
+		static_cast</*Î´¼ûµØÍ¼.cpp*/>(this->getParent())->playerState->showDollInfo(getDollType());
+		if (isUpdateMenuShown) {
+			hideUpdateMenu;
+		}
+		else
+		{
+			showUpdateMenu();
+		}
+	}
+	else
+	{
+		hideUpdateMenu();
+	}
+
+}
+
+void BaseDoll::showDollInfo() {
+
+}
