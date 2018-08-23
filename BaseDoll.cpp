@@ -1,6 +1,6 @@
 #include "BaseDoll.h"
 #include "GameManager.h"
-//未见地图cpp，未导入
+#include "BaseLevel.h"
 #include "TouchLayer.h"
 
 BaseDoll::BaseDoll() :isUpdateMenuShown(false) {
@@ -55,6 +55,7 @@ void BaseDoll::checkNearestMonster() {
 }
 
 void BaseDoll::hideUpdateMenu() {
+	static_cast<BaseLevel *>(this->getParent())->mTouchLater->removeChildByTag(getTag() + 100);
 	isUpdateMenuShown = false;
 }
 
