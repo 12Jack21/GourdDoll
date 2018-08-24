@@ -11,6 +11,6 @@ public:
 	DollInfoLayer * createDollInfoLayer(DollType dollType);
 	virtual bool init(DollType dollType);
 	void setDollInfo(DollType dollType);
-	Sprite* dollInfo_bg;
+	Sprite* info;
 
 };

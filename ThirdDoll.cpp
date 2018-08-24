@@ -17,7 +17,6 @@ void BaseThirdDoll::createAndSetHpBar() {
 	
 	hpBar = ProgressTimer::create(Sprite::createWithSpriteFrameName(".png"));
 	hpBar->setType(ProgressTimer::Type::BAR);
-	//保留(hpPercentage?)
 	hpBar->setPercentage(100);
 	//数据未加
 	hpBar->setMidPoint(Point());

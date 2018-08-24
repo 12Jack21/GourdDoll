@@ -10,10 +10,8 @@ USING_NS_CC;
 class BaseInfoLayer:public Sprite
 {
 public:
-	static BaseInfoLayer* createBaseInfoLayer(DollType dolltype);
-	virtual bool init(DollType dollType);
-	void setBaseInfo(DollType dollType);
-	Sprite * info;
+	static BaseInfoLayer* createBaseInfoLayer();
+	
       
 };
 #endif
