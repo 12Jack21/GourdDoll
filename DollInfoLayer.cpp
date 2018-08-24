@@ -3,8 +3,8 @@
 DollInfoLayer * DollInfoLayer::createDollInfoLayer(DollType dollType) {
 	auto dollInfolayer = new DollInfoLayer();
 	if (dollInfolayer && dollInfolayer->init(dollType)) {
-		baseInfolayer->autorelease();
-		return baseInfolayer;
+		dollInfolayer->autorelease();
+		return dollInfolayer;
 	}
 	CC_SAFE_DELETE(dollInfolayer);
 	return NULL;
@@ -23,7 +23,7 @@ bool DollInfoLayer::init(DollType dollType) {
 void DollInfoLayer::setDollInfo(DollType dollType) {
 	//信息栏背景图片
 	auto infoBg = Sprite::createWithSpriteFrameName(/*文件名*/);
-	dollNameSprite->setPosition(Point(/*坐标待定*/));
+	infoBg->setPosition(Point(/*坐标待定*/));
 	info->addChild(infoBg);
 
 	auto dollName = Label::createWithTTF("", "", );//字体设置

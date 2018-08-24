@@ -13,13 +13,13 @@ bool BaseThirdDoll::init() {
 void BaseThirdDoll::createAndSetHpBar() {
 	hpBgSprite = Sprite::createWithSpriteFrameName(".png");
 	hpBgSprite->setPosition(Point(baseSprite->getContentSize().width / 2, baseSprite->getContentSize().height / 3 * 2));
-	BaseDoll->addChild(hpBgSprite);
+	baseSprite->addChild(hpBgSprite);
 	
 	hpBar = ProgressTimer::create(Sprite::createWithSpriteFrameName(".png"));
 	hpBar->setType(ProgressTimer::Type::BAR);
 	hpBar->setPercentage(100);
 	//数据未加
-	hpBar->setMidPoint(Point());
+	hpBar->setMidpoint(Point());
 	
 	hpBar->setPosition(Point(hpBgSprite->getContentSize().width/2, hpBgSprite->getContentSize().height / 2));
 	//数据未加
@@ -33,21 +33,21 @@ float BaseThirdDoll::caculateTime(Point point) {
 void BaseThirdDoll::runToMonster() {
 	Point destination;
 	if (!checkDirectionForMonster()) {
-		destination.x = nearestMonster->baseSprite->getPositionX() + nearestMonster->baseSprite->getContentSize().width / 2
+		destination.x = nearestMonster->monsterSprite->getPositionX() + nearestMonster->monsterSprite->getContentSize().width / 2
 			- this->getParent()->getParent()->getPositionX() - this->baseSprite->getContentSize().width / 2;
-		destination.y = nearestMonster->BaseThirdDoll->getPositionY() - this->getParent()->getParent()->getPositionY()
+		destination.y = nearestMonster->monsterSprite->getPositionY() - this->getParent()->getParent()->getPositionY()
 			- this->baseSprite->getContentSize().height / 4;
 	}
 	else
 	{
-		destination.x = nearestMonster->baseSprite->getPositionX() - nearestMonster->baseSprite->getContentSize().width / 2
+		destination.x = nearestMonster->monsterSprite->getPositionX() - nearestMonster->monsterSprite->getContentSize().width / 2
 			- this->getParent()->getParent()->getPositionX() + this->baseSprite->getContentSize().width / 2;
-		destination.y = nearestMonster->baseSprite->getPositionY() - this->getParent()->getParent()->getPositionY()
+		destination.y = nearestMonster->monsterSprite->getPositionY() - this->getParent()->getParent()->getPositionY()
 			- this->baseSprite->getContentSize().height / 4;
 	}
 	setState(ThirdDollStateAttack);
 	//动作待定
-	runAction(Sequence::create());
+	runAction(Sequence::create(MoveTo::create(caculateTime(destination), destination),NULL));
 	schedule(schedule_selector(BaseThirdDoll::attackMonster), 1.0f, -1, caculateTime(destination));
 
 }
@@ -65,8 +65,10 @@ void BaseThirdDoll::runToLocation(Point point) {
 			baseSprite->setFlippedX(true);
 		}
 		setState(ThirdDollStateWalk);
-		runAction(Sequence::create(), CallFuncN::create(CC_CALLLBACK_0(BaseThirdDoll::setState, this, ThirdDollStateSearch), NULL));
-		schedule(schedule_selector(BaseThirdDoll::ThirdDollStateSearch), 1.0f, -1, caculateTime(point));
+		runAction(Sequence::create(MoveTo::create(caculateTime(point), point),
+			CallFuncN::create(CC_CALLBACK_0(BaseThirdDoll::setState, this, ThirdDollStateSearch)),
+			NULL));
+		schedule(schedule_selector(BaseThirdDoll::SearchingMonster), 1.0f, -1, caculateTime(point));
 	}
 }
 void BaseThirdDoll::SearchingMonster(float dt) {
@@ -83,9 +85,9 @@ void BaseThirdDoll::checkNearestMonster() {
 	auto monsterVector = instance->monsterVector;
 	nearestMonster = NULL;
 
-	for (int i = 0; i < monsterVecotr.size(); i++) {
+	for (int i = 0; i < monsterVector.size(); i++) {
 		auto monster = monsterVector.at(i);
-		double distance = (this->getParent()->getParent()->getPostion() + this->getPosition()).getDistance(monster->baseSprite->getPosition());
+		double distance = (this->getParent()->getParent()->getPosition() + this->getPosition()).getDistance(monster->monsterSprite->getPosition());
 
 		if (monster->getAttackBySoldier() && distance < 50 && (!monster->getIsAttacking())) {
 			nearestMonster = monster;
@@ -96,16 +98,16 @@ void BaseThirdDoll::checkNearestMonster() {
 	}
 }
 bool BaseThirdDoll::checkDirectionForMonster() {
-	if ((nearestMonster->baseSprite->getPositionX() - (this->getParent()->getParent()->getPositionX() + this->getPositionX())) > 0) {
-		bsaeSprite->setFlippedX(false);
+	if ((nearestMonster->monsterSprite->getPositionX() - (this->getParent()->getParent()->getPositionX() + this->getPositionX())) > 0) {
+		baseSprite->setFlippedX(false);
 	}
 	else
 	{
-		bsaeSprite->setFlippedX(true);
+		baseSprite->setFlippedX(true);
 	}
 }
 
-void baseThirdDoll::stopThirdDollAnimation() {
+void BaseThirdDoll::stopThirdDollAnimation() {
 	//动作数待定
 	for (int i = 1; i <= 8; i++) {
 		baseSprite->stopActionByTag(i);

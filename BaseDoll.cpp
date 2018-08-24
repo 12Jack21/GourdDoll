@@ -2,6 +2,8 @@
 #include "GameManager.h"
 #include "BaseLevel.h"
 #include "TouchLayer.h"
+#include "Gourd.h"
+
 
 BaseDoll::BaseDoll() :isUpdateMenuShown(false) {
 };
@@ -17,13 +19,13 @@ bool BaseDoll::init() {
 }
 
 void BaseDoll::sellDoll() {
-	static_cast<gourd *>(this->getParent()->gourd->setVisible(true));
+	static_cast<Gourd *>(this->getParent())->gourd->setVisible(true);
 	removeDoll();
 }
 
 void BaseDoll::removeDoll() {
 	//特效自填
-	static_cast<gourd *>(this->getParent())->Effect();
+	static_cast<Gourd *>(this->getParent())->Effect();
 	this->unscheduleAllCallbacks();
 	this->removeAllChildren();
 	this->removeFromParent();
@@ -45,7 +47,7 @@ void BaseDoll::checkNearestMonster() {
 	BaseMonster * monsterTemp = NULL;
 	for (int i = 0; i < monsterVector.size(); i++) {
 		auto monster = monsterVector.at(i);
-		double distance = this->getParent()->getPosition().getDistance(monster->baseSprite->getPosition);
+		double distance = this->getParent()->getPosition().getDistance(monster->monsterSprite->getPosition);
 			if (distance < curMinDistance && monster->getAttackByTower()) {
 				distance = curMinDistance;
 				monsterTemp = monster;
@@ -55,7 +57,7 @@ void BaseDoll::checkNearestMonster() {
 }
 
 void BaseDoll::hideUpdateMenu() {
-	static_cast<BaseLevel *>(this->getParent())->mTouchLater->removeChildByTag(getTag() + 100);
+	static_cast<BaseLevel *>(this->getParent())->mTouchLayer->removeChildByTag(getTag() + 100);
 	isUpdateMenuShown = false;
 }
 
@@ -65,8 +67,8 @@ void BaseDoll::onTouchEnded(Touch * t, Event *e) {
 
 	Size size = target->getContentSize();
 	Rect rect = Rect(0, 0, size.width, size.height);
-	if (rect.containPoint(locationInNode)) {
-		static_cast</*未见地图.cpp*/>(this->getParent())->playerState->showDollInfo(getDollType());
+	if (rect.containsPoint(locationInNode)) {
+		static_cast<BaseLevel *>(this->getParent())->playerState->showDollInfo(getDollType());
 		if (isUpdateMenuShown) {
 			hideUpdateMenu;
 		}

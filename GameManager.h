@@ -9,12 +9,12 @@ public:
 	static GameManager* getInstance();
 
 
-	/*
-	Vector<Path*> pathVector;
+	
+	/*Vector<Path*> pathVector;*/
 	Vector<BaseDoll*> dollVector;
 	Vector<BaseMonster*> monsterVector;
 	Vector<Bullet*> bulletVector;
-	*/
+	
 
 	void setInstanceByTag(int tag);
 	void eraseAll();

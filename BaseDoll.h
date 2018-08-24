@@ -3,6 +3,7 @@
 #include "BaseMonster.h"
 #include "SoundManager.h"
 #include"SystemHeader.h"
+#include "Gourd.h"
 
 USING_NS_CC;
 
