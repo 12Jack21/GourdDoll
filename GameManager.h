@@ -14,12 +14,12 @@ public:
 	Vector<BaseDoll*> dollVector;
 	Vector<BaseMonster*> monsterVector;
 	Vector<Bullet*> bulletVector;
-	
-
+	int LEVEL;
+	int GOURD;
 	void setInstanceByTag(int tag);
 	void eraseAll();
 	
 private:
 	static GameManager * instance;
-	int GOURD;
+	
 };

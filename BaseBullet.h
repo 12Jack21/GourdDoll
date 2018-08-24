@@ -23,7 +23,7 @@ protected:
 	//子弹出现动作
 	CC_SYNTHESIZE(Spawn*, bulletAction, BulletAction);
 
-	Sprite* bullteSprite;
+	Sprite* bulletSprite;
 	virtual void shoot() {};
 	virtual void removeBullet() {};
 };

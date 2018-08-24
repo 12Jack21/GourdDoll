@@ -44,6 +44,7 @@ public:
 	virtual bool init();
 
 	CC_SYNTHESIZE(DollType, dollType, DollType);
+	CC_SYNTHESIZE(Gourd*, myGourd, MyGourd);
 	CC_SYNTHESIZE(std::string, dollName, DollName);
 	CC_SYNTHESIZE(int, level, Level);
 

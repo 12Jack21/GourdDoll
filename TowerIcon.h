@@ -25,6 +25,6 @@ protected:
 	void update(float dt);
 	Sprite* okIcon;
 	Sprite* gourdIcon;
-	Sprite* gourdLabel;
+	Label* gourdLabel;
 };
 #endif

@@ -1,7 +1,7 @@
 #include "GameManager.h"
 #include "TowerIcon.h"
 
-bool TowerIcon::initIcon() {
+bool TowerIcon::initIcon(int type, int gourd) {
 	if (!Sprite::init()) {
 		return false;
 	}
