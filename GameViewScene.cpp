@@ -1,0 +1,3 @@
+#include"GameViewScene.h"
+
+CallFuncN
