@@ -45,10 +45,10 @@ void BaseThirdDoll::runToMonster() {
 		destination.y = nearestMonster->monsterSprite->getPositionY() - this->getParent()->getParent()->getPositionY()
 			- this->baseSprite->getContentSize().height / 4;
 	}
-	setState(ThirdDollStateAttack);
+	setState(ThirdDollStateNone);
 	//¶¯×÷´ý¶¨
 	runAction(Sequence::create(MoveTo::create(caculateTime(destination), destination),NULL));
-	schedule(schedule_selector(BaseThirdDoll::attackMonster), 1.0f, -1, caculateTime(destination));
+	/*schedule(schedule_selector(BaseThirdDoll::attackMonster), 1.0f, -1, caculateTime(destination));*/
 
 }
 
@@ -76,7 +76,7 @@ void BaseThirdDoll::SearchingMonster(float dt) {
 	baseSprite->setFlippedX(!(baseSprite->isFlippedX()));
 	checkDirectionForMonster();
 	if (nearestMonster != NULL && nearestMonster->getCurHp() > 0) {
-		attack();
+		setState(ThirdDollStateWalk);
 	}
 }
 

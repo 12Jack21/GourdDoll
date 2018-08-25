@@ -24,7 +24,6 @@ typedef enum {
 	SIXTHDOLL,
 	SEVENTHDOLL_1,
 	SEVENTHDOLL_2,
-	SEVENTHDOLL_3
 }DollType;
 
 class BaseDoll : public Sprite

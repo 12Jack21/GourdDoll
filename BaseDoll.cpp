@@ -25,7 +25,7 @@ void BaseDoll::sellDoll() {
 }
 
 void BaseDoll::removeDoll() {
-	//特效自填
+	//音效动画自填
 	static_cast<Gourd *>(this->getParent())->Effect();
 	this->unscheduleAllCallbacks();
 	this->removeAllChildren();

@@ -11,9 +11,9 @@ public:
 
 	
 	/*Vector<Path*> pathVector;*/
-	Vector<BaseDoll* > dollVector;
+	Vector<SeventhDollv1* > seventhDollv1Vector;
 	Vector<BaseMonster*> monsterVector;
-	Vector<Bullet*> bulletVector;
+	Vector<BaseBullet*> bulletVector;
 	int LEVEL;
 	int GOURD;
 	void setInstanceByTag(int tag);

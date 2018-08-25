@@ -16,7 +16,7 @@ void FireBall::shoot() {
 
 void FireBall::removeFireBall() {
 	GameManager * instance = GameManager::getInstance();
-	auto stoneRect = Rect(this->getPositionX() + this->getParent()->getPositionX() - this->getContentSize().width / 2,
+	auto fireballRect = Rect(this->getPositionX() + this->getParent()->getPositionX() - this->getContentSize().width / 2,
 		this->getPositionY() + this->getParent()->getPositionY() - this->getContentSize().height / 2,
 		this->bulletSprite->getContentSize().width,
 		this->bulletSprite->getContentSize().height);
@@ -26,7 +26,7 @@ void FireBall::removeFireBall() {
 		auto monster = monsterVector.at(i);
 		auto monsterRect = monster->monsterSprite->getBoundingBox();
 
-		if (monster != NULL && monsterRect.intersectsRect(stoneRect) && monster->getAttackByTower()) {
+		if (monster != NULL && monsterRect.intersectsRect(fireballRect) && monster->getAttackByTower()) {
 			auto curHp = monster->getCurHp();
 			curHp = curHp - this->getMaxForce();
 			if (curHp <= 0) {

@@ -11,5 +11,5 @@ public:
 	void shoot();
 	void removeGourdBullet();
 }
-#endif
+#endif _GOURDBULLET_H_
 

@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "BaseBullet.h"
 
+USING_NS_CC;
 class FireBall : public BaseBullet
 {
 public:
