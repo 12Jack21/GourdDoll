@@ -10,6 +10,8 @@ public:
 
 	virtual bool init();
 
+	static Size visibleSize;
+
 	void starMenu(Ref *pSpender);
 	//返回按钮回调
 	void callBackMenu(Ref *pSpender);

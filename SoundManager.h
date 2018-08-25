@@ -32,12 +32,6 @@ public:
 	static void playGameWin();
 	static void playGameFail();
 
-	//–…–…BOSS
-	static void playChestdrum();
-	static void playChimps_1();
-	static void playChimps_2();
-	static void playChimps_3();
-	static void playMonoDeath();
 public:
 	//ª∂”≠ΩÁ√Ê
 	static void playWelcomeBackMusic();

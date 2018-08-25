@@ -1,8 +1,8 @@
 #include"GameWinLayer.h"
 #include"TransitionInterface.h"
-#include"GameViewScene.h"
 #include"LevelViewScene.h"
 #include"GameManager.h"
+#include"GameScene.h"
 
 USING_NS_CC;
 
@@ -64,6 +64,6 @@ void GameWinLayer::OnContinueTouch(Ref* pSpender)
 }
 void GameWinLayer::OnRestartTouch(Ref* pSpender)
 {
-	Director::getInstance()->replaceScene(TransitionInterface::create(1.0f, GameScene::playGame(level, difficult)));
+	Director::getInstance()->replaceScene(TransitionInterface::create(1.0f, GameScene::playGame(level)));
 }
 
