@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _BASE_BULLET_H_
+#define _BASE_BULLET_H_
 #include "SoundManager.h"
 #include "GameManager.h"
 #include "SystemHeader.h"
@@ -27,3 +29,4 @@ protected:
 	virtual void shoot() {};
 	virtual void removeBullet() {};
 };
+#endif _BASE_BULLET_H_

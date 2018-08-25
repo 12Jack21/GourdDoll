@@ -11,4 +11,4 @@ public:
 	void shoot();
 	void removeStone();
 }
-#endif
+#endif _STONE_H_

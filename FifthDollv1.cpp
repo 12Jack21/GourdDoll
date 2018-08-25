@@ -1,16 +1,16 @@
-#include "FirstDollv1.h"
-#include "FirstDollv2.h"
+#include "FifthDollv1.h"
+#include "FifthDollv2.h"
 #include "GameManager.h"
 #include "UpdateMenu.h"
 #include "BaseLevel.h"
-#include "Stone.h"
+#include "WaterBall.h"
 
 
-bool FirstDollv1::init() {
+bool FifthDollv1::init() {
 	if (!Sprite::init()) {
 		return false;
 	}
-	setDollType(FIRSTDOLL_1);
+	setDollType(FIFTHDOLL_1);
 	setLevel(1);
 	addGourd();
 	updateAnimation();
@@ -22,34 +22,34 @@ bool FirstDollv1::init() {
 	return true;
 }
 
-void FirstDollv1::updateAnimation() {
+void FifthDollv1::updateAnimation() {
 	auto update = Sprite::create();
 	auto shape = Sprite::createWithSpriteFrameName(/*文件名*/);
 	update->addChild(shape);
 	addChild(update);
-	scheduleOnce(schedule_selector(FirstDollv1::updateEffectAnimation), 0.5f);
+	scheduleOnce(schedule_selector(FifthDollv1::updateEffectAnimation), 0.5f);
 }
 
-void FirstDollv1::updateEffectAnimation(float dt) {
+void FifthDollv1::updateEffectAnimation(float dt) {
 	auto effect = Sprite::createWithSpriteFrameName(/*文件名*/);
 	addChild(effect, 99);
 	effect->runAction(Sequence::create(Animate::create(AnimationCache::getInstance()->getAnimation(/*文件名*/)), CallFuncN::create(CC_CALLBACK_0(Sprite::removeFromParent, effect)), NULL));
 	//音效
 	initDoll(1);
 	setListener();
-	schedule(schedule_selector(FirstDollv1::shoot), 3.0f);
+	schedule(schedule_selector(FifthDollv1::shoot), 3.0f);
 }
 
-void FirstDollv1::updateDoll() {
-	auto firstDollv2 = FirstDollv2::create();
-	firstDollv2->setMyGourd(myGourd);
-	firstDollv2->setTag(myGourd->getTag());
-	firstDollv2->setPosition(Point(0, 20));
-	myGourd->addChild(firstDollv2);
+void FifthDollv1::updateDoll() {
+	auto fifthDollv2 = FifthDollv2::create();
+	fifthDollv2->setMyGourd(myGourd);
+	fifthDollv2->setTag(myGourd->getTag());
+	fifthDollv2->setPosition(Point(0, 20));
+	myGourd->addChild(fifthDollv2);
 	this->removeDoll();
 }
 
-void FirstDollv1::showUpdateMenu() {
+void FifthDollv1::showUpdateMenu() {
 	auto updateMenu = UpdateMenu::create();
 	updateMenu->setTag(myGourd->getTag() + 100);
 	updateMenu->setGourd(this);
@@ -62,11 +62,11 @@ void FirstDollv1::showUpdateMenu() {
 	isUpdateMenuShown = true;
 }
 
-BaseBullet * FirstDollv1::FirstDollBullet() {
-	auto firstDollBullet = Stone::create();
-	firstDollBullet->setPosition(Point(40, 45));
-	firstDollBullet->setMaxForce(15);
-	this->getParent()->addChild(firstDollBullet);
-	return firstDollBullet;
+BaseBullet * FifthDollv1::FifthDollBullet() {
+	auto fifthDollBullet = WaterBall::create();
+	fifthDollBullet->setPosition(Point(40, 45));
+	fifthDollBullet->setMaxForce(10);
+	this->getParent()->addChild(fifthDollBullet);
+	return fifthDollBullet;
 
 }

@@ -13,4 +13,4 @@ public:
 	void removeFireBall();
 };
 
-#endif
+#endif _FIREBALL_H_

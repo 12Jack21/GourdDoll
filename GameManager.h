@@ -11,7 +11,7 @@ public:
 
 	
 	/*Vector<Path*> pathVector;*/
-	Vector<BaseDoll*> dollVector;
+	Vector<BaseDoll* > dollVector;
 	Vector<BaseMonster*> monsterVector;
 	Vector<Bullet*> bulletVector;
 	int LEVEL;

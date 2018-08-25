@@ -1,11 +1,11 @@
 
 #ifndef _FIRST_DOLL_V3_H_
 #define _FIRST_DOLL_V3_H_
-#include "FirstDoll.h"
+#include "BaseDoll.h"
 #include "cocos2d.h"
 USING_NS_CC;
 
-class FirstDollv3 :public FirstDoll {
+class FirstDollv3 :public BaseDoll {
 public:
 	bool init();
 	CREATE_FUNC(FirstDollv3);

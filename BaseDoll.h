@@ -1,6 +1,7 @@
 #pragma once
 
 #include "BaseMonster.h"
+#include "BaseBullet.h"
 #include "SoundManager.h"
 #include"SystemHeader.h"
 #include "Gourd.h"
@@ -17,9 +18,9 @@ typedef enum {
 	FOURTHDOLL_1 = 7,
 	FOURTHDOLL_2,
 	FOURTHDOLL_3,
-	FIFTHDLL_1,
-	FIFTHDLL_2,
-	FIFTHDLL_3,
+	FIFTHDOLL_1,
+	FIFTHDOLL_2,
+	FIFTHDOLL_3,
 	SIXTHDOLL,
 	SEVENTHDOLL_1,
 	SEVENTHDOLL_2,
@@ -72,7 +73,14 @@ public:
 	virtual void setRallyPoint(Point point) {};
 
 protected:
+	Sprite * shooter;
+	Sprite * dollBase;
+	BaseBullet * curBullet;
+	void initDoll(int level);
+	void addGourd();
 
+	virtual BaseBullet * FirstDollBullet();
+	void shoot(float dt);
 	virtual void checkNearestMonster();
 	BaseMonster* nearestMonster;
 	bool onTouchBegan(Touch *touch, Event *event);

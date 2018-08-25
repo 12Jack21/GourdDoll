@@ -1,18 +1,19 @@
+#pragma once
 
-#ifndef _FIRST_DOLL_V1_H_
-#define _FIRST_DOLL_V1_H_
+#ifndef _FOURTH_DOLL_V1_H_
+#define _FOURTH_DOLL_V1_H_
 #include "BaseDoll.h"
 #include "cocos2d.h"
 USING_NS_CC;
 
-class FirstDollv1:public BaseDoll
+class FourthDollv1 :public BaseDoll
 {
 public:
 	virtual bool init();
-	CREATE_FUNC(FirstDollv1);
+	CREATE_FUNC(FourthDollv1);
 	void updateDoll();
 	void showUpdateMenu();
-	BaseBullet * FirstDollBullet();
+	BaseBullet * FourthDollBullet();
 private:
 	void updateAnimation();
 	void updateEffectAnimation(float dt);
@@ -20,4 +21,4 @@ private:
 
 
 
-#endif _FIRST_DOLL_V1_H_
+#endif _FOURTH_DOLL_V1_H_

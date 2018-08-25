@@ -13,4 +13,4 @@ public:
 	void removeWaterBall();
 };
 
-#endif#pragma once
+#endif _WATERBALL_H_

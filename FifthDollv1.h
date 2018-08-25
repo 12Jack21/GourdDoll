@@ -1,18 +1,18 @@
-
-#ifndef _FIRST_DOLL_V1_H_
-#define _FIRST_DOLL_V1_H_
+#pragma once
+#ifndef _FIFTH_DOLL_V1_H_
+#define _FIFTH_DOLL_V1_H_
 #include "BaseDoll.h"
 #include "cocos2d.h"
 USING_NS_CC;
 
-class FirstDollv1:public BaseDoll
+class FifthDollv1 :public BaseDoll
 {
 public:
 	virtual bool init();
-	CREATE_FUNC(FirstDollv1);
+	CREATE_FUNC(FifthDollv1);
 	void updateDoll();
 	void showUpdateMenu();
-	BaseBullet * FirstDollBullet();
+	BaseBullet * FifthDollBullet();
 private:
 	void updateAnimation();
 	void updateEffectAnimation(float dt);
