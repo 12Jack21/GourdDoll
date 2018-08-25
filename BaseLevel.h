@@ -15,8 +15,8 @@ public:
 	CC_SYNTHESIZE(int, level, Level);
 	//玩家状态栏
 	PlayStateLayer* playState;
-	//绑定按键层（按键层兼顾塔的升级菜单层）
-	void bindPlayerStateMenu(PlayStateLayer* playerState);
+	//绑定游戏状态层（按键层兼顾塔的升级菜单层）
+	void bindPlayerState(PlayStateLayer* playerState);
 	//地图精灵
 	Sprite* mapSprite;
 	TouchLayer* mTouchLayer;

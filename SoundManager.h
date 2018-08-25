@@ -30,7 +30,7 @@ public:
 
 	//¹Ø¿¨½áÊø
 	static void playGameWin();
-	static void playGameFaile();
+	static void playGameFail();
 
 	//ÐÉÐÉBOSS
 	static void playChestdrum();

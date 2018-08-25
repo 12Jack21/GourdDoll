@@ -8,7 +8,10 @@ class GameWinLayer : public Layer
 {
 public:
 	static GameWinLayer* createGameWin(int star);
-	virtual bool initGameWinLayer(int star);
+	virtual bool initGameWin(int star);
+
+	MenuItemSprite* continueMenuItem;
+	MenuItemSprite* restartMenuItem;
 
 	//点击	重新开始 按钮
 	void OnRestartTouch(Ref* pSpender);
@@ -20,6 +23,7 @@ public:
 	CREATE_FUNC(GameWinLayer);
 
 private:
+
 	Point position;
 	Sprite* winSprite;
 	//继续	菜单项
