@@ -24,17 +24,17 @@ bool FifthDollv1::init() {
 
 void FifthDollv1::updateAnimation() {
 	auto update = Sprite::create();
-	auto shape = Sprite::createWithSpriteFrameName(/*文件名*/);
+	auto shape = Sprite::createWithSpriteFrameName(".png");
 	update->addChild(shape);
 	addChild(update);
 	scheduleOnce(schedule_selector(FifthDollv1::updateEffectAnimation), 0.5f);
 }
 
+//升级塔时的动画效果
 void FifthDollv1::updateEffectAnimation(float dt) {
-	auto effect = Sprite::createWithSpriteFrameName(/*文件名*/);
+	auto effect = Sprite::createWithSpriteFrameName(".png");
 	addChild(effect, 99);
-	effect->runAction(Sequence::create(Animate::create(AnimationCache::getInstance()->getAnimation(/*文件名*/)), CallFuncN::create(CC_CALLBACK_0(Sprite::removeFromParent, effect)), NULL));
-	//音效
+	effect->runAction(Sequence::create(Animate::create(AnimationCache::getInstance()->getAnimation(".png")), CallFuncN::create(CC_CALLBACK_0(Sprite::removeFromParent, effect)), NULL));
 	initDoll(1);
 	setListener();
 	schedule(schedule_selector(FifthDollv1::shoot), 3.0f);

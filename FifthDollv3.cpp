@@ -17,13 +17,14 @@ bool FifthDollv3::init() {
 	setFosterGourd(500);
 	isUpdateMenuShown = false;
 	schedule(schedule_selector(FifthDollv3::shoot), 2.0f);
-	//需要添加音效
+	//该音效可要可不要
+	SoundManager::playDollUpdate();
 	return true;
 }
 
 BaseBullet* FifthDollv3::FifthDollBullet()
 {
-	auto fifthDollBullet = Stone::create();
+	auto fifthDollBullet = WaterBall::create();
 	fifthDollBullet->setPosition(Point(10, 45));
 	fifthDollBullet->setMaxForce(45);
 	this->getParent()->addChild(fifthDollBullet);

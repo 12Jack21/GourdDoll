@@ -30,28 +30,25 @@ void SeventhDollv1::createAndSetHpBar() {
 	hpBar = ProgressTimer::create(Sprite::createWithSpriteFrameName(".png"));
 	hpBar->setType(ProgressTimer::Type::BAR);
 	hpBar->setPercentage(100);
-	//数据未加
-	hpBar->setMidpoint(Point());
-
+	hpBar->setMidpoint(Point(0,0.5f));
 	hpBar->setPosition(Point(hpBgSprite->getContentSize().width / 2, hpBgSprite->getContentSize().height / 2));
-	//数据未加
-	hpBar->setBarChangeRate(Point());
+	hpBar->setBarChangeRate(Point(1,0));
 	hpBgSprite->addChild(hpBar);
 
 }
 
 void SeventhDollv1::updateAnimation() {
 	auto update = Sprite::create();
-	auto shape = Sprite::createWithSpriteFrameName(/*文件名*/);
+	auto shape = Sprite::createWithSpriteFrameName(".png");
 	update->addChild(shape);
 	addChild(update);
 	scheduleOnce(schedule_selector(SeventhDollv1::updateEffectAnimation), 0.5f);
 }
 
 void SeventhDollv1::updateEffectAnimation(float dt) {
-	auto effect = Sprite::createWithSpriteFrameName(/*文件名*/);
+	auto effect = Sprite::createWithSpriteFrameName(".png");
 	addChild(effect, 99);
-	effect->runAction(Sequence::create(Animate::create(AnimationCache::getInstance()->getAnimation(/*文件名*/)), CallFuncN::create(CC_CALLBACK_0(Sprite::removeFromParent, effect)), NULL));
+	effect->runAction(Sequence::create(Animate::create(AnimationCache::getInstance()->getAnimation(" ")), CallFuncN::create(CC_CALLBACK_0(Sprite::removeFromParent, effect)), NULL));
 	//音效
 	initDoll(1);
 	setListener();

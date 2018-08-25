@@ -20,13 +20,13 @@ bool Gourd::init(int type) {
 	switch (type)
 	{
 	case 1:
-		gourd = Sprite::createWithSpriteFrameName(/*文件名待定*/);
+		gourd = Sprite::createWithSpriteFrameName(".png");
 		break;
 	case 2:
-		gourd = Sprite::createWithSpriteFrameName(/*文件名待定*/);
+		gourd = Sprite::createWithSpriteFrameName(".png");
 		break;
 	case 3:
-		gourd = Sprite::createWithSpriteFrameName(/*文件名待定*/);
+		gourd = Sprite::createWithSpriteFrameName(".png");
 		break;
 		default:
 			break;

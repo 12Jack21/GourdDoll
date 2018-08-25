@@ -1,15 +1,15 @@
-#include "FifthDollv2.h"
-#include "FifthDollv3.h"
+#include "SecondDollv2.h"
+#include "SecondDollv3.h"
 #include "UpdateMenu.h"
 #include "GameManager.h"
 #include "BaseLevel.h"
-#include "WaterBall.h"
+#include "Laser.h"
 
-bool FifthDollv2::init() {
+bool SecondDollv2::init() {
 	if (!Sprite::init()) {
 		return false;
 	}
-	setDollType(FIFTHDOLL_2);
+	setDollType(SECONDDOLL_2);
 	setLevel(2);
 	addGourd();
 	initDoll(2);
@@ -17,22 +17,22 @@ bool FifthDollv2::init() {
 	setUpdateGourd(240);
 	setFosterGourd(260);
 	isUpdateMenuShown = false;
-	schedule(schedule_selector(FifthDollv2::shoot), 2.0f);
+	schedule(schedule_selector(SecondDollv2::shoot), 2.0f);
 	//该音效可要可不要
 	SoundManager::playDollUpdate();
 	return true;
 }
 
-void FifthDollv2::updateDoll() {
-	auto fifthDollv3 = FifthDollv3::create();
-	fifthDollv3->setMyGourd(myGourd);
-	fifthDollv3->setTag(myGourd->getTag());
-	fifthDollv3->setPosition(Point(0, 20));
-	myGourd->addChild(fifthDollv3);
+void SecondDollv2::updateDoll() {
+	auto secondDollv3 = SecondDollv3::create();
+	secondDollv3->setMyGourd(myGourd);
+	secondDollv3->setTag(myGourd->getTag());
+	secondDollv3->setPosition(Point(0, 20));
+	myGourd->addChild(secondDollv3);
 	this->removeDoll();
 }
 
-void FifthDollv2::showUpdateMenu() {
+void SecondDollv2::showUpdateMenu() {
 	auto updateMenu = UpdateMenu::create();
 	updateMenu->setTag(myGourd->getTag() + 100);
 	updateMenu->setGourd(this);
@@ -45,11 +45,11 @@ void FifthDollv2::showUpdateMenu() {
 	isUpdateMenuShown = true;
 }
 
-BaseBullet * FifthDollv2::FifthDollBullet() {
-	auto fifthDollBullet = WaterBall::create();
-	fifthDollBullet->setPosition(Point(10, 45));
-	fifthDollBullet->setMaxForce(25);
-	this->getParent()->addChild(fifthDollBullet);
-	return fifthDollBullet;
+BaseBullet * SecondDollv2::SecondDollBullet() {
+	auto secondDollBullet = Laser::create();
+	secondDollBullet->setPosition(Point(10, 45));
+	secondDollBullet->setMaxForce(30);
+	this->getParent()->addChild(secondDollBullet);
+	return secondDollBullet;
 
 }

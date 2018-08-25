@@ -6,18 +6,18 @@ bool TowerIcon::initIcon(int type, int gourd) {
 		return false;
 	}
 	isSelected = false;
-	auto text = String::createWithFormat(/*文件名*/,type)->getCString();
-	towerIcon = Sprite::createWithSpriteFrameName(String::createWithFormat(/*文件名*/,type)->getCString());
+	auto text = String::createWithFormat(" ",type)->getCString();
+	towerIcon = Sprite::createWithSpriteFrameName(String::createWithFormat(" ",type)->getCString());
 	addChild(towerIcon);
-	gourdIcon = Sprite::createWithSpriteFrameName(/*文件名*/);
-	gourdIcon->setPosition(Point(/*位置设置*/));
+	gourdIcon = Sprite::createWithSpriteFrameName(".png");
+	gourdIcon->setPosition(Point(0,-towerIcon->getContentSize().height/2);
 	addChild(gourdIcon);
-	gourdLabel = Label::createWithTTF(String::createWithFormat("%d", gourd)->getCString(),/*字体的选择,大小*/);
+	gourdLabel = Label::createWithTTF(String::createWithFormat(" %d", gourd)->getCString()," ",20);
 	gourdLabel->setPosition(Point(gourdIcon->getContentSize().width/2,gourdIcon->getContentSize().height/2-2));
-	gourdLabel->setColor(/*设置字体颜色*/);
+	gourdLabel->setColor(Color3B(255, 153, 0));
 	gourdIcon->addChild(gourdLabel);
 
-	okIcon = Sprite::createWithSpriteFrameName(/*文件名*/);
+	okIcon = Sprite::createWithSpriteFrameName(".png");
 	okIcon->setPosition(Point(towerIcon->getContentSize().width / 2, towerIcon->getContentSize().height / 2));
 	towerIcon->addChild(okIcon);
 	okIcon->setVisible(false);
@@ -51,7 +51,7 @@ void TowerIcon::update(float dt) {
 
 void TowerIcon::setEnoughGourd() {
 	can = true;
-	gourdLabel->setColor(/*设置颜色*/);
+	gourdLabel->setColor(Color3B(255, 153, 0));
 	okIcon->setSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName(".png"));
 	towerIcon->setSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName(String::createWithFormat(".png", type)->getCString()));
 	gourdIcon->setSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName(".png"));
@@ -64,7 +64,7 @@ void TowerIcon::setSelected() {
 
 void TowerIcon::setUpdateGourd(int Gourd) {
 	setGourd(gourd);
-	gourdLabel->setString(String::createWithFormat(/*文件名*/,gourd)->getCString());
+	gourdLabel->setString(String::createWithFormat(" ",gourd)->getCString());
 }
 
 TowerIcon * TowerIcon::createIcon(int type, int gourd) {

@@ -6,10 +6,13 @@
 #include "Gourd.h"
 
 
-BaseDoll::BaseDoll() :isUpdateMenuShown(false) {
+BaseDoll::BaseDoll() :isUpdateMenuShown(false) 
+{
+
 };
 
 BaseDoll::~BaseDoll() {};
+
 
 bool BaseDoll::init() {
 	if (!Sprite::init()) {
@@ -25,7 +28,7 @@ void BaseDoll::sellDoll() {
 }
 
 void BaseDoll::removeDoll() {
-	//音效动画自填
+	static_cast<BaseLevel *>(this->getParent()->getParent())->playerState->removeDollInfo();
 	static_cast<Gourd *>(this->getParent())->Effect();
 	this->unscheduleAllCallbacks();
 	this->removeAllChildren();
@@ -46,6 +49,7 @@ void BaseDoll::checkNearestMonster() {
 	auto curMinDistance = this->scope;
 
 	BaseMonster * monsterTemp = NULL;
+	//for循环找到在DOLL内最近的MONSTER
 	for (int i = 0; i < monsterVector.size(); i++) {
 		auto monster = monsterVector.at(i);
 		double distance = this->getParent()->getPosition().getDistance(monster->monsterSprite->getPosition());
@@ -69,6 +73,7 @@ void BaseDoll::onTouchEnded(Touch * t, Event *e) {
 	Size size = target->getContentSize();
 	Rect rect = Rect(0, 0, size.width, size.height);
 	if (rect.containsPoint(locationInNode)) {
+		//获取单击区域，显示菜单
 		static_cast<BaseLevel *>(this->getParent())->playerState->showDollInfo(getDollType());
 		if (isUpdateMenuShown) {
 			hideUpdateMenu();
@@ -84,21 +89,21 @@ void BaseDoll::onTouchEnded(Touch * t, Event *e) {
 	}
 
 }
-
+//初始化塔的等级
 void BaseDoll::initDoll(int level) {
 	if (level == 1) {
-		dollBase = Sprite::createWithSpriteFrameName(String::createWithFormat(/*文件名*/, level)->getCString());
-		shooter = Sprite::createWithSpriteFrameName(String::createWithFormat(/*文件名*/, level)->getCString());
+		dollBase = Sprite::createWithSpriteFrameName(String::createWithFormat(".png", level)->getCString());
+		shooter = Sprite::createWithSpriteFrameName(String::createWithFormat(".png", level)->getCString());
 		shooter->setPosition(Point(dollBase->getContentSize().width / 2 + 3, dollBase->getContentSize().height / 2 + 34));
 	}
 	if (level == 2) {
-		dollBase = Sprite::createWithSpriteFrameName(String::createWithFormat(/*文件名*/, level)->getCString());
-		shooter = Sprite::createWithSpriteFrameName(String::createWithFormat(/*文件名*/, level)->getCString());
+		dollBase = Sprite::createWithSpriteFrameName(String::createWithFormat(".png", level)->getCString());
+		shooter = Sprite::createWithSpriteFrameName(String::createWithFormat(".png", level)->getCString());
 		shooter->setPosition(Point(dollBase->getContentSize().width / 2 + 3, dollBase->getContentSize().height / 2 + 34));
 	}
 	if (level = 3) {
-		dollBase = Sprite::createWithSpriteFrameName(String::createWithFormat(/*文件名*/, level)->getCString());
-		shooter = Sprite::createWithSpriteFrameName(String::createWithFormat(/*文件名*/, level)->getCString());
+		dollBase = Sprite::createWithSpriteFrameName(String::createWithFormat(".png", level)->getCString());
+		shooter = Sprite::createWithSpriteFrameName(String::createWithFormat(".png", level)->getCString());
 		shooter->setPosition(Point(dollBase->getContentSize().width / 2 + 3, dollBase->getContentSize().height / 2 + 34));
 	}
 	dollBase->setPosition(Point(0, -10));
@@ -106,15 +111,19 @@ void BaseDoll::initDoll(int level) {
 	curBullet = NULL;
 }
 
+
 void BaseDoll::addGourd() {
-	gourd = Sprite::createWithSpriteFrameName(/*文件名*/);
-	gourd->setAnchorPoint(Point(/*待定*/));
+	gourd = Sprite::createWithSpriteFrameName(".png");
+	gourd->setAnchorPoint(Point(/*有问题*/));
 	addChild(gourd);
 }
 
 void BaseDoll::shoot(float dt) {
 	auto instance = GameManager::getInstance();
-	//需要添加射击音效播放
+	checkNearestMonster();
+	if (nearestMonster != NULL && nearestMonster->getCurHp() > 0) {
+		
+	}
 	Point shootVector = nearestMonster->monsterSprite->getPosition() - this->getParent()->getPosition();
 
 	auto position = curBullet->getPosition() - shootVector;
@@ -122,15 +131,15 @@ void BaseDoll::shoot(float dt) {
 	float angle = CC_RADIANS_TO_DEGREES(rotation);
 	curBullet->setRotation(180.0f - angle);
 
-	dollBase->runAction(Animate::create(AnimationCache::getInstance()->getAnimation(String::createWithFormat(/*文件名*/, level)->getCString())));
+	dollBase->runAction(Animate::create(AnimationCache::getInstance()->getAnimation(String::createWithFormat(" ", level)->getCString())));
 
 	if (shootVector.y)
 	{
-		shooter->runAction(Animate::create(AnimationCache::getInstance()->getAnimation(/*文件名*/)));
+		shooter->runAction(Animate::create(AnimationCache::getInstance()->getAnimation(" ")));
 	}
 	else
 	{
-		shooter->runAction(Animate::create(AnimationCache::getInstance()->getAnimation(/*文件名*/)));
+		shooter->runAction(Animate::create(AnimationCache::getInstance()->getAnimation(" ")));
 	}
 
 	auto move = MoveTo::create(0.25f, shootVector);

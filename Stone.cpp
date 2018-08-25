@@ -5,7 +5,7 @@ bool Stone::init() {
 	if (!Sprite::init()) {
 		return false;
 	}
-	bulletSprite = Sprite::createWithSpriteFrameName(/*ÎÄ¼þÃû*/);
+	bulletSprite = Sprite::createWithSpriteFrameName(".png");
 	addChild(bulletSprite);
 	return true;
 }

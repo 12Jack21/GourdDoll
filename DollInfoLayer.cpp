@@ -14,7 +14,7 @@ bool DollInfoLayer::init(DollType dollType) {
 	if (!Sprite::init()) {
 		return false;
 	}
-	info = Sprite::createWithSpriteFrameName(/*文件名*/);
+	info = Sprite::createWithSpriteFrameName(".png");
 	setDollInfo(dollType);
 	addChild(info);
 	return true;
@@ -22,151 +22,151 @@ bool DollInfoLayer::init(DollType dollType) {
 
 void DollInfoLayer::setDollInfo(DollType dollType) {
 	//信息栏背景图片
-	auto infoBg = Sprite::createWithSpriteFrameName(/*文件名*/);
-	infoBg->setPosition(Point(/*坐标待定*/));
+	auto infoBg = Sprite::createWithSpriteFrameName(".png");
+	infoBg->setPosition(Point(20,25));
 	info->addChild(infoBg);
 
-	auto dollName = Label::createWithTTF("", "", );//字体设置
-	dollName->setPosition(Point());//位置设置
-	dollName->setAnchorPoint(Point());//锚点设置
+	auto dollName = Label::createWithTTF("", "", 20);//字体设置
+	dollName->setPosition(Point(60,25));//位置设置
+	dollName->setAnchorPoint(Point(0,0.5));//锚点设置
 	info->addChild(dollName);
 
-	auto dollAttack = Label::createWithTTF("", "", );//字体设置
-	dollAttack->setPosition(Point());//位置设置
-	dollAttack->setAnchorPoint(Point());//锚点设置
+	auto dollAttack = Label::createWithTTF("", "", 18);//字体设置
+	dollAttack->setPosition(Point(325,25));//位置设置
+	dollAttack->setAnchorPoint(Point(0, 0.5));//锚点设置
 	info->addChild(dollAttack);
 
-	auto dollAttackSprite = Sprite::createWithSpriteFrameName(/*文件名*/);
-	dollAttackSprite->setPosition(Point(/*坐标待定*/));
+	auto dollAttackSprite = Sprite::createWithSpriteFrameName(".png");
+	dollAttackSprite->setPosition(Point(300,25));
 	info->addChild(dollAttackSprite);
 
-	auto dollRateSprite = Sprite::createWithSpriteFrameName(/*文件名*/);
-	dollRateSprite->setPosition(Point(/*坐标待定*/));
+	auto dollRateSprite = Sprite::createWithSpriteFrameName(".png");
+	dollRateSprite->setPosition(Point(400,25));
 	info->addChild(dollRateSprite);
 
-	auto dollRate = Label::createWithTTF("", "", );//字体设置
-	dollRate->setPosition(Point());//位置设置
-	dollRate->setAnchorPoint(Point());//锚点设置
+	auto dollRate = Label::createWithTTF("", "", 18);//字体设置
+	dollRate->setPosition(Point(435,25));//位置设置
+	dollRate->setAnchorPoint(Point(0,0.5));//锚点设置
 	info->addChild(dollRate);
 
-	auto dollScopeSprite = Sprite::createWithSpriteFrameName(/*文件名*/);
-	dollScopeSprite->setPosition(Point(/*坐标待定*/));
+	auto dollScopeSprite = Sprite::createWithSpriteFrameName(".png");
+	dollScopeSprite->setPosition(Point(570,25));
 	info->addChild(dollScopeSprite);
 
-	auto dollScope = Label::createWithTTF("", "", );//字体设置
-	dollScope->setPosition(Point());//位置设置
-	dollScope->setAnchorPoint(Point());//锚点设置
+	auto dollScope = Label::createWithTTF("", "", 18);//字体设置
+	dollScope->setPosition(Point(605,25));//位置设置
+	dollScope->setAnchorPoint(Point(0,0.5));//锚点设置
 	info->addChild(dollScope);
 
 	Sprite *showinfo;
-	//判断doll的攻击范围和攻击力，已在BaseDoll.h中的枚举中补充上各等级的doll
+	//判断doll的攻击范围和攻击力，在BaseDoll.h中的枚举中补充上各等级的doll
 	switch (dollType)
 	{
 	case(FIRSTDOLL_1):
-		showinfo = Sprite::createWithSpriteFrameName(/*文件名*/);
+		showinfo = Sprite::createWithSpriteFrameName(".png");
 		//以下名字未定
 		dollName->setString();
 		dollRate->setString();
 		dollScope->setString();
 		dollAttack->setString();
 	case(FIRSTDOLL_2):
-		showinfo = Sprite::createWithSpriteFrameName(/*文件名*/);
+		showinfo = Sprite::createWithSpriteFrameName(".png");
 		//以下名字未定
 		dollName->setString();
 		dollRate->setString();
 		dollScope->setString();
 		dollAttack->setString();
 	case(FIRSTDOLL_3):
-		showinfo = Sprite::createWithSpriteFrameName(/*文件名*/);
+		showinfo = Sprite::createWithSpriteFrameName(".png");
 		//以下名字未定
 		dollName->setString();
 		dollRate->setString();
 		dollScope->setString();
 		dollAttack->setString();
 	case(SECONDDOLL_1):
-		showinfo = Sprite::createWithSpriteFrameName(/*文件名*/);
+		showinfo = Sprite::createWithSpriteFrameName(".png");
 		//以下名字未定
 		dollName->setString();
 		dollRate->setString();
 		dollScope->setString();
 		dollAttack->setString();
 	case(SECONDDOLL_2):
-		showinfo = Sprite::createWithSpriteFrameName(/*文件名*/);
+		showinfo = Sprite::createWithSpriteFrameName(".png");
 		//以下名字未定
 		dollName->setString();
 		dollRate->setString();
 		dollScope->setString();
 		dollAttack->setString();
 	case(SECONDDOLL_3):
-		showinfo = Sprite::createWithSpriteFrameName(/*文件名*/);
+		showinfo = Sprite::createWithSpriteFrameName(".png");
 		//以下名字未定
 		dollName->setString();
 		dollRate->setString();
 		dollScope->setString();
 		dollAttack->setString();
 	case(FOURTHDOLL_1):
-		showinfo = Sprite::createWithSpriteFrameName(/*文件名*/);
+		showinfo = Sprite::createWithSpriteFrameName(".png");
 		//以下名字未定
 		dollName->setString();
 		dollRate->setString();
 		dollScope->setString();
 		dollAttack->setString();
 	case(FOURTHDOLL_2):
-		showinfo = Sprite::createWithSpriteFrameName(/*文件名*/);
+		showinfo = Sprite::createWithSpriteFrameName(".png");
 		//以下名字未定
 		dollName->setString();
 		dollRate->setString();
 		dollScope->setString();
 		dollAttack->setString();
 	case(FOURTHDOLL_3):
-		showinfo = Sprite::createWithSpriteFrameName(/*文件名*/);
+		showinfo = Sprite::createWithSpriteFrameName(".png");
 		//以下名字未定
 		dollName->setString();
 		dollRate->setString();
 		dollScope->setString();
 		dollAttack->setString();
-	case(FIFTHDLL_1):
-		showinfo = Sprite::createWithSpriteFrameName(/*文件名*/);
+	case(FIFTHDOLL_1):
+		showinfo = Sprite::createWithSpriteFrameName(".png");
 		//以下名字未定
 		dollName->setString();
 		dollRate->setString();
 		dollScope->setString();
 		dollAttack->setString();
-	case(FIFTHDLL_2):
-		showinfo = Sprite::createWithSpriteFrameName(/*文件名*/);
+	case(FIFTHDOLL_2):
+		showinfo = Sprite::createWithSpriteFrameName(".png");
 		//以下名字未定
 		dollName->setString();
 		dollRate->setString();
 		dollScope->setString();
 		dollAttack->setString();
-	case(FIFTHDLL_3):
-		showinfo = Sprite::createWithSpriteFrameName(/*文件名*/);
+	case(FIFTHDOLL_3):
+		showinfo = Sprite::createWithSpriteFrameName(".png");
 		//以下名字未定
 		dollName->setString();
 		dollRate->setString();
 		dollScope->setString();
 		dollAttack->setString();
 	case(SEVENTHDOLL_1):
-		showinfo = Sprite::createWithSpriteFrameName(/*文件名*/);
+		showinfo = Sprite::createWithSpriteFrameName(".png");
 		//以下名字未定
 		dollName->setString();
 		dollRate->setString();
 		dollScope->setString();
 		dollAttack->setString();
 	case(SEVENTHDOLL_2):
-		showinfo = Sprite::createWithSpriteFrameName(/*文件名*/);
+		showinfo = Sprite::createWithSpriteFrameName(".png");
 		//以下名字未定
 		dollName->setString();
 		dollRate->setString();
 		dollScope->setString();
 		dollAttack->setString();
-	case(SEVENTHDOLL_3):
-		showinfo = Sprite::createWithSpriteFrameName(/*文件名*/);
-		//以下名字未定
-		dollName->setString();
-		dollRate->setString();
-		dollScope->setString();
-		dollAttack->setString();
+	//case(SEVENTHDOLL_3):
+	//	showinfo = Sprite::createWithSpriteFrameName(".png");
+	//	//以下名字未定
+	//	dollName->setString();
+	//	dollRate->setString();
+	//	dollScope->setString();
+	//	dollAttack->setString();
 	default:
 		break;
 	}

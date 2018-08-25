@@ -18,7 +18,8 @@ bool FirstDollv2::init() {
 	setFosterGourd(260);
 	isUpdateMenuShown = false;
 	schedule(schedule_selector(FirstDollv2::shoot), 2.0f);
-	//需要添加音效
+	//该音效可要可不要
+	SoundManager::playDollUpdate();
 	return true;
 }
 

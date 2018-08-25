@@ -24,16 +24,16 @@ bool FourthDollv1::init() {
 
 void FourthDollv1::updateAnimation() {
 	auto update = Sprite::create();
-	auto shape = Sprite::createWithSpriteFrameName(/*文件名*/);
+	auto shape = Sprite::createWithSpriteFrameName(".png");
 	update->addChild(shape);
 	addChild(update);
 	scheduleOnce(schedule_selector(FourthDollv1::updateEffectAnimation), 0.5f);
 }
 
 void FourthDollv1::updateEffectAnimation(float dt) {
-	auto effect = Sprite::createWithSpriteFrameName(/*文件名*/);
+	auto effect = Sprite::createWithSpriteFrameName(".png");
 	addChild(effect, 99);
-	effect->runAction(Sequence::create(Animate::create(AnimationCache::getInstance()->getAnimation(/*文件名*/)), CallFuncN::create(CC_CALLBACK_0(Sprite::removeFromParent, effect)), NULL));
+	effect->runAction(Sequence::create(Animate::create(AnimationCache::getInstance()->getAnimation(" ")), CallFuncN::create(CC_CALLBACK_0(Sprite::removeFromParent, effect)), NULL));
 	//音效
 	initDoll(1);
 	setListener();
