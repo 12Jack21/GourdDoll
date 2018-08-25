@@ -6,11 +6,11 @@
 class MonsterInfoLayer :public Sprite
 {
 public:
-	MonsterInfoLayer * createMonsterInfoLayer(BaseMonster* monster);
+	static MonsterInfoLayer * createMonsterInfo(BaseMonster* monster);
 	virtual bool init(BaseMonster* monster);
 	void setMonsterInfo();
 	BaseMonster* baseMonster;
-	Sprite* monsterInfo_bg;
+	Sprite* info_bg;
 	int maxHp;
 
 	void updateHp();

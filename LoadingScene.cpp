@@ -1,4 +1,5 @@
 #include"LoadingScene.h"
+#include"WelcomeScene.h"
 
 using namespace CocosDenshion;
 
@@ -24,16 +25,16 @@ bool LoadingScene::init()
 	addChild(bg);
 
 	//异步加载纹理缓存
-	m_nNumberOfLoaded = 0;
-	Director::getInstance()->getTextureCache()->addImageAsync("texture/.png",
-		CC_CALLBACK_1(LoadingScene::loadingTextureCallBack, this));
-	Director::getInstance()->getTextureCache()->addImageAsync("texture/.png",
-		CC_CALLBACK_1(LoadingScene::loadingTextureCallBack, this));
-	Director::getInstance()->getTextureCache()->addImageAsync("texture/.png",
-		CC_CALLBACK_1(LoadingScene::loadingTextureCallBack, this));
+	//m_nNumberOfLoaded = 0;
+	//Director::getInstance()->getTextureCache()->addImageAsync("texture/.png",
+	//	CC_CALLBACK_1(LoadingScene::loadingTextureCallBack, this));
+	//Director::getInstance()->getTextureCache()->addImageAsync("texture/.png",
+	//	CC_CALLBACK_1(LoadingScene::loadingTextureCallBack, this));
+	//Director::getInstance()->getTextureCache()->addImageAsync("texture/.png",
+	//	CC_CALLBACK_1(LoadingScene::loadingTextureCallBack, this));
 
-	//异步预处理声音
-	_loadingAudioThread = new std::thread(&LoadingScene::loadingAudio, this);
+	////异步预处理声音
+	//_loadingAudioThread = new std::thread(&LoadingScene::loadingAudio, this);
 	return true;
 }
 
@@ -42,15 +43,15 @@ void LoadingScene::loadingTextureCallBack(Texture2D* texture)
 	switch (m_nNumberOfLoaded++)
 	{
 	case 0:
-		SpriteFrameCache::getInstance()->addSpriteFramesWithFile("texture/home_texture.plist", texture);
+		SpriteFrameCache::getInstance()->addSpriteFramesWithFile(".plist", texture);
 		log("home texture ok.");
 		break;
 	case 1:
-		SpriteFrameCache::getInstance()->addSpriteFramesWithFile("texture/setting_texture.plist", texture);
+		SpriteFrameCache::getInstance()->addSpriteFramesWithFile(".plist", texture);
 		log("setting texture ok.");
 		break;
 	case 2:
-		SpriteFrameCache::getInstance()->addSpriteFramesWithFile("texture/gameplay_texture.plist", texture);
+		SpriteFrameCache::getInstance()->addSpriteFramesWithFile(".plist", texture);
 		log("gameplay texture ok.");
 		this->schedule(schedule_selector(LoadingScene::delayCall), 1, 1, 3);
 		break;
@@ -60,17 +61,19 @@ void LoadingScene::loadingTextureCallBack(Texture2D* texture)
 void LoadingScene::delayCall(float dt)
 {
 	auto sc = WelcomeScene::createScene();
-	Director::getInstance()->replaceScene(sc);
+	//消失转场切换
+	auto transScene = TransitionFade::create(1.0f, sc);
+	Director::getInstance()->replaceScene(transScene);
 }
 
 void LoadingScene::loadingAudio()
 {
 	log("loadAudio");
 	//预处理 音乐
-	CocosDenshion::SimpleAudioEngine::getInstance()->preloadBackgroundMusic();
-	CocosDenshion::SimpleAudioEngine::getInstance()->preloadBackgroundMusic();
+	CocosDenshion::SimpleAudioEngine::getInstance()->preloadBackgroundMusic("");
+	CocosDenshion::SimpleAudioEngine::getInstance()->preloadBackgroundMusic("");
 	//预处理 音效
-	CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect();
+	CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("");
 
 }
 

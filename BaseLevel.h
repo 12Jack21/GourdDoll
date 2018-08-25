@@ -14,7 +14,7 @@ public:
 	//当前关卡
 	CC_SYNTHESIZE(int, level, Level);
 	//玩家状态栏
-	PlayStateLayer* playerState;
+	PlayStateLayer* playState;
 	//绑定按键层（按键层兼顾塔的升级菜单层）
 	void bindPlayerStateMenu(PlayStateLayer* playerState);
 	//地图精灵

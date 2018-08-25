@@ -8,9 +8,9 @@ USING_NS_CC;
 class DollInfoLayer :public Sprite
 {
 public:
-	DollInfoLayer * createDollInfoLayer(DollType dollType);
+	static DollInfoLayer * createDollInfo(DollType dollType);
 	virtual bool init(DollType dollType);
 	void setDollInfo(DollType dollType);
-	Sprite* dollInfo_bg;
+	Sprite* infoBg;
 
 };
