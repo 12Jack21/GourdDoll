@@ -1,7 +1,7 @@
 #pragma once
 #include"SystemHeader.h"
 
-
+USING_NS_CC;
 class GameManager
 {
 public:
@@ -15,6 +15,10 @@ public:
 	Vector<BaseMonster*> monsterVector;
 	Vector<Bullet*> bulletVector;
 	*/
+	//ºùÂ«Êý
+	int GOURD;
+	//Ò¯Ò¯ÉúÃü
+	int LIFE;
 
 	void setInstanceByTag(int tag);
 	void eraseAll();
