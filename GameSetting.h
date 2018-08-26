@@ -21,6 +21,7 @@ private:
 	Sprite* setting;
 	bool onTouchBegan(Touch* touch, Event* event);
 	void onTouchEnded(Touch* touch, Event* event);
+
 	//加上 红色斜杠 代表关闭
 	void addOff(Sprite* target);
 };

@@ -1,4 +1,5 @@
 #pragma once
+
 #include "BaseMonster.h"
 #include "BaseBullet.h"
 #include "SoundManager.h"
@@ -8,6 +9,7 @@
 USING_NS_CC;
 
 typedef enum {
+<<<<<<< HEAD
 	FIRSTDOLL_1 = 1,
 	FIRSTDOLL_2,
 	FIRSTDOLL_3,
@@ -23,6 +25,7 @@ typedef enum {
 	SIXTHDOLL,
 	SEVENTHDOLL_1,
 	SEVENTHDOLL_2,
+
 }DollType;
 
 class BaseDoll : public Sprite
@@ -43,7 +46,9 @@ public:
 	virtual bool init();
 
 	CC_SYNTHESIZE(DollType, dollType, DollType);
+
 	CC_SYNTHESIZE(Gourd*, myGourd, MyGourd);
+
 	CC_SYNTHESIZE(std::string, dollName, DollName);
 	CC_SYNTHESIZE(int, level, Level);
 
@@ -71,6 +76,7 @@ public:
 	virtual void setRallyPoint(Point point) {};
 
 protected:
+
 	Sprite * shooter;
 	Sprite * dollBase;
 	BaseBullet * curBullet;
@@ -79,6 +85,7 @@ protected:
 
 	virtual BaseBullet * FirstDollBullet();
 	void shoot(float dt);
+
 	virtual void checkNearestMonster();
 	BaseMonster* nearestMonster;
 	bool onTouchBegan(Touch *touch, Event *event);

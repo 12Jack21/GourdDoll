@@ -29,6 +29,7 @@ protected:
 	int difficulty;
 	//当前波数
 	int curWave;
+
 	//最大波数
 	int maxWave;
 	//葫芦
@@ -54,7 +55,9 @@ protected:
 	Size winSize;
 
 	//下一波提示精灵 0为路线1,1为路线2
+
 	Vector<WaveTip*> waveTips;
+
 	//波数进度条
 	void addWaveProgressBar(std::vector<Point> waveTipLocations);
 	void showWaveProgressBar(float dt);
@@ -69,6 +72,7 @@ protected:
 	virtual void update(float dt);
 	//胜利函数
 	void gameWin();
+
 	//开始标记
 	bool isStart;
 	//结束标记

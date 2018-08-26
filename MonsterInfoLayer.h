@@ -11,6 +11,7 @@ public:
 	void setMonsterInfo();
 	BaseMonster* baseMonster;
 	Sprite* info_bg;
+
 	int maxHp;
 
 	void updateHp();

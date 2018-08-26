@@ -9,6 +9,7 @@
 
 USING_NS_CC;
 
+
 #define Doll_INFO 1001
 #define MONSTER_INFO 1002
 
@@ -40,6 +41,7 @@ public:
 	void setLife(int life);
 	void setGourd(int gourd);
 	void setWave(int thisWave, int totalWave);
+
 	void showDollInfo(DollType dollType);
 	void removeDollInfo();
 

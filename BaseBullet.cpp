@@ -1,6 +1,6 @@
 #include "BaseBullet.h"
 
-BaseBullet::BaseBullet():bulletSprite(NULL), maxForce(0), bulletScope(0)
+BaseBullet::BaseBullet():bullteSprite(NULL), maxForce(0), bulletScope(0)
 {
 }
 

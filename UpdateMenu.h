@@ -38,3 +38,4 @@ private:
 	bool isBuilt;
 	void showDollInfo();
 };
+

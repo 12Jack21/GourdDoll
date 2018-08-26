@@ -26,6 +26,7 @@ private:
 
 	Point position;
 	Sprite* winSprite;
+
 	//继续	菜单项
 	MenuItemSprite* ContinueMenuItem;
 	//重新开始	菜单项

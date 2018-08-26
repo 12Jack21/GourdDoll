@@ -115,6 +115,7 @@ void WelcomeScene::initAboutButton()
 {
 	about_Btn = Sprite::createWithSpriteFrameName(".png");
 	about_Btn->setAnchorPoint(Vec2(0.5f, 0.5f));
+
 	/*about_BtnPoint.x = ;
 	about_BtnPoint.y = ;
 	about_Btn->setPosition(about_BtnPoint);*/
@@ -144,6 +145,7 @@ void WelcomeScene::initAboutButton()
 	};
 	about_Btn_listener->onTouchEnded = [&](Touch* touch, Event* event) {
 		static_cast<Sprite*>(event->getCurrentTarget())->setSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("menu_creditschain_0001.png"));
+
 		Director::getInstance()->replaceScene(AboutScene::createScene());
 	};
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(about_Btn_listener, about_Btn);
@@ -153,7 +155,9 @@ void WelcomeScene::initSoundButton()
 {
 	auto winSize = Director::getInstance()->getWinSize();
 	Sprite* backMusic_Btn;
+
 	//SoundManager::playWelcomebackMusic_Btn();
+
 	if (UserDefault::getInstance()->getIntegerForKey("backMusic_Btn", 1) == 1) 
 	{	
 		//0表示关闭BGM，1表示开启

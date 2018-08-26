@@ -23,7 +23,9 @@ public:
 private:
 	void pauseGame();
 	void initOption();
+
 	Sprite* failOption;
+
 	bool onTouchBegan(Touch* touch, Event* event);
 	void onTouchEnded(Touch* touch, Event* event);
 };

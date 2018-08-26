@@ -14,6 +14,7 @@ private:
 	Point logoPoint;
 	//start∞¥≈•
 	Sprite* start_Btn;
+
 	Point start_BtnPoint;
 	//about∞¥≈•Œª÷√
 	Sprite* about_Btn;

@@ -25,6 +25,7 @@ bool LoadingScene::init()
 	addChild(bg);
 
 	//异步加载纹理缓存
+<<<<<<< HEAD
 	//m_nNumberOfLoaded = 0;
 	//Director::getInstance()->getTextureCache()->addImageAsync("texture/.png",
 	//	CC_CALLBACK_1(LoadingScene::loadingTextureCallBack, this));
@@ -35,6 +36,7 @@ bool LoadingScene::init()
 
 	////异步预处理声音
 	//_loadingAudioThread = new std::thread(&LoadingScene::loadingAudio, this);
+
 	return true;
 }
 
@@ -61,6 +63,7 @@ void LoadingScene::loadingTextureCallBack(Texture2D* texture)
 void LoadingScene::delayCall(float dt)
 {
 	auto sc = WelcomeScene::createScene();
+
 	//消失转场切换
 	auto transScene = TransitionFade::create(1.0f, sc);
 	Director::getInstance()->replaceScene(transScene);

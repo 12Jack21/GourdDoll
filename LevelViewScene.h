@@ -15,3 +15,4 @@ public:
 	//初始化关卡选关菜单(七个葫芦)
 	void initLevelMenu();
 };
+

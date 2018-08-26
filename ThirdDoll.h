@@ -8,7 +8,9 @@ USING_NS_CC;
 typedef enum {
 	ThirdDollStateNone = 0, //无状态
 	ThirdDollStateWalk,//行走
+
 	//ThirdDollStateByAttacked, //被攻击
+
 	ThirdDollStateDeath,//死亡
 	ThirdDollStateSearch,//寻找敌人
 
@@ -19,7 +21,9 @@ class BaseThirdDoll : public Sprite
 public:
 	CC_SYNTHESIZE(float, maxHp, MaxHp);
 	CC_SYNTHESIZE(float, curHp, CurHp);
+
 	//CC_SYNTHESIZE(float, force, Force);
+
 	CC_SYNTHESIZE(float, armor, Armor);
 	CC_SYNTHESIZE(float, hpPercentage, HpPercentage);
 	CC_SYNTHESIZE(ThirdDollState, state, State);
@@ -47,6 +51,7 @@ protected:
 	//检测最近的妖怪
 	virtual void checkNearestMonster();
 	//进攻
+
 	//virtual void attack();
 
 	virtual void update(float dt) {};
@@ -64,9 +69,10 @@ protected:
 
 	//向怪物接近
 	virtual void runToMonster();
+
 	//执行进攻
 	//virtual void attackMonster(float dt) {};
 
-
 	//int attackCount;
+
 };

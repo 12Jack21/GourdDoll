@@ -1,6 +1,7 @@
 #pragma once
-
 #include"SystemHeader.h"
+
+USING_NS_CC;
 
 class GameManager
 {
@@ -15,7 +16,7 @@ public:
 	Vector<Bullet*> bulletVector;
 	*/
 
-	//某关卡是否完成,0表示未完成，1表示完成
+		//某关卡是否完成,0表示未完成，1表示完成
 	char LEVELX_ISDONE[20];
 
 	//某存档通关数
@@ -35,3 +36,4 @@ private:
 	static GameManager * instance;
 
 };
+
