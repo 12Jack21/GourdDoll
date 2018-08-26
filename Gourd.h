@@ -1,24 +1,23 @@
 #pragma once
-#ifndef _GOURD_H_
-#define _GOURD_H_
 
-#include "cocos2d.h"
+#include "SystemHeader.h"
+
 USING_NS_CC;
 
 class Gourd:public Sprite
 {
 public:
-	virtual bool init(int type);
-	static Gourd * createGourd(int type);
-	void showUpdateMenu();
-	bool isUpdateMenuShown;
-	void hideUpdateMenu();
+	//一种类型的葫芦
+	virtual bool init();
+	static Gourd * createGourd();
+
+	//养育葫芦 菜单
+	void showFosterMenu();
+
+	bool isFosterMenuShown;
+	void hideFosterMenu();
 	Sprite * gourd;
-	bool onTouchBegan(cocos2d::Touch *t, cocos2d::Event *e);
-	void onTouchEnded(cocos2d::Touch *t, cocos2d::Event *e);
-	void Effect();
+	bool onTouchBegan(Touch* touch, Event* event);
+	void onTouchEnded(Touch* touch, Event* event);
+
 };
-
-
-
-#endif // !_GOURD_H_

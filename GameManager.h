@@ -2,7 +2,6 @@
 
 #include"SystemHeader.h"
 
-
 class GameManager
 {
 public:

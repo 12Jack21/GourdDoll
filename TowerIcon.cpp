@@ -10,7 +10,7 @@ bool TowerIcon::initIcon(int type, int gourd) {
 	towerIcon = Sprite::createWithSpriteFrameName(String::createWithFormat(" ",type)->getCString());
 	addChild(towerIcon);
 	gourdIcon = Sprite::createWithSpriteFrameName(".png");
-	gourdIcon->setPosition(Point(0,-towerIcon->getContentSize().height/2);
+	gourdIcon->setPosition(Point(0,-towerIcon->getContentSize().height/2));
 	addChild(gourdIcon);
 	gourdLabel = Label::createWithTTF(String::createWithFormat(" %d", gourd)->getCString()," ",20);
 	gourdLabel->setPosition(Point(gourdIcon->getContentSize().width/2,gourdIcon->getContentSize().height/2-2));

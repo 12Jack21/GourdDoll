@@ -1,10 +1,14 @@
 #include "Gourd.h"
 #include "TouchLayer.h"
 #include "BaseLevel.h"
+#include"SoundManager.h"
+#include"FosterMenu.h"
 
-Gourd * Gourd::createGourd(int type) {
+Gourd * Gourd::createGourd() 
+{
 	auto gourd = new Gourd();
-	if (gourd && gourd->init(type)) {
+	if (gourd && gourd->init()) 
+	{
 		gourd->autorelease();
 		return gourd;
 	}
@@ -12,25 +16,14 @@ Gourd * Gourd::createGourd(int type) {
 	return NULL;
 }
 
-bool Gourd::init(int type) {
-	if (!Sprite::init()) {
+bool Gourd::init() 
+{
+	if (!Sprite::init()) 
+	{
 		return false;
 	}
-	isUpdateMenuShown = false;
-	switch (type)
-	{
-	case 1:
-		gourd = Sprite::createWithSpriteFrameName(".png");
-		break;
-	case 2:
-		gourd = Sprite::createWithSpriteFrameName(".png");
-		break;
-	case 3:
-		gourd = Sprite::createWithSpriteFrameName(".png");
-		break;
-		default:
-			break;
-	}
+	isFosterMenuShown = false;
+
 	addChild(gourd);
 	auto listener = EventListenerTouchOneByOne::create();
 	listener->onTouchBegan = CC_CALLBACK_2(Gourd::onTouchBegan, this);
@@ -39,34 +32,45 @@ bool Gourd::init(int type) {
 	return true;
 }
 
-bool Gourd::onTouchBegan(Touch* t, Event*e) {
+bool Gourd::onTouchBegan(Touch* touch, Event* event) 
+{
 	return true;
 }
 
-void Gourd::onTouchEnded(Touch * t, Event *e) {
-	auto target = static_cast<Sprite*>(e->getCurrentTarget());
+void Gourd::onTouchEnded(Touch* touch, Event* event) 
+{
+	auto target = static_cast<Sprite*>(event->getCurrentTarget());
 
-	Point locationInNode = target->convertTouchToNodeSpace(t);
+	Point locationInNode = target->convertTouchToNodeSpace(touch);
 
 	Size size = target->getContentSize();
 	Rect rect = Rect(0, 0, size.width, size.height);
 
-	if (rect.containsPoint(locationInNode) && target->isVisible()) {
-		if (hideUpdateMenu) {
-			showUpdateMenu();
+	if (rect.containsPoint(locationInNode) && target->isVisible()) 
+	{
+		if (hideFosterMenu) 
+		{
+			showFosterMenu();
 		}
 		else
 		{
-			hideUpdateMenu();
+			hideFosterMenu();
 		}
 	}
 	else
 	{
-		hideUpdateMenu();
+		hideFosterMenu();
 	}
 }
 
-void Gourd::hideUpdateMenu() {
-	static_cast<BaseLevel *>(this->getParent())->mTouchLayer->removeChildByTag(getTag());
-	isUpdateMenuShown = false;
+void Gourd::showFosterMenu()
+{
+
+
+}
+
+void Gourd::hideFosterMenu() 
+{
+	static_cast<BaseLevel*>(this->getParent())->mTouchLayer->removeChildByTag(getTag());
+	isFosterMenuShown = false;
 }
