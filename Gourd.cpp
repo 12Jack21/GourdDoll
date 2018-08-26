@@ -66,7 +66,13 @@ void Gourd::onTouchEnded(Touch* touch, Event* event)
 void Gourd::showFosterMenu()
 {
 
-
+		auto fosterMenu = FosterMenu::create();
+		fosterMenu->setPosition(this->getPosition());
+		fosterMenu->setTag(getTag());
+		fosterMenu->setGourd(this);
+		static_cast<BaseLevel*>(this->getParent())->mTouchLayer->addChild(fosterMenu);
+		fosterMenu->inAnimation();
+		isFosterMenuShown = true;
 }
 
 void Gourd::hideFosterMenu() 
@@ -74,3 +80,9 @@ void Gourd::hideFosterMenu()
 	static_cast<BaseLevel*>(this->getParent())->mTouchLayer->removeChildByTag(getTag());
 	isFosterMenuShown = false;
 }
+
+
+
+/////////////////////////////葫芦动画（分为养育时的 破裂 和 售卖时的 放大
+
+//////////////////////////////////////

@@ -2,7 +2,7 @@
 
 #include "cocos2d.h"
 #include "Circle.h"
-#include "Terrain.h"
+#include "Gourd.h"
 #include "BaseFosterIcon.h"
 
 USING_NS_CC;
@@ -15,9 +15,11 @@ public:
 	// 重载触摸回调函数
 	bool onTouchBegan(Touch *touch, Event *event);
 	void onTouchEnded(Touch* touch, Event* event);
-	CC_SYNTHESIZE(Terrain*, terrain, MyTerrain);
+	CC_SYNTHESIZE(Gourd*, gourd, Gourd);
 	void inAnimation();
+
 private:
+
 	void addIcons();
 	void addTempTower(int type);
 	void addTower(int type);

@@ -16,9 +16,10 @@ public:
 	//玩家状态栏
 	PlayStateLayer* playState;
 	//绑定游戏状态层（按键层兼顾塔的升级菜单层）
-	void bindPlayerState(PlayStateLayer* playerState);
-	//地图精灵
-	Sprite* mapSprite;
+	void bindPlayState(PlayStateLayer* playerState);
+	//瓦片地图
+	TMXTiledMap* tiledMap;
+	//触摸层
 	TouchLayer* mTouchLayer;
 
 protected:
@@ -27,7 +28,7 @@ protected:
 	//本关难度
 	int difficulty;
 	//当前波数
-	int curwave;
+	int curWave;
 	//最大波数
 	int maxWave;
 	//葫芦
@@ -36,21 +37,24 @@ protected:
 
 	int life;
 	int maxLife;
+
 	unsigned int time;
+
 	//wave怪物容器容器
 	//std::vector<std::vector<Vector<GroupMonster*>>> waveVector;
-
+	
+	//存储路径的容器 从内到外为点，线路，路线
+	//std::vector<std::vector<std::vector<Point>>> path;
+	
 	//加载路径和关卡数据
 	void loadPathFromPlist();
 	void loadAndSetLevelData();
 
-	//存储路径的容器 从内到外为点，线路，路线
-	//std::vector<std::vector<std::vector<Point>>> path;
 	//屏幕尺寸
 	Size winSize;
 
 	//下一波提示精灵 0为路线1,1为路线2
-	Vector<WaveTip*> waveFlags;
+	Vector<WaveTip*> waveTips;
 	//波数进度条
 	void addWaveProgressBar(std::vector<Point> waveTipLocations);
 	void showWaveProgressBar(float dt);
@@ -64,22 +68,24 @@ protected:
 	void updateGourdAndLife();
 	virtual void update(float dt);
 	//胜利函数
-	void victory();
+	void gameWin();
 	//开始标记
 	bool isStart;
 	//结束标记
 	bool isEnd;
 
 	//开始新的一波敌人
-	virtual void addWave(float dt);
+	virtual void addWaves(float dt);
 	//添加怪物
-	virtual void addMonster(float dt);
+	virtual void addMonsters(float dt);
 	//初始化地图
 	void initMap();
 	//添加不同地图装饰物
 	virtual void addOrnament() {};
-	//添加建塔点
+
+				//添加葫芦
 	virtual void addGourds() {};
+	
 	//退出
 	virtual void onExitTransitionDidStart();
 	virtual void onExit() {};

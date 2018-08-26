@@ -1,9 +1,6 @@
 #include "FosterMenu.h"
-#include "SimpleArrowTowerlvl1.h"
-#include "SimpleArtilleryTowerlvl1.h"
-#include "SimpleMageTowerlvl1.h"
 #include "BaseBarracksTower.h"
-#include "Terrain.h"
+#include "Gourd.h"
 #include "GameManager.h"
 #include "BaseLevel.h"
 
@@ -41,27 +38,27 @@ void FosterMenu::addTower(int type)
 	case(1): {
 		auto firstDoll =  ::create();
 		firstDoll->setPosition(Point(0, 20));
-		firstDoll->setTag(terrain->getTag());
-		firstDoll->setMyTerrain(terrain);
-		terrain->addChild(firstDoll);
+		firstDoll->setTag(gourd->getTag());
+		firstDoll->setGourd(gourd);
+		gourd->addChild(firstDoll);
 		GameManager::getInstance()->GOURD = GameManager::getInstance()->GOURD - firstDoll->getFosterGourd();
 	}
 			 break;
 	case(2): {
 		auto secondDollDoll = ::create();
 		secondDollDoll->setPosition(Point(0, 20));
-		secondDollDoll->setTag(terrain->getTag());
-		secondDollDoll->setMyTerrain(terrain);
-		terrain->addChild(secondDollDoll);
+		secondDollDoll->setTag(gourd->getTag());
+		secondDollDoll->setGourd(gourd);
+		gourd->addChild(secondDollDoll);
 		GameManager::getInstance()->GOURD = GameManager::getInstance()->GOURD - secondDollDoll->getFosterGourd();
 	}
 			 break;	
 	case(3): {
 		auto ThirdDollDoll = ::create();
 		ThirdDollDoll->setPosition(Point(0, 20));
-		ThirdDollDoll->setTag(terrain->getTag());
-		ThirdDollDoll->setMyTerrain(terrain);
-		terrain->addChild(ThirdDollDoll);
+		ThirdDollDoll->setTag(gourd->getTag());
+		ThirdDollDoll->setGourd(gourd);
+		gourd->addChild(ThirdDollDoll);
 		ThirdDollDoll->buildingAnimation();
 		GameManager::getInstance()->GOURD = GameManager::getInstance()->GOURD - ThirdDollDoll->getFosterGourd();
 	}
@@ -69,15 +66,15 @@ void FosterMenu::addTower(int type)
 	case(4):
 		auto mageDoll = SimpleMageDolllvl1::create();
 		mageDoll->setPosition(Point(0, 20));
-		mageDoll->setTag(terrain->getTag());
-		mageDoll->setMyTerrain(terrain);
-		terrain->addChild(mageDoll);
+		mageDoll->setTag(gourd->getTag());
+		mageDoll->setGourd(gourd);
+		gourd->addChild(mageDoll);
 		GameManager::getInstance()->GOURD = GameManager::getInstance()->GOURD - mageDoll->getFosterGourd();
 		break;
 	}
 	SoundManager::playDollFostering();
 	isBuilt = true;
-	terrain->terrain->setVisible(false);
+	gourd->gourd->setVisible(false);
 	this->setVisible(false);
 }
 

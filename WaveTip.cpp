@@ -1,6 +1,19 @@
-#include "WaveFlag.h"
+#include "WaveTip.h"
 
-bool WaveFlag::WaveFlagInit()
+WaveTip* WaveTip::createWaveTip()
+{
+	auto waveFlag = new WaveTip();
+
+	if (waveFlag && waveFlag->WaveTipInit())
+	{
+		waveFlag->autorelease();
+		return waveFlag;
+	}
+	CC_SAFE_DELETE(waveFlag);
+	return NULL;
+}
+
+bool WaveTip::WaveTipInit()
 {
 	if (!Sprite::init())
 	{
@@ -22,7 +35,8 @@ bool WaveFlag::WaveFlagInit()
 	return true;
 }
 
-void WaveFlag::startRespiration(float dt)
+//开始计时
+void WaveTip::startRespiration(float dt)
 {
 	waveProgressTimer->setPercentage(percentage);
 	runAction(Sequence::create(ScaleTo::create(0.25f, 0.6f, 0.6f), ScaleTo::create(0.25f, 0.8f, 0.8f), NULL));
@@ -30,56 +44,46 @@ void WaveFlag::startRespiration(float dt)
 	if (percentage >100) {
 		isShown = false;
 		setVisible(false);
-		unschedule(schedule_selector(WaveFlag::startRespiration));
+		unschedule(schedule_selector(WaveTip::startRespiration));
 	}
 }
 
-void WaveFlag::stopRespiration()
+void WaveTip::stopRespiration()
 {
 	waveProgressTimer->setPercentage(100);
 	isShown = false;
 	setVisible(false);
-	unschedule(schedule_selector(WaveFlag::startRespiration));
+	unschedule(schedule_selector(WaveTip::startRespiration));
 }
 
-void WaveFlag::restartWaveFlag()
+void WaveTip::restartWaveTip()
 {
 	isShown = true;
 	setVisible(true);
 	waveProgressTimer->setPercentage(0);
 	percentage = 0;
-	schedule(schedule_selector(WaveFlag::startRespiration), 0.5f);
+	schedule(schedule_selector(WaveTip::startRespiration), 0.5f);
 }
 
-float WaveFlag::getWavePercentage()
+float WaveTip::getWavePercentage()
 {
 	return waveProgressTimer->getPercentage();
 }
 
-void WaveFlag::setWavePercentage(float per)
+void WaveTip::setWavePercentage(float per)
 {
 	waveProgressTimer->setPercentage(per);
 }
 
-void WaveFlag::setSelected()
+void WaveTip::setSelected()
 {
-	if (selected->isVisible()) {
+	if (selected->isVisible()) 
+	{
 		selected->setVisible(false);
 	}
-	else {
+	else 
+	{
 		selected->setVisible(true);
 	}
 }
 
-WaveFlag* WaveFlag::createWaveFlag()
-{
-	auto waveFlag = new WaveFlag();
-
-	if (waveFlag && waveFlag->WaveFlagInit())
-	{
-		waveFlag->autorelease();
-		return waveFlag;
-	}
-	CC_SAFE_DELETE(waveFlag);
-	return NULL;
-}
