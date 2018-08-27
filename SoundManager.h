@@ -5,17 +5,25 @@ class SoundManager
 {
 public:
 	static void playClickEffect();
+	//即将到来的波数
 	static void playIncomingWave();
 	static void playNextWaveReady();
 
 	//音效
-	static void playTowerMenu();
+	static void playDollMenu();
 	static void playWinStars();
+	static void playGameFail();
 
 	//葫芦娃
-	static void playDollSpawn();
+	static void playDollFoster();
 	static void playDollUpdate();
 	static void playDollSell();
+
+	//大娃石头砸地音效
+	static void playFirsetDollAttack();
+	//二娃激光发射音效
+	static void playSecondDollAttack();
+
 
 	//妖怪（boss)
 	static void playEffectLaugh();
@@ -23,22 +31,15 @@ public:
 	static void playEffectDeath();
 
 	//技能
-	//六娃
-	static void playSixDoll();
-	//金刚山
-	static void playKingkongMount();
+	//六娃释放
+	static void playSixthDoll();
+	//金刚山释放
+	static void playKingkong();
 
 	//关卡结束
 	static void playGameWin();
 
-	static void playGameFaile();
 
-	//猩猩BOSS
-	static void playChestdrum();
-	static void playChimps_1();
-	static void playChimps_2();
-	static void playChimps_3();
-	static void playMonoDeath();
 
 public:
 	//欢迎界面

@@ -111,7 +111,6 @@ void BaseDoll::initDoll(int level) {
 	curBullet = NULL;
 }
 
-
 void BaseDoll::addGourd() {
 	gourd = Sprite::createWithSpriteFrameName(".png");
 	gourd->setAnchorPoint(Point(/*”–Œ Ã‚*/));
