@@ -13,5 +13,6 @@ GameManager* GameManager::getInstance()
 void GameManager::eraseAll()
 {
 	instance->monsterVector.clear();
-	instance->dollVector.clear();
+	instance->seventhDollv1Vector.clear();
+	instance->baseDollVector.clear();
 }

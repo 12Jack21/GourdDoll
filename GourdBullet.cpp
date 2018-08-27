@@ -48,7 +48,7 @@ void GourdBullet::removeGourdBullet() {
 					seventhDoll->setCurHp(curHpSeventhDoll);
 					seventhDoll->getHpBar()->setPercentage((curHpSeventhDoll / seventhDoll->getMaxHp()) * 100);
 					if (curHpSeventhDoll == 0) {
-						seventhDoll->death();
+						seventhDoll->seventhdollv1Death();
 					}
 					break;
 			     }

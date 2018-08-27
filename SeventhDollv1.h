@@ -25,7 +25,7 @@ public:
 
 	Sprite * baseSprite;
 
-	virtual void death();
+	virtual void seventhdollv1Death();
 	BaseMonster* nearestMonster;
 	//virtual void updateSoldier(int level) {};
 protected:

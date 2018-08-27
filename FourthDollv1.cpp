@@ -52,7 +52,7 @@ void FourthDollv1::updateDoll() {
 void FourthDollv1::showUpdateMenu() {
 	auto updateMenu = UpdateMenu::create();
 	updateMenu->setTag(myGourd->getTag() + 100);
-	updateMenu->setGourd(this);
+	updateMenu->setDoll(this);
 	updateMenu->setPosition(this->getParent()->getPosition());
 	static_cast<BaseLevel*>(this->getParent()->mTouchLayer->addChild(updateMenu));
 	if (GameManager::getInstance()->LEVEL <= 0) {

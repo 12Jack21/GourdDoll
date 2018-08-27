@@ -11,7 +11,7 @@ public:
 	bool init();
 	CREATE_FUNC(SeventhDollv2);
 	void createAndSetHpBar();
-	virtual void death();
+	virtual void seventhdollv2Death();
 	BaseBullet * SeventhDollBullet();
 };
 

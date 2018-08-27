@@ -1,5 +1,8 @@
 #pragma once
 #include"SystemHeader.h"
+#include "BaseMonster.h"
+#include "BaseDoll.h"
+#include "SeventhDollv1.h"
 
 
 class GameManager
@@ -11,9 +14,10 @@ public:
 
 	
 	/*Vector<Path*> pathVector;*/
+	Vector<BaseDoll *> baseDollVector;
 	Vector<SeventhDollv1* > seventhDollv1Vector;
-	Vector<BaseMonster*> monsterVector;
-	Vector<BaseBullet*> bulletVector;
+	Vector<BaseMonster *> monsterVector;
+	Vector<BaseBullet *> bulletVector;
 	int LEVEL;
 	int GOURD;
 	void setInstanceByTag(int tag);

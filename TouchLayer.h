@@ -18,10 +18,11 @@ public:
 	EventListenerTouchOneByOne* KingKonglistener;
 
 	//…Ë÷√ ººƒ‹ ¥•√˛’⁄’÷
-	void setDynamiteTouchShield();
-	void removeDynamiteTouchShield();
-	bool onDynamiteTouchBegan(Touch* touch, Event* event);
-	void onDynamiteTouchEnded(Touch* touch, Event* event);
+	void setSixthDollTouchShield();
+	void removeSixthDollTouchShield();
+	bool onSixthDollTouchBegan(Touch* touch, Event* event);
+	void onSixthDollTouchEnded(Touch* touch, Event* event);
+	
 
 	void setRallyFlagTouchShield();
 	void removeRallyFlagTouchShield();
