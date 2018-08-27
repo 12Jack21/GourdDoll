@@ -50,8 +50,8 @@ protected:
 
 	//检测最近的妖怪
 	virtual void checkNearestMonster();
-	//进攻
 
+	//进攻
 	//virtual void attack();
 
 	virtual void update(float dt) {};

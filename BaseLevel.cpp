@@ -11,7 +11,7 @@
 
 USING_NS_CC;
 
-	//从plist文件中加载移动路线
+							//从plist文件中加载移动路线
 void BaseLevel::loadPathFromPlist()
 {
 	winSize = Director::getInstance()->getWinSize();

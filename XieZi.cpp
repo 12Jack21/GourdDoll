@@ -27,7 +27,7 @@ bool XieZi::init()
 	{
 		return false;
 	}
-	setMonsterType(XieZi);
+	setMonsterType(XIEZI);
 	setName("xiezi");
 	monsterSprite = Sprite::createWithSpriteFrameName("xieziwalk1.png");
 	addChild(monsterSprite);

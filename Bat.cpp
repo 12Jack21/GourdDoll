@@ -32,7 +32,8 @@ bool Bat::init()
 	monsterSprite = Sprite::createWithSpriteFrameName("batwalk1.png");
 	addChild(monsterSprite);
 	createAndSetHpBar();
-	blood = Sprite::createWithSpriteFrameName(".png");//血量条
+	//血量条
+	blood = Sprite::createWithSpriteFrameName(".png");
 	blood->setPosition(Point(monsterSprite->getContentSize().width / 2, monsterSprite->getContentSize().height / 2));
 	monsterSprite->addChild(blood);
 	blood->setVisible(false);

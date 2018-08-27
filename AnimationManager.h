@@ -24,6 +24,8 @@ public:
 	void init_snake();
 	//Ð«×Ó¾«
 	void init_xiezi();
+
+	//ºùÂ«ÍÞ
 	void init_FirstDoll();
 	void init_SecondDoll();
 	void init_ThirdDoll();
