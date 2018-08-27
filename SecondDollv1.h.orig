@@ -1,0 +1,35 @@
+
+#ifndef _SECOND_DOLL_V1_H_
+#define _SECOND_DOLL_V1_H_
+#include "BaseDoll.h"
+#include "cocos2d.h"
+<<<<<<< HEAD
+#include "BaseMonster.h"
+=======
+>>>>>>> 87faf720e8e8b26bfcbd0ad24cd4eda8e50abde5
+USING_NS_CC;
+
+class SecondDollv1 :public BaseDoll
+{
+public:
+	virtual bool init();
+	CREATE_FUNC(SecondDollv1);
+	void updateDoll();
+	void showUpdateMenu();
+	BaseBullet * SecondDollBullet();
+<<<<<<< HEAD
+	BaseMonster * checknearestmonster();
+private:
+	void updateAnimation();
+	void updateEffectAnimation(float dt);
+=======
+private:
+	void updateAnimation();
+	void updateEffectAnimation(float dt);
+	void shoot(float dt);
+>>>>>>> 87faf720e8e8b26bfcbd0ad24cd4eda8e50abde5
+};
+
+
+
+#endif _SECOND_DOLL_V1_H_

@@ -42,7 +42,7 @@ bool UpdateMenu::init()
 
 void UpdateMenu::inAnimation()
 {
-	SoundManager::playDollMenu();
+	SoundManager::playDollMenu();//meixie 
 	borderSprite->runAction(Sequence::create(ScaleTo::create(0.1f, 1.0f, 1.0f),
 		CallFuncN::create(CC_CALLBACK_0(UpdateMenu::addIcons, this)),
 		NULL));
@@ -66,7 +66,7 @@ void UpdateMenu::addIcons()
 	touchListener->onTouchEnded = CC_CALLBACK_2(UpdateMenu::onTouchEnded, this);
 
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, sellIcon);
-	if (couldUpdate) {
+	if (canUpdate) {
 		_eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener->clone(), updateIcon);
 		updateIcon->setVisible(true);
 		updateIcon->setUpdateGourd(doll->getUpdateGourd());
@@ -117,7 +117,6 @@ bool UpdateMenu::onTouchBegan(Touch *touch, Event *event)
 			switch (target->getTag())
 			{
 			case(1)://升级
-				showDollInfo();
 				nextLvlCircle->setVisible(true);
 				break;
 			case(2)://售出
@@ -130,12 +129,13 @@ bool UpdateMenu::onTouchBegan(Touch *touch, Event *event)
 	return false;
 }
 
-void UpdateMenu::showDollInfo()
+void UpdateMenu::onTouchEnded(Touch* touch, Event* event)
 {
-						/////////////////////////增加娃娃类型
-	switch (doll->getDollType())
+	if (isBuilt)
 	{
-	case(FIRSTDOLL_1):
+		removeFromParent();
+	}
+}
 		static_cast<BaseLevel*>(this->getParent()->getParent())->playState->showDollInfo();
 		break;
 	case():

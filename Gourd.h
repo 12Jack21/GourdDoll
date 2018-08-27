@@ -19,5 +19,5 @@ public:
 	Sprite * gourd;
 	bool onTouchBegan(Touch* touch, Event* event);
 	void onTouchEnded(Touch* touch, Event* event);
-
+	void Effect();//
 };

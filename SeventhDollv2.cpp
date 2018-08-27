@@ -8,7 +8,7 @@ bool SeventhDollv2::init() {
 		return false;
 	}
 	setDollType(SEVENTHDOLL_2);
-	setLevel(2);
+	setLv(2);
 	addGourd();
 	setScope(180.0f);
 	setFosterGourd(120);

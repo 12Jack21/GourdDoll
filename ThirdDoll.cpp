@@ -86,7 +86,7 @@ void BaseThirdDoll::checkNearestMonster() {
 		auto monster = monsterVector.at(i);
 		double distance = (this->getParent()->getParent()->getPosition() + this->getPosition()).getDistance(monster->monsterSprite->getPosition());
 
-		if (monster->getAttackBySoldier() && distance < 50 && (!monster->getIsAttacking())) {
+		if (monster->getAttackByDoll() && distance < 50 && (!monster->getIsAttacking())) {
 			nearestMonster = monster;
 			nearestMonster->stopWalking();
 			nearestMonster->setIsAttacking(true);

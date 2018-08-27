@@ -18,7 +18,7 @@ public:
 	void inAnimation();
 	BaseFosterIcon* updateIcon;
 	SellIcon* sellIcon;
-	bool couldUpdate;
+	bool canUpdate;
 	//无法升级的提示物
 	Sprite* lock;
 	CC_SYNTHESIZE(BaseDoll*, doll, Doll);
@@ -36,6 +36,6 @@ private:
 	bool onTouchBegan(Touch* touch, Event* event);
 	void onTouchEnded(Touch* touch, Event* event);
 	bool isBuilt;
-	void showDollInfo();
 };
+
 

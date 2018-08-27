@@ -47,6 +47,7 @@ public:
 	//金刚山释放
 	static void playKingkong();
 
+
 public:
 	//欢迎界面，关于界面，选关界面
 	static void playWelcomeBackMusic();

@@ -9,7 +9,6 @@
 USING_NS_CC;
 
 typedef enum {
-<<<<<<< HEAD
 	FIRSTDOLL_1 = 1,
 	FIRSTDOLL_2,
 	FIRSTDOLL_3,
@@ -21,6 +20,7 @@ typedef enum {
 	FOURTHDOLL_3,
 	FIFTHDOLL_1,
 	FIFTHDOLL_2,
+	FIFTHDOLL_3,
 	FIFTHDOLL_3,
 	SIXTHDOLL,
 	SEVENTHDOLL_1,
@@ -78,13 +78,13 @@ public:
 protected:
 
 	Sprite * shooter;
-	
+	Sprite * dollBase;
 	BaseBullet * curBullet;
 	void initDoll(int level);
 	void addGourd();
 
 	virtual BaseBullet * FirstDollBullet();
-	void shoot(float dt);
+//	void shoot(float dt);
 
 	virtual void checkNearestMonster();
 	BaseMonster* nearestMonster;

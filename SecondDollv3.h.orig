@@ -1,0 +1,22 @@
+
+#ifndef _SEOCOND_DOLL_V3_H_
+#define _SEOCOND_DOLL_V3_H_
+#include "BaseDoll.h"
+#include "cocos2d.h"
+USING_NS_CC;
+
+class SecondDollv3 :public BaseDoll {
+public:
+	bool init();
+	CREATE_FUNC(SecondDollv3);
+	BaseBullet * SecondDollBullet();
+<<<<<<< HEAD
+=======
+private:
+	void shoot(float dt);
+>>>>>>> 87faf720e8e8b26bfcbd0ad24cd4eda8e50abde5
+};
+
+
+
+#endif _SEOCOND_DOLL_V3_H_

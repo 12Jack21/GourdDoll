@@ -9,6 +9,9 @@ public:
 	bool init();
 	CREATE_FUNC(FifthDollv3);
 	BaseBullet * FifthDollBullet();
+private:
+	void shoot(float dt);
+
 };
 
 

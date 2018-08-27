@@ -10,7 +10,7 @@ bool SeventhDollv1::init() {
 		return false;
 	}
 	setDollType(SEVENTHDOLL_1);
-	setLevel(1);
+	setLv(1);
 	addGourd();
 	updateAnimation();
 
@@ -67,13 +67,13 @@ void SeventhDollv1::updateDoll() {
 void SeventhDollv1::showUpdateMenu() {
 	auto updateMenu = UpdateMenu::create();
 	updateMenu->setTag(myGourd->getTag() + 100);
-	updateMenu->setDoll2``````1	(this);
+	updateMenu->setDoll(this);
 	updateMenu->setPosition(this->getParent()->getPosition());
-	static_cast<BaseLevel*>(this->getParent()->mTouchLayer->addChild(updateMenu));
+	static_cast<BaseLevel*>(this->getParent()->getParent())->mTouchLayer->addChild(updateMenu);
 	if (GameManager::getInstance()->LEVEL <= 0) {
 		updateMenu->canUpdate = false;
 	}
-	updateMenu->playAnimation();
+	updateMenu->inAnimation();
 	isUpdateMenuShown = true;
 }
 
@@ -85,7 +85,7 @@ BaseBullet * SeventhDollv1::SeventhDollBullet() {
 	return seventhDollBullet;
 }
 
-void SeventhDollv1::seventhdollv1Death() {
+void SeventhDollv1::seventhdollv1death() {
 	if (GameManager::getInstance()->seventhDollv1Vector.contains(this))
 		GameManager::getInstance()->seventhDollv1Vector.eraseObject(this);
 	if (getState() != SevenDollStateDeath) {

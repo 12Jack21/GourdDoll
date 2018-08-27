@@ -1,0 +1,25 @@
+#pragma once
+
+#ifndef _SECOND_DOLL_V2_H_
+#define _SECOND_DOLL_V2_H_
+#include "BaseDoll.h"
+#include "cocos2d.h"
+USING_NS_CC;
+
+class SecondDollv2 :public BaseDoll {
+public:
+	bool init();
+	CREATE_FUNC(SecondDollv2);
+	void updateDoll();
+	void showUpdateMenu();
+	BaseBullet * SecondDollBullet();
+<<<<<<< HEAD
+=======
+private:
+	void shoot(float dt);
+>>>>>>> 87faf720e8e8b26bfcbd0ad24cd4eda8e50abde5
+};
+
+
+
+#endif _SECOND_DOLL_V2_H_

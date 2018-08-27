@@ -10,6 +10,8 @@ public:
 	bool init();
 	CREATE_FUNC(SecondDollv3);
 	BaseBullet * SecondDollBullet();
+private:
+	void shoot(float dt);
 };
 
 

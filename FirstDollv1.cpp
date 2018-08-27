@@ -11,7 +11,7 @@ bool FirstDollv1::init() {
 		return false;
 	}
 	setDollType(FIRSTDOLL_1);
-	setLevel(1);
+	setLv(1);
 	addGourd();
 	updateAnimation();
 
@@ -31,11 +31,10 @@ void FirstDollv1::updateAnimation() {
 }
 
 void FirstDollv1::updateEffectAnimation(float dt) {
-	auto effect = Sprite::createWithSpriteFrameName(".png");
-	addChild(effect, 99);
-	effect->runAction(Sequence::create(Animate::create(AnimationCache::getInstance()->getAnimation(" ")), CallFuncN::create(CC_CALLBACK_0(Sprite::removeFromParent, effect)), NULL));
-	//音效
-	initDoll(1);
+	auto effect = Sprite::createWithSpriteFrameName(".png");//升级拆塔
+	addChild(effect, 99);//升级拆塔动画
+	effect->runAction(Sequence::create(Animate::create(AnimationCache::getInstance()->getAnimation("updateDoll")), CallFuncN::create(CC_CALLBACK_0(Sprite::removeFromParent, effect)), NULL));
+ 	initDoll(1);
 	setListener();
 	schedule(schedule_selector(FirstDollv1::shoot), 3.0f);
 }
@@ -54,11 +53,11 @@ void FirstDollv1::showUpdateMenu() {
 	updateMenu->setTag(myGourd->getTag() + 100);
 	updateMenu->setDoll(this);
 	updateMenu->setPosition(this->getParent()->getPosition());
-	static_cast<BaseLevel*>(this->getParent()->mTouchLayer->addChild(updateMenu));
+	static_cast<BaseLevel*>(this->getParent()->getParent())->mTouchLayer->addChild(updateMenu);
 	if (GameManager::getInstance()->LEVEL <= 0) {
 		updateMenu->canUpdate = false;
 	}
-	updateMenu->playAnimation();
+	updateMenu->inAnimation();
 	isUpdateMenuShown = true;
 }
 
@@ -69,4 +68,28 @@ BaseBullet * FirstDollv1::FirstDollBullet() {
 	this->getParent()->addChild(firstDollBullet);
 	return firstDollBullet;
 
+}
+
+void FirstDollv1::shoot(float dt) {
+	auto instance = GameManager::getInstance();
+	checkNearestMonster();
+	if (nearestMonster != NULL && nearestMonster->getCurHp() > 0) {
+		auto curBullet = FirstDollBullet();
+		//大娃的游戏音效SoundManager::
+
+		Point shootVector = nearestMonster->monsterSprite->getPosition() - this->getParent()->getPosition();
+
+		auto position = curBullet->getPosition() - shootVector;
+		auto rotation = atan2(position.y, position.x);
+		float angle = CC_RADIANS_TO_DEGREES(rotation);
+		curBullet->setRotation(180.0f - angle);
+
+		dollBase->runAction(Animate::create(AnimationCache::getInstance()->getAnimation(String::createWithFormat(" ", lv)->getCString())));
+		//动画需加
+		auto move = MoveTo::create(0.25f, shootVector);
+		auto action = Spawn::create(move, NULL);
+		curBullet->setBulletAction(action);
+		curBullet->shoot();
+		curBullet = NULL;
+	}
 }

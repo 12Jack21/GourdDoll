@@ -12,6 +12,8 @@ public:
 	void updateDoll();
 	void showUpdateMenu();
 	BaseBullet * FifthDollBullet();
+private:
+	void shoot(float dt);
 };
 
 

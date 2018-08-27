@@ -1,0 +1,64 @@
+#pragma once
+#include"SystemHeader.h"
+<<<<<<< HEAD
+#include "BaseMonster.h"
+#include "BaseDoll.h"
+#include "SeventhDollv1.h"
+=======
+#include "BaseBullet.h"
+#include "cocos2d.h"
+#include "BaseMonster.h"
+#include "BaseDoll.h"
+#include "SeventhDollv1.h"
+#include "TouchLayer.h"
+>>>>>>> 87faf720e8e8b26bfcbd0ad24cd4eda8e50abde5
+
+USING_NS_CC;
+
+class GameManager
+{
+public:
+
+	static GameManager* getInstance();
+
+<<<<<<< HEAD
+=======
+	
+	Vector<Path*> pathVector;//youwenti
+	Vector<SeventhDollv1*> seventhDollv1Vector;
+	Vector<BaseMonster*> monsterVector;
+	Vector<BaseBullet*> bulletVector;
+	
+
+>>>>>>> 87faf720e8e8b26bfcbd0ad24cd4eda8e50abde5
+		//某关卡是否完成,0表示未完成，1表示完成
+	char LEVELX_ISDONE[20];
+
+	//某存档通关数
+	char SLOTX_DONECOUNT[20];
+<<<<<<< HEAD
+	
+	/*Vector<Path*> pathVector;*/
+	Vector<BaseDoll *> baseDollVector;
+	Vector<SeventhDollv1* > seventhDollv1Vector;
+	Vector<BaseMonster *> monsterVector;
+	Vector<BaseBullet *> bulletVector;
+	int LEVEL;
+=======
+>>>>>>> 87faf720e8e8b26bfcbd0ad24cd4eda8e50abde5
+
+	//实时葫芦
+	int GOURD;
+	//实时生命
+	int LIFE;
+	//关卡
+	int LEVEL;
+
+	void setInstance(int tag);
+	static void eraseAll();
+	
+private:
+	static GameManager * instance;
+
+};
+

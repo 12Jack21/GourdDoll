@@ -10,7 +10,7 @@ bool FifthDollv2::init() {
 		return false;
 	}
 	setDollType(FIFTHDOLL_2);
-	setLevel(2);
+	setLv(2);
 	addGourd();
 	initDoll(2);
 	setScope(180.0f);
@@ -37,11 +37,11 @@ void FifthDollv2::showUpdateMenu() {
 	updateMenu->setTag(myGourd->getTag() + 100);
 	updateMenu->setDoll(this);
 	updateMenu->setPosition(this->getParent()->getPosition());
-	static_cast<BaseLevel*>(this->getParent()->mTouchLayer->addChild(updateMenu));
+	static_cast<BaseLevel *>(this->getParent()->getParent())->mTouchLayer->addChild(updateMenu);
 	if (GameManager::getInstance()->LEVEL <= 0) {
 		updateMenu->canUpdate = false;
 	}
-	updateMenu->playAnimation();
+	updateMenu->inAnimation();
 	isUpdateMenuShown = true;
 }
 

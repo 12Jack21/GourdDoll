@@ -1,0 +1,30 @@
+#include"GameManager.h"
+#include"BaseMonster.h"
+
+GameManager* GameManager::instance;
+
+GameManager* GameManager::getInstance()
+{
+	if (instance == NULL)
+		instance = new GameManager();
+	return instance;
+}
+
+void GameManager::setInstance(int tag)
+{
+<<<<<<< HEAD
+	sprintf(SLOTX_DONECOUNT, "Slot%d_DownCount", tag);
+=======
+	log(SLOTX_DONECOUNT, "Slot%d_DownCount", tag);
+>>>>>>> 87faf720e8e8b26bfcbd0ad24cd4eda8e50abde5
+}
+
+void GameManager::eraseAll()
+{
+	instance->monsterVector.clear();
+	instance->seventhDollv1Vector.clear();
+<<<<<<< HEAD
+	instance->baseDollVector.clear();
+=======
+>>>>>>> 87faf720e8e8b26bfcbd0ad24cd4eda8e50abde5
+}

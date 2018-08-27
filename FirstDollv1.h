@@ -16,8 +16,8 @@ public:
 private:
 	void updateAnimation();
 	void updateEffectAnimation(float dt);
+	void shoot(float dt);
 };
-
 
 
 #endif _FIRST_DOLL_V1_H_

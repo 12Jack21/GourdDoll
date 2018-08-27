@@ -16,7 +16,7 @@ public:
 	EventListenerTouchOneByOne* SixthDolllistener;
 	EventListenerTouchOneByOne* KingKonglistener;
 
-	//设置 技能 触摸遮罩
+	//设置 金刚 触摸遮罩
 	void setSixthDollTouchShield();
 	void removeSixthDollTouchShield();
 	bool onSixthDollTouchBegan(Touch* touch, Event* event);

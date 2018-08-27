@@ -27,28 +27,28 @@ public:
 
 	virtual void seventhdollv1Death();
 	BaseMonster* nearestMonster;
-	//virtual void updateSoldier(int level) {};
+	virtual void updateSoldier(int level) {};
 protected:
 	//血条的设置
 	virtual void createAndSetHpBar();
 	Sprite* hpBgSprite;
-	//virtual void lookingForMonsters(float dt);
+	virtual void lookingForMonsters(float dt);
 
 	//检测最近的妖怪
-	//virtual void checkNearestMonster();
+	virtual void checkNearestMonster();
 	//进攻
-	//virtual void attack();
+	virtual void attack();
 
 	virtual void update(float dt) {};
 
 	//基本状态
 	SevenDollState lastState;
 
-	//virtual void stopSevenDollAnimation();
-	//void checkDirection(Point point);
-	////false右边true左边
-	//virtual bool checkDirectionForMonster();
-	//float caculateTime(Point point);
+	virtual void stopSevenDollAnimation();
+	void checkDirection(Point point);
+	//false右边true左边
+	virtual bool checkDirectionForMonster();
+	float caculateTime(Point point);
 	//执行进攻
 	virtual void attackMonster(float dt) {};
 

@@ -1,6 +1,37 @@
 #include "AnimationManager.h"
 
-AnimationManager* AnimationManager::getInstance;
+AnimationManager* AnimationManager::instance;
+
+AnimationManager* AnimationManager::getInstance()
+{
+	if (instance == NULL)
+		instance = new AnimationManager();
+	return instance;
+}
+
+void AnimationManager::init() {
+	init_bat();
+	//蜜蜂精
+	init_bee();
+	//蜈蚣精
+	init_wugong();
+	//天牛精
+	init_tianniu();
+	//蛤蟆精
+	init_frog();
+	//蛇精
+	init_snake();
+	//蝎子精
+	init_xiezi();
+	init_FirstDoll();
+	init_SecondDoll();
+	init_ThirdDoll();
+	init_FourthDoll();
+	init_FifthDoll();
+	init_SixthDoll();
+	init_SeventhDoll();
+	init_others();
+}
 
 Animation* AnimationManager::createAnimation(const char* prefixName, int start, int end, float delay)
 {
@@ -73,3 +104,43 @@ void AnimationManager::init_xiezi() {
 	//蝎子攻击
 	AnimationCache::getInstance()->addAnimation(createAnimation("xieziattack%d.png", 1, 4, 0.15f), "xieziattack");
 }
+void AnimationManager::init_FirstDoll() {
+	/*AnimationCache::getInstance()->addAnimation(createAnimation("mage_lvl1_00%02d.png", 1, 12, 0.04f), "level1_mage_shine");
+	AnimationCache::getInstance()->addAnimation(createAnimation("mage_lvl2_00%02d.png", 1, 12, 0.04f), "level2_mage_shine");
+	AnimationCache::getInstance()->addAnimation(createAnimation("mage_lvl3_00%02d.png", 1, 12, 0.04f), "level3_mage_shine");*/
+	//以上是源码
+}
+void AnimationManager::init_SecondDoll() {
+	//二娃攻击动画
+}
+void AnimationManager::init_ThirdDoll() {
+	//三娃受击动画
+}
+
+void AnimationManager::init_FourthDoll() {
+
+}
+
+void AnimationManager::init_FifthDoll() {
+
+}
+
+void AnimationManager::init_SixthDoll() {
+
+}
+
+void AnimationManager::init_SeventhDoll() {
+
+}
+
+void AnimationManager::init_others() {
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile(".plist");
+	AnimationCache::getInstance()->addAnimation(createAnimation(".png", 1, 4, 0.15f), "updateDoll");
+}
+
+void AnimationManager::init_Grandpa() {
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("grandpa.plist");
+	AnimationCache::getInstance()->addAnimation(createAnimation("grandpaHurt.png", 1, 4, 0.15f), "GranpaHurt");
+	AnimationCache::getInstance()->addAnimation(createAnimation("grandpaWalk.png", 1, 4, 0.15f), "GranpaWalk");
+}
+

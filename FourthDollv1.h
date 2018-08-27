@@ -17,6 +17,7 @@ public:
 private:
 	void updateAnimation();
 	void updateEffectAnimation(float dt);
+	void shoot(float dt);
 };
 
 

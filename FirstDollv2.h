@@ -12,6 +12,7 @@ public:
 	void updateDoll();
 	void showUpdateMenu();
 	BaseBullet * FirstDollBullet();
+	void shoot(float dt);
 };
 
 

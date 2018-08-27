@@ -10,6 +10,7 @@ public:
 	bool init();
 	CREATE_FUNC(FirstDollv3);
 	BaseBullet * FirstDollBullet();
+	void shoot(float dt);
 };
 
 

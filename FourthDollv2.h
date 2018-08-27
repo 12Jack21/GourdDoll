@@ -13,6 +13,8 @@ public:
 	void updateDoll();
 	void showUpdateMenu();
 	BaseBullet * FourthDollBullet();
+private:
+	void shoot(float dt);
 };
 
 

@@ -1,0 +1,28 @@
+#pragma once
+
+#ifndef _FOURTH_DOLL_V1_H_
+#define _FOURTH_DOLL_V1_H_
+#include "BaseDoll.h"
+#include "cocos2d.h"
+USING_NS_CC;
+
+class FourthDollv1 :public BaseDoll
+{
+public:
+	virtual bool init();
+	CREATE_FUNC(FourthDollv1);
+	void updateDoll();
+	void showUpdateMenu();
+	BaseBullet * FourthDollBullet();
+private:
+	void updateAnimation();
+	void updateEffectAnimation(float dt);
+<<<<<<< HEAD
+=======
+	void shoot(float dt);
+>>>>>>> 87faf720e8e8b26bfcbd0ad24cd4eda8e50abde5
+};
+
+
+
+#endif _FOURTH_DOLL_V1_H_

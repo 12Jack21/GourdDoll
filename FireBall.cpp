@@ -27,7 +27,7 @@ void FireBall::removeFireBall() {
 	for (int i = 0; i < monsterVector.size(); i++) {
 		auto monster = monsterVector.at(i);
 		auto monsterRect = monster->monsterSprite->getBoundingBox();
-		
+
 		if (monster != NULL && monsterRect.intersectsRect(fireballRect) && monster->getAttackByTower()) {
 			auto curHp = monster->getCurHp();
 			curHp = curHp - this->getMaxForce();

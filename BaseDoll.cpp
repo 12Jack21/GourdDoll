@@ -28,7 +28,7 @@ void BaseDoll::sellDoll() {
 }
 
 void BaseDoll::removeDoll() {
-	static_cast<BaseLevel *>(this->getParent()->getParent())->playerState->removeDollInfo();
+	static_cast<BaseLevel *>(this->getParent()->getParent())->playState->removeDollInfo();
 	static_cast<Gourd *>(this->getParent())->Effect();
 	this->unscheduleAllCallbacks();
 	this->removeAllChildren();
@@ -53,7 +53,7 @@ void BaseDoll::checkNearestMonster() {
 	for (int i = 0; i < monsterVector.size(); i++) {
 		auto monster = monsterVector.at(i);
 		double distance = this->getParent()->getPosition().getDistance(monster->monsterSprite->getPosition());
-			if (distance < curMinDistance && monster->getAttackByTower()) {
+			if (distance < curMinDistance && monster->getAttackByDoll()) {
 				distance = curMinDistance;
 				monsterTemp = monster;
 		}
@@ -74,7 +74,7 @@ void BaseDoll::onTouchEnded(Touch * t, Event *e) {
 	Rect rect = Rect(0, 0, size.width, size.height);
 	if (rect.containsPoint(locationInNode)) {
 		//获取单击区域，显示菜单
-		static_cast<BaseLevel *>(this->getParent())->playerState->showDollInfo(getDollType());
+		static_cast<BaseLevel *>(this->getParent())->playState->showDollInfo(getDollType());
 		if (isUpdateMenuShown) {
 			hideUpdateMenu();
 		}
@@ -111,43 +111,44 @@ void BaseDoll::initDoll(int level) {
 	curBullet = NULL;
 }
 
+
 void BaseDoll::addGourd() {
 	gourd = Sprite::createWithSpriteFrameName(".png");
 	gourd->setAnchorPoint(Point(/*有问题*/));
 	addChild(gourd);
 }
 
-void BaseDoll::shoot(float dt) {
-	auto instance = GameManager::getInstance();
-	checkNearestMonster();
-	if (nearestMonster != NULL && nearestMonster->getCurHp() > 0) {
-		Point shootVector = nearestMonster->monsterSprite->getPosition() - this->getParent()->getPosition();
-
-		auto position = curBullet->getPosition() - shootVector;
-		auto rotation = atan2(position.y, position.x);
-		float angle = CC_RADIANS_TO_DEGREES(rotation);
-		curBullet->setRotation(180.0f - angle);
-
-		dollBase->runAction(Animate::create(AnimationCache::getInstance()->getAnimation(String::createWithFormat(" ", level)->getCString())));
-
-		if (shootVector.y)
-		{
-			shooter->runAction(Animate::create(AnimationCache::getInstance()->getAnimation(" ")));
-		}
-		else
-		{
-			shooter->runAction(Animate::create(AnimationCache::getInstance()->getAnimation(" ")));
-		}
-
-		auto move = MoveTo::create(0.25f, shootVector);
-		auto action = Spawn::create(move, NULL);
-
-		curBullet->setBulletAction(action);
-		curBullet->shoot();
-		curBullet = NULL;
-	}
-
-}
+//void BaseDoll::shoot(float dt) {
+//	auto instance = GameManager::getInstance();
+//	checkNearestMonster();
+//	if (nearestMonster != NULL && nearestMonster->getCurHp() > 0) {
+//		
+//	}
+//	Point shootVector = nearestMonster->monsterSprite->getPosition() - this->getParent()->getPosition();
+//
+//	auto position = curBullet->getPosition() - shootVector;
+//	auto rotation = atan2(position.y, position.x);
+//	float angle = CC_RADIANS_TO_DEGREES(rotation);
+//	curBullet->setRotation(180.0f - angle);
+//
+//	dollBase->runAction(Animate::create(AnimationCache::getInstance()->getAnimation(String::createWithFormat(" ", level)->getCString())));
+//
+//	if (shootVector.y)
+//	{
+//		shooter->runAction(Animate::create(AnimationCache::getInstance()->getAnimation(" ")));
+//	}
+//	else
+//	{
+//		shooter->runAction(Animate::create(AnimationCache::getInstance()->getAnimation(" ")));
+//	}
+//
+//	auto move = MoveTo::create(0.25f, shootVector);
+//	auto action = Spawn::create(move, NULL);
+//
+//	curBullet->setBulletAction(action);
+//	curBullet->shoot();
+//	curBullet = NULL;
+//}
 void BaseDoll::showDollInfo() {
 
 }
