@@ -81,6 +81,9 @@ protected:
 	virtual BaseBullet * FirstDollBullet();
 	void shoot(float dt);
 	virtual void checkNearestMonster();
+	//ÓÃÓÚ¶şÍŞ
+	BaseMonster * checknearestmonster();
+
 	BaseMonster* nearestMonster;
 	bool onTouchBegan(Touch *touch, Event *event);
 	void onTouchEnded(Touch* touch, Event* event);

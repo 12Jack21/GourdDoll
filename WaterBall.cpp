@@ -1,5 +1,6 @@
 #include "WaterBall.h"
 #include "GameManager.h"
+#include "BaseMonster.h"
 
 bool WaterBall::init() {
 	if (!Sprite::init()) {

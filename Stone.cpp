@@ -1,5 +1,6 @@
 #include "Stone.h"
 #include "GameManager.h"
+#include "BaseMonster.h"
 
 bool Stone::init() {
 	if (!Sprite::init()) {

@@ -3,6 +3,7 @@
 #define _SECOND_DOLL_V1_H_
 #include "BaseDoll.h"
 #include "cocos2d.h"
+#include "BaseMonster.h"
 USING_NS_CC;
 
 class SecondDollv1 :public BaseDoll
@@ -13,6 +14,7 @@ public:
 	void updateDoll();
 	void showUpdateMenu();
 	BaseBullet * SecondDollBullet();
+	BaseMonster * checknearestmonster();
 private:
 	void updateAnimation();
 	void updateEffectAnimation(float dt);
