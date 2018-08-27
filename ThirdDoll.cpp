@@ -11,10 +11,11 @@ bool BaseThirdDoll::init() {
 }
 
 void BaseThirdDoll::createAndSetHpBar() {
+	//血量槽背景
 	hpBgSprite = Sprite::createWithSpriteFrameName(".png");
 	hpBgSprite->setPosition(Point(baseSprite->getContentSize().width / 2, baseSprite->getContentSize().height / 3 * 2));
 	baseSprite->addChild(hpBgSprite);
-	
+	//血量槽
 	hpBar = ProgressTimer::create(Sprite::createWithSpriteFrameName(".png"));
 	hpBar->setType(ProgressTimer::Type::BAR);
 	hpBar->setPercentage(100);
@@ -68,41 +69,42 @@ void BaseThirdDoll::runToLocation(Point point) {
 		schedule(schedule_selector(BaseThirdDoll::SearchingMonster), 1.0f, -1, caculateTime(point));
 	}
 }
-void BaseThirdDoll::SearchingMonster(float dt) {
-	setState(ThirdDollStateSearch);
-	baseSprite->setFlippedX(!(baseSprite->isFlippedX()));
-	checkDirectionForMonster();
-	if (nearestMonster != NULL && nearestMonster->getCurHp() > 0) {
-		setState(ThirdDollStateWalk);
-	}
-}
 
-void BaseThirdDoll::checkNearestMonster() {
-	auto instance = GameManager::getInstance();
-	auto monsterVector = instance->monsterVector;
-	nearestMonster = NULL;
-
-	for (int i = 0; i < monsterVector.size(); i++) {
-		auto monster = monsterVector.at(i);
-		double distance = (this->getParent()->getParent()->getPosition() + this->getPosition()).getDistance(monster->monsterSprite->getPosition());
-
-		if (monster->getAttackByDoll() && distance < 50 && (!monster->getIsAttacking())) {
-			nearestMonster = monster;
-			nearestMonster->stopWalking();
-			nearestMonster->setIsAttacking(true);
-			break;
-		}
-	}
-}
-bool BaseThirdDoll::checkDirectionForMonster() {
-	if ((nearestMonster->monsterSprite->getPositionX() - (this->getParent()->getParent()->getPositionX() + this->getPositionX())) > 0) {
-		baseSprite->setFlippedX(false);
-	}
-	else
-	{
-		baseSprite->setFlippedX(true);
-	}
-}
+//void BaseThirdDoll::SearchingMonster(float dt) {
+//	setState(ThirdDollStateSearch);
+//	baseSprite->setFlippedX(!(baseSprite->isFlippedX()));
+//	checkDirectionForMonster();
+//	if (nearestMonster != NULL && nearestMonster->getCurHp() > 0) {
+//		setState(ThirdDollStateWalk);
+//	}
+//}
+//
+//void BaseThirdDoll::checkNearestMonster() {
+//	auto instance = GameManager::getInstance();
+//	auto monsterVector = instance->monsterVector;
+//	nearestMonster = NULL;
+//
+//	for (int i = 0; i < monsterVector.size(); i++) {
+//		auto monster = monsterVector.at(i);
+//		double distance = (this->getParent()->getParent()->getPosition() + this->getPosition()).getDistance(monster->monsterSprite->getPosition());
+//
+//		if (monster->getAttackByDoll() && distance < 50 && (!monster->getIsAttacking())) {
+//			nearestMonster = monster;
+//			nearestMonster->stopWalking();
+//			nearestMonster->setIsAttacking(true);
+//			break;
+//		}
+//	}
+//}
+//bool BaseThirdDoll::checkDirectionForMonster() {
+//	if ((nearestMonster->monsterSprite->getPositionX() - (this->getParent()->getParent()->getPositionX() + this->getPositionX())) > 0) {
+//		baseSprite->setFlippedX(false);
+//	}
+//	else
+//	{
+//		baseSprite->setFlippedX(true);
+//	}
+//}
 
 void BaseThirdDoll::stopThirdDollAnimation() {
 	//动作数待定

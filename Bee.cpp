@@ -21,7 +21,7 @@ Bee * Bee::createMonster(std::vector<Point> points) {
 	return NULL;
 }
 
-bool Frog::init()
+bool Bee::init()
 {
 	if (!BaseMonster::init())
 	{

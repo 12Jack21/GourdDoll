@@ -20,7 +20,13 @@ typedef enum {
 
 //—˝π÷¿‡–Õ
 typedef enum {
-
+	BAT = 0,
+	BEE,
+	FROG,
+	SNAKE,
+	TIANNIU,
+	WUGONG,
+	XIEZI
 }MonsterType;
 
 class BaseMonster : public Sprite

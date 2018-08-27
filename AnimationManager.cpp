@@ -23,6 +23,7 @@ void AnimationManager::init() {
 	init_snake();
 	//蝎子精
 	init_xiezi();
+
 	init_FirstDoll();
 	init_SecondDoll();
 	init_ThirdDoll();
@@ -94,6 +95,7 @@ void AnimationManager::init_snake() {
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("snake.plist");
 	AnimationCache::getInstance()->addAnimation(createAnimation("snakewalk%d.png", 1, 4, 0.15f), "snakewalk");
 	AnimationCache::getInstance()->addAnimation(createAnimation("snakedeath%d.png", 1, 4, 0.15f), "snakedeath");
+	//蛇精攻击
 	AnimationCache::getInstance()->addAnimation(createAnimation("snakeattack%d.png", 1, 3, 0.15f), "snakeattack");
 }
 
@@ -104,43 +106,70 @@ void AnimationManager::init_xiezi() {
 	//蝎子攻击
 	AnimationCache::getInstance()->addAnimation(createAnimation("xieziattack%d.png", 1, 4, 0.15f), "xieziattack");
 }
+
 void AnimationManager::init_FirstDoll() {
 	/*AnimationCache::getInstance()->addAnimation(createAnimation("mage_lvl1_00%02d.png", 1, 12, 0.04f), "level1_mage_shine");
 	AnimationCache::getInstance()->addAnimation(createAnimation("mage_lvl2_00%02d.png", 1, 12, 0.04f), "level2_mage_shine");
 	AnimationCache::getInstance()->addAnimation(createAnimation("mage_lvl3_00%02d.png", 1, 12, 0.04f), "level3_mage_shine");*/
 	//以上是源码
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("firstdoll.plist");
+	AnimationCache::getInstance()->addAnimation(createAnimation("firstdollstand%d.png", 1, 4, 0.15f), "firstdollstand");
+	AnimationCache::getInstance()->addAnimation(createAnimation("firstdollattack%d.png", 1, 4, 0.15f), "firsdolltattack");
 }
+
 void AnimationManager::init_SecondDoll() {
 	//二娃攻击动画
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("seconddoll.plist");
+	AnimationCache::getInstance()->addAnimation(createAnimation("seconddollstand%d.png", 1, 4, 0.15f), "seconddollstand");
+	AnimationCache::getInstance()->addAnimation(createAnimation("seconddollattack%d.png", 1, 4, 0.15f), "seconddollattack");
 }
+
 void AnimationManager::init_ThirdDoll() {
 	//三娃受击动画
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("thirddoll.plist");
+	AnimationCache::getInstance()->addAnimation(createAnimation("thirddollstand%d.png", 1, 4, 0.15f), "thirddollstand");
+	AnimationCache::getInstance()->addAnimation(createAnimation("thirddollattacked%d.png", 1, 4, 0.15f), "thirddollattacked");
 }
 
 void AnimationManager::init_FourthDoll() {
-
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("fourthdoll.plist");
+	AnimationCache::getInstance()->addAnimation(createAnimation("fourthdollstand%d.png", 1, 4, 0.15f), "fourthdollstand");
+	//蝎子攻击
+	AnimationCache::getInstance()->addAnimation(createAnimation("fourthdollattack%d.png", 1, 4, 0.15f), "fourthdollattack");
 }
 
 void AnimationManager::init_FifthDoll() {
-
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("fifthdoll.plist");
+	AnimationCache::getInstance()->addAnimation(createAnimation("fifthdollstand%d.png", 1, 4, 0.15f), "fifthdollstand");
+	//蝎子攻击
+	AnimationCache::getInstance()->addAnimation(createAnimation("fifthdollattack%d.png", 1, 4, 0.15f), "fifthdollattack");
 }
 
 void AnimationManager::init_SixthDoll() {
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("sixthdoll.plist");
 
+	AnimationCache::getInstance()->addAnimation(createAnimation("sixthdollstand%d.png", 1, 4, 0.15f), "sixthdollstand");
+	//蝎子攻击
+	AnimationCache::getInstance()->addAnimation(createAnimation("sixthdollattack%d.png", 1, 4, 0.15f), "sixthdollattack");
 }
 
 void AnimationManager::init_SeventhDoll() {
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("seventhdoll.plist");
 
+	AnimationCache::getInstance()->addAnimation(createAnimation("seventhdollstand%d.png", 1, 4, 0.15f), "seventhdollstand");
+	//蝎子攻击
+	AnimationCache::getInstance()->addAnimation(createAnimation("seventhdollattack%d.png", 1, 4, 0.15f), "seventhdollattack");
 }
 
+		//技能动画 以及 其他
 void AnimationManager::init_others() {
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile(".plist");
-	AnimationCache::getInstance()->addAnimation(createAnimation(".png", 1, 4, 0.15f), "updateDoll");
+	AnimationCache::getInstance()->addAnimation(createAnimation("fosterdoll.png", 1, 4, 0.15f), "fosterDoll");
+	AnimationCache::getInstance()->addAnimation(createAnimation("kingkong.png", 1, 4, 0.15f), "kingkong");
 }
 
 void AnimationManager::init_Grandpa() {
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("grandpa.plist");
 	AnimationCache::getInstance()->addAnimation(createAnimation("grandpaHurt.png", 1, 4, 0.15f), "GranpaHurt");
-	AnimationCache::getInstance()->addAnimation(createAnimation("grandpaWalk.png", 1, 4, 0.15f), "GranpaWalk");
 }
 

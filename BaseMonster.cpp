@@ -14,7 +14,6 @@ BaseMonster::BaseMonster()
 	hpPercentage(100),
 	hpBar(NULL),
 	lastState(stateNone),
-	attackBySoldier(true),
 	attackByDoll(true),
 	isAttacking(false),
 	isSlowed(false),
@@ -261,14 +260,10 @@ void BaseMonster::death()
 		hpBgSprite->setVisible(false);
 		monsterSprite->stopAllActions();
 		unscheduleUpdate();
-		auto decal_blood = Sprite::createWithSpriteFrameName(".png");//Í¼Æ¬
-		decal_blood->setPosition(Point(monsterSprite->getContentSize().width / 2, -monsterSprite->getContentSize().height / 4));
-		monsterSprite->addChild(decal_blood);
-		GameManager::getInstance()-> = GameManager::getInstance()->GOURD+ getGourd();
+
+		GameManager::getInstance()->GOURD = GameManager::getInstance()->GOURD+ getGourd();
+		//¹ÖÎïËÀÍö¶¯»­
 		monsterSprite->runAction(Animate::create(AnimationCache::getInstance()->getAnimation(getName() + "death")));
-		decal_blood->runAction(Sequence::create(FadeOut::create(1.0f)
-			, CallFuncN::create(CC_CALLBACK_0(BaseMonster::setVisible, this, false))
-			, NULL));
 	}
 }
 void BaseMonster::stopWalking()
@@ -277,13 +272,13 @@ void BaseMonster::stopWalking()
 	monsterSprite->stopAllActions();
 }
 
-void BaseMonster;; restartWalking() {
+void BaseMonster::restartWalking() {
 	lastState = stateNone;
 	monsterSprite->stopAllActions();
 	setState(tempState);
-	auto tempCurrPoint = monsterSprite->setPosition();
+	auto tempCurrPoint = monsterSprite->getPosition();
 	auto duration = tempCurrPoint.getDistance(tempNextPoint) / getRunSpeed();
-	baseSprite->runAction(Sequence::create(MoveTo::create(duration, tempNextPoint)
+	monsterSprite->runAction(Sequence::create(MoveTo::create(duration, tempNextPoint)
 		, CallFuncN::create(CC_CALLBACK_0(BaseMonster::runNextPoint, this))
 		, NULL));
 }
@@ -321,5 +316,5 @@ bool BaseMonster::onTouchBegan(Touch* touch, Event* event)
 
 void BaseMonster::onTouchEnded(Touch* touch, Event* event)
 {
-	static_cast<BaseMap*>(this->getParent())->playerState->showMonsterInfo(this);
+	static_cast<BaseLevel*>(this->getParent())->playState->showMonsterInfo(this);
 }
