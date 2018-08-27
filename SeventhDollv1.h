@@ -10,7 +10,7 @@ USING_NS_CC;
 typedef enum {
 	SevenDollStateNone = 0, //ÎÞ×´Ì¬
 	SevenDollStateAttack, //¹¥»÷
-	SevenDollStateDeath,
+	SevenDollStateDeath,//ËÀÍö
 }SevenDollState;
 class SeventhDollv1 :public BaseDoll
 {
@@ -27,28 +27,28 @@ public:
 
 	virtual void death();
 	BaseMonster* nearestMonster;
-	virtual void updateSoldier(int level) {};
+	//virtual void updateSoldier(int level) {};
 protected:
 	//ÑªÌõµÄÉèÖÃ
 	virtual void createAndSetHpBar();
 	Sprite* hpBgSprite;
-	virtual void lookingForMonsters(float dt);
+	//virtual void lookingForMonsters(float dt);
 
 	//¼ì²â×î½üµÄÑý¹Ö
-	virtual void checkNearestMonster();
+	//virtual void checkNearestMonster();
 	//½ø¹¥
-	virtual void attack();
+	//virtual void attack();
 
 	virtual void update(float dt) {};
 
 	//»ù±¾×´Ì¬
 	SevenDollState lastState;
 
-	virtual void stopSevenDollAnimation();
-	void checkDirection(Point point);
-	//falseÓÒ±ßtrue×ó±ß
-	virtual bool checkDirectionForMonster();
-	float caculateTime(Point point);
+	//virtual void stopSevenDollAnimation();
+	//void checkDirection(Point point);
+	////falseÓÒ±ßtrue×ó±ß
+	//virtual bool checkDirectionForMonster();
+	//float caculateTime(Point point);
 	//Ö´ÐÐ½ø¹¥
 	virtual void attackMonster(float dt) {};
 

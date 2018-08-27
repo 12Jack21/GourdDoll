@@ -34,6 +34,8 @@ public:
 
 	//死亡
 	virtual void death();
+	//为判断二娃的激光范围
+	CC_SYNTHESIZE(float, monsterscope, MonsterScope);
 
 	CC_SYNTHESIZE(std::vector<Point>, pointsVector, PointsVector);
 

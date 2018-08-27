@@ -121,32 +121,32 @@ void BaseDoll::shoot(float dt) {
 	auto instance = GameManager::getInstance();
 	checkNearestMonster();
 	if (nearestMonster != NULL && nearestMonster->getCurHp() > 0) {
-		
+		Point shootVector = nearestMonster->monsterSprite->getPosition() - this->getParent()->getPosition();
+
+		auto position = curBullet->getPosition() - shootVector;
+		auto rotation = atan2(position.y, position.x);
+		float angle = CC_RADIANS_TO_DEGREES(rotation);
+		curBullet->setRotation(180.0f - angle);
+
+		dollBase->runAction(Animate::create(AnimationCache::getInstance()->getAnimation(String::createWithFormat(" ", level)->getCString())));
+
+		if (shootVector.y)
+		{
+			shooter->runAction(Animate::create(AnimationCache::getInstance()->getAnimation(" ")));
+		}
+		else
+		{
+			shooter->runAction(Animate::create(AnimationCache::getInstance()->getAnimation(" ")));
+		}
+
+		auto move = MoveTo::create(0.25f, shootVector);
+		auto action = Spawn::create(move, NULL);
+
+		curBullet->setBulletAction(action);
+		curBullet->shoot();
+		curBullet = NULL;
 	}
-	Point shootVector = nearestMonster->monsterSprite->getPosition() - this->getParent()->getPosition();
 
-	auto position = curBullet->getPosition() - shootVector;
-	auto rotation = atan2(position.y, position.x);
-	float angle = CC_RADIANS_TO_DEGREES(rotation);
-	curBullet->setRotation(180.0f - angle);
-
-	dollBase->runAction(Animate::create(AnimationCache::getInstance()->getAnimation(String::createWithFormat(" ", level)->getCString())));
-
-	if (shootVector.y)
-	{
-		shooter->runAction(Animate::create(AnimationCache::getInstance()->getAnimation(" ")));
-	}
-	else
-	{
-		shooter->runAction(Animate::create(AnimationCache::getInstance()->getAnimation(" ")));
-	}
-
-	auto move = MoveTo::create(0.25f, shootVector);
-	auto action = Spawn::create(move, NULL);
-
-	curBullet->setBulletAction(action);
-	curBullet->shoot();
-	curBullet = NULL;
 }
 void BaseDoll::showDollInfo() {
 

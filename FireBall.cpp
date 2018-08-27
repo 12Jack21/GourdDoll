@@ -1,5 +1,6 @@
 #include "FireBall.h"
 #include "GameManager.h"
+#include "BaseMonster.h"
 
 bool FireBall::init() {
 	if (!Sprite::init()) {
@@ -21,11 +22,12 @@ void FireBall::removeFireBall() {
 		this->bulletSprite->getContentSize().width,
 		this->bulletSprite->getContentSize().height);
 
+
 	auto monsterVector = instance->monsterVector;
 	for (int i = 0; i < monsterVector.size(); i++) {
 		auto monster = monsterVector.at(i);
 		auto monsterRect = monster->monsterSprite->getBoundingBox();
-
+		
 		if (monster != NULL && monsterRect.intersectsRect(fireballRect) && monster->getAttackByTower()) {
 			auto curHp = monster->getCurHp();
 			curHp = curHp - this->getMaxForce();
