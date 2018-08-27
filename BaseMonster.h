@@ -36,10 +36,12 @@ public:
 	virtual void death();
 
 	CC_SYNTHESIZE(std::vector<Point>, pointsVector, PointsVector);
+
 	//怪物类型
 	CC_SYNTHESIZE(MonsterType, monsterType, MonsterType);
 	//是否被塔攻击
 	CC_SYNTHESIZE(bool, attackByDoll, AttackByDoll);
+
 	//是否处于 攻击状态
 	CC_SYNTHESIZE(bool, isAttacking, IsAttacking);
 	//移动速度

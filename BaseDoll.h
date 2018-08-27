@@ -1,18 +1,30 @@
 #pragma once
 
 #include "BaseMonster.h"
+#include "BaseBullet.h"
 #include "SoundManager.h"
 #include"SystemHeader.h"
+#include "Gourd.h"
 
 USING_NS_CC;
 
 typedef enum {
-	FIRSTDOLL = 1,
-	SECONDDOLL,
-	FOURTHDOLL = 4,
-	FIFTHDLL,
+	FIRSTDOLL_1 = 1,
+	FIRSTDOLL_2,
+	FIRSTDOLL_3,
+	SECONDDOLL_1,
+	SECONDDOLL_2,
+	SECONDDOLL_3,
+	FOURTHDOLL_1 = 7,
+	FOURTHDOLL_2,
+	FOURTHDOLL_3,
+	FIFTHDOLL_1,
+	FIFTHDOLL_2,
+	FIFTHDOLL_3,
 	SIXTHDOLL,
-	SEVENTHDOLL
+	SEVENTHDOLL_1,
+	SEVENTHDOLL_2,
+
 }DollType;
 
 class BaseDoll : public Sprite
@@ -33,8 +45,11 @@ public:
 	virtual bool init();
 
 	CC_SYNTHESIZE(DollType, dollType, DollType);
+
+	CC_SYNTHESIZE(Gourd*, myGourd, MyGourd);
+
 	CC_SYNTHESIZE(std::string, dollName, DollName);
-	CC_SYNTHESIZE(int, level, Level);
+	CC_SYNTHESIZE(int, lv, Lv);
 
 	//¹¥»÷·¶Î§
 	CC_SYNTHESIZE(float, scope, Scope);
@@ -60,6 +75,15 @@ public:
 	virtual void setRallyPoint(Point point) {};
 
 protected:
+
+	Sprite * shooter;
+	Sprite * dollBase;
+	BaseBullet * curBullet;
+	void initDoll(int level);
+	void addGourd();
+
+	virtual BaseBullet * FirstDollBullet();
+//	void shoot(float dt);
 
 	virtual void checkNearestMonster();
 	BaseMonster* nearestMonster;

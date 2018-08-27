@@ -1,4 +1,6 @@
 #pragma once
+
+#include "SystemHeader.h"
 #include "cocos2d.h"
 USING_NS_CC;
 class AnimationManager {
@@ -23,6 +25,16 @@ public:
 	void init_snake();
 	//Ð«×Ó¾«
 	void init_xiezi();
-
+	void init_FirstDoll();
+	void init_SecondDoll();
+	void init_ThirdDoll();
+	void init_FourthDoll();
+	void init_FifthDoll();
+	void init_SixthDoll();
+	void init_SeventhDoll();
+	void init_others();
+	void init_Grandpa();
 	Animation* createAnimation(const char* prefixName, int start, int end, float delay);
+private:
+	static AnimationManager * instance;
 };

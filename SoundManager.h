@@ -30,6 +30,7 @@ public:
 
 	//关卡结束
 	static void playGameWin();
+
 	static void playGameFaile();
 
 	//猩猩BOSS
@@ -38,6 +39,7 @@ public:
 	static void playChimps_2();
 	static void playChimps_3();
 	static void playMonoDeath();
+
 public:
 	//欢迎界面
 	static void playWelcomeBackMusic();

@@ -14,10 +14,11 @@ private:
 	Point logoPoint;
 	//start∞¥≈•
 	Sprite* start_Btn;
-	Point start_BtnPoint();
+
+	Point start_BtnPoint;
 	//about∞¥≈•Œª÷√
 	Sprite* about_Btn;
-	Point about_BtnPoint();
+	Point about_BtnPoint;
 	
 public:
 	static Scene* createScene();

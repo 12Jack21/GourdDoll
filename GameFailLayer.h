@@ -9,7 +9,9 @@ class GameFailLayer : public Layer
 public:
 
 	virtual bool init();
-	void initMap();
+
+	static Size visibleSize;
+
 	void starMenu(Ref *pSpender);
 	//返回按钮回调
 	void callBackMenu(Ref *pSpender);
@@ -21,7 +23,9 @@ public:
 private:
 	void pauseGame();
 	void initOption();
-	Sprite* option;
+
+	Sprite* failOption;
+
 	bool onTouchBegan(Touch* touch, Event* event);
 	void onTouchEnded(Touch* touch, Event* event);
 };
