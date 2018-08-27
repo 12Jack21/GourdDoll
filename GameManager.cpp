@@ -6,7 +6,9 @@ GameManager* GameManager::instance;
 GameManager* GameManager::getInstance()
 {
 	if (instance == NULL)
+	{
 		instance = new GameManager();
+	}
 	return instance;
 }
 
@@ -18,5 +20,6 @@ void GameManager::setInstance(int tag)
 void GameManager::eraseAll()
 {
 	instance->monsterVector.clear();
-	//instance->towerVector.clear();
+	instance->seventhDollv1Vector.clear();
+	instance->baseDollVector.clear();
 }

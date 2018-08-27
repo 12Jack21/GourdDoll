@@ -67,7 +67,7 @@ void SeventhDollv1::updateDoll() {
 void SeventhDollv1::showUpdateMenu() {
 	auto updateMenu = UpdateMenu::create();
 	updateMenu->setTag(myGourd->getTag() + 100);
-	updateMenu->setGourd(this);
+	updateMenu->setDoll2``````1	(this);
 	updateMenu->setPosition(this->getParent()->getPosition());
 	static_cast<BaseLevel*>(this->getParent()->mTouchLayer->addChild(updateMenu));
 	if (GameManager::getInstance()->LEVEL <= 0) {
@@ -85,7 +85,7 @@ BaseBullet * SeventhDollv1::SeventhDollBullet() {
 	return seventhDollBullet;
 }
 
-void SeventhDollv1::death() {
+void SeventhDollv1::seventhdollv1Death() {
 	if (GameManager::getInstance()->seventhDollv1Vector.contains(this))
 		GameManager::getInstance()->seventhDollv1Vector.eraseObject(this);
 	if (getState() != SevenDollStateDeath) {

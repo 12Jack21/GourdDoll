@@ -16,7 +16,23 @@ public:
 	EventListenerTouchOneByOne* SixthDolllistener;
 	EventListenerTouchOneByOne* KingKonglistener;
 
-	//…Ë÷√ Ω∏’ ¥•√˛’⁄’÷
+	//…Ë÷√ ººƒ‹ ¥•√˛’⁄’÷
+	void setSixthDollTouchShield();
+	void removeSixthDollTouchShield();
+	bool onSixthDollTouchBegan(Touch* touch, Event* event);
+	void onSixthDollTouchEnded(Touch* touch, Event* event);
+	
+
+	void setRallyFlagTouchShield();
+	void removeRallyFlagTouchShield();
+	bool onRallyFlagTouchBegan(Touch* touch, Event* event);
+	void onRallyFlagTouchEnded(Touch* touch, Event* event);
+
+	void setThirdDollTouchShield();
+	void removeThirdDollTouchShield();
+	bool onThirdDollTouchBegan(Touch* touch, Event* event);
+	void onThirdDollTouchEnded(Touch* touch, Event* event);
+
 	void setKingKongTouchShield();
 	void removeKingKongTouchShield();
 	bool onKingKongTouchBegan(Touch* touch, Event* event);

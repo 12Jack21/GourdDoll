@@ -39,7 +39,7 @@ BaseBullet * SeventhDollv2::SeventhDollBullet() {
 	return seventhDollBullet;
 }
 
-void SeventhDollv2::death() {
+void SeventhDollv2::seventhdollv2Death() {
 	if (GameManager::getInstance()->seventhDollv1Vector.contains(this))
 		GameManager::getInstance()->seventhDollv1Vector.eraseObject(this);
 	if (getState() != SevenDollStateDeath) {

@@ -1,11 +1,6 @@
 #include"AboutScene.h"
 #include"WelcomeScene.h"
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> dev2
 Scene* AboutScene::createScene()
 {
 	auto scene = Scene::create();

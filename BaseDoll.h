@@ -50,7 +50,7 @@ public:
 	CC_SYNTHESIZE(Gourd*, myGourd, MyGourd);
 
 	CC_SYNTHESIZE(std::string, dollName, DollName);
-	CC_SYNTHESIZE(int, level, Level);
+	CC_SYNTHESIZE(int, lv, Lv);
 
 	//攻击范围
 	CC_SYNTHESIZE(float, scope, Scope);
@@ -74,11 +74,11 @@ public:
 
 	//设置集结点
 	virtual void setRallyPoint(Point point) {};
-
+	Sprite * dollBase;
 protected:
 
 	Sprite * shooter;
-	Sprite * dollBase;
+	
 	BaseBullet * curBullet;
 	void initDoll(int level);
 	void addGourd();

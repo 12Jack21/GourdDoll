@@ -30,7 +30,9 @@ void SoundManager::playWelcomeBackMusic()
 
 void SoundManager::playGameBackMusic()
 {
-
+	SimpleAudioEngine::getInstance()->playBackgroundMusic(".mp3");
+	if (UserDefault::getInstance()->getIntegerForKey("backmusic", 1) == 0)
+		SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
 }
 
 void SoundManager::playMonsterLaugh()
