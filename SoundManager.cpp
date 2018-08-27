@@ -15,24 +15,6 @@ bool SoundManager::checkEffectState()
 	}
 }
 
-void SoundManager::playEffectLaugh()
-{
-	if (checkEffectState())
-		SimpleAudioEngine::getInstance()->playEffect("sound/boss_efreeti_evillaugh.wav");
-}
-
-void SoundManager::playWinStars()
-{
-	if (checkEffectState())
-		SimpleAudioEngine::getInstance()->playEffect("sound/Sound_WinStars.wav");
-}
-
-void SoundManager::playEffectDeath()
-{
-	if (checkEffectState())
-		SimpleAudioEngine::getInstance()->playEffect("sound/boss_efreeti_death.wav");
-}
-
 void SoundManager::playClickEffect()
 {
 	if (checkEffectState())
@@ -44,6 +26,23 @@ void SoundManager::playWelcomeBackMusic()
 	SimpleAudioEngine::getInstance()->playBackgroundMusic("sound/savage_music_theme.wav");
 	if (UserDefault::getInstance()->getIntegerForKey("backmusic", 1) == 0)
 		SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+}
+
+void SoundManager::playGameBackMusic()
+{
+
+}
+
+void SoundManager::playMonsterLaugh()
+{
+	if (checkEffectState())
+		SimpleAudioEngine::getInstance()->playEffect("sound/boss_efreeti_evillaugh.wav");
+}
+
+void SoundManager::playMonsterDeath()
+{
+	if (checkEffectState())
+		SimpleAudioEngine::getInstance()->playEffect("sound/boss_efreeti_death.wav");
 }
 
 void SoundManager::playNextWaveReady()
@@ -58,6 +57,12 @@ void SoundManager::playIncomingWave()
 		SimpleAudioEngine::getInstance()->playEffect("sound/Sound_WaveIncoming.wav");
 }
 
+void SoundManager::playDollFoster()
+{
+	if (checkEffectState())
+		SimpleAudioEngine::getInstance()->playEffect("sound/Sound_DollBuilding.wav");
+}
+
 void SoundManager::playDollUpdate()
 {
 	if (checkEffectState())
@@ -70,17 +75,8 @@ void SoundManager::playDollSell()
 		SimpleAudioEngine::getInstance()->playEffect("sound/Sound_DollSell.wav");
 }
 
-void SoundManager::playDollFoster()
-{
-	if (checkEffectState())
-		SimpleAudioEngine::getInstance()->playEffect("sound/Sound_DollBuilding.wav");
-}
 
-void SoundManager::playDollMenu()
-{
-	if (checkEffectState())
-		SimpleAudioEngine::getInstance()->playEffect("sound/Sound_GUIOpenDollMenu.wav");
-}
+
 
 void SoundManager::playArrowShoot1()
 {

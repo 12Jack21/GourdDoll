@@ -9,12 +9,11 @@ public:
 	static void playIncomingWave();
 	static void playNextWaveReady();
 
-	//音效
-	static void playDollMenu();
-	static void playWinStars();
+	//游戏胜利和失败
+	static void playGameWin();
 	static void playGameFail();
 
-	//葫芦娃
+	/////////////////////////////葫芦娃
 	static void playDollFoster();
 	static void playDollUpdate();
 	static void playDollSell();
@@ -23,12 +22,24 @@ public:
 	static void playFirsetDollAttack();
 	//二娃激光发射音效
 	static void playSecondDollAttack();
+	//三娃被攻击音效
+	static void playThirdDollAttacked();
+	//四娃攻击特效（喷火）
+	static void playFourthDollAttack();
+	//五娃攻击特效
+	static void playFifthDollAttack();
+	//七娃攻击特效
+	static void playSeventhDollAttack();
+	/////////////////////////////葫芦娃
 
+	//妖怪(改过函数名字）
+	static void playMonsterLaugh();
+	static void playMonsterMove();
+	static void playMonsterDeath();
 
-	//妖怪（boss)
-	static void playEffectLaugh();
-	static void playEffectMove();
-	static void playEffectDeath();
+	//爷爷受伤
+	static void playGrandpaHurt();
+	static void playGrandpaDeath();
 
 	//技能
 	//六娃释放
@@ -36,13 +47,8 @@ public:
 	//金刚山释放
 	static void playKingkong();
 
-	//关卡结束
-	static void playGameWin();
-
-
-
 public:
-	//欢迎界面
+	//欢迎界面，关于界面，选关界面
 	static void playWelcomeBackMusic();
 	//游戏界面
 	static void playGameBackMusic();
