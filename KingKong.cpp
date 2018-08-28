@@ -33,7 +33,7 @@ void Kingkong::removeKingkong()
 		auto monster = monsterVector.at(j);
 		auto monsterPosition = monster->monsterSprite->getPosition();
 
-		if (monster != NULL && kingkongPostion.distance(monsterPosition) <= 50 && monster->getAttackByTower())
+		if (monster != NULL && kingkongPostion.distance(monsterPosition) <= 50 && monster->getAttackByDoll())
 		{
 			//“Ù–ß
 			SoundManager::playKingkong();

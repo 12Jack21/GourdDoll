@@ -5,7 +5,7 @@
 #include "GameWinLayer.h"
 #include"GameFailLayer.h"
 #include "SoundManager.h"
-#include "RespirationSprite.h"
+//#include "RespirationSprite.h"
 
 //还要加上各种怪物的头文件
 

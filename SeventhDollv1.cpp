@@ -87,7 +87,7 @@ BaseBullet * SeventhDollv1::SeventhDollBullet() {
 
 void SeventhDollv1::seventhdollv1Death() {
 	if (GameManager::getInstance()->seventhDollv1Vector.contains(this))
-		GameManager::getInstance()->seventhDollv1Vector.eraseObject(this);
+		GameManager::getInstance()->seventhDollv1Vector.eraseObject(this, false);
 	if (getState() != SevenDollStateDeath) {
 		setCurHp(0);
 		setState(SevenDollStateDeath);
@@ -101,6 +101,30 @@ void SeventhDollv1::seventhdollv1Death() {
 		decal_blood->runAction(Sequence::create(FadeOut::create(1.0f)
 			, CallFuncN::create(CC_CALLBACK_0(SeventhDollv1::setVisible, this, false))
 			, NULL));
+	}
+}
+
+void SeventhDollv1::shoot(float dt) {
+	auto instance = GameManager::getInstance();
+	checkNearestMonster();
+	if (nearestMonster != NULL && nearestMonster->getCurHp() > 0) {
+		auto curBullet = SeventhDollBullet();
+		//二娃的游戏音效SoundManager::
+
+		Point shootVector = nearestMonster->monsterSprite->getPosition() - this->getParent()->getPosition();
+
+		auto position = curBullet->getPosition() - shootVector;
+		auto rotation = atan2(position.y, position.x);
+		float angle = CC_RADIANS_TO_DEGREES(rotation);
+		curBullet->setRotation(180.0f - angle);
+
+		dollBase->runAction(Animate::create(AnimationCache::getInstance()->getAnimation(String::createWithFormat(" ", lv)->getCString())));
+		//动画需加
+		auto move = MoveTo::create(0.25f, shootVector);
+		auto action = Spawn::create(move, NULL);
+		curBullet->setBulletAction(action);
+		curBullet->shoot();
+		curBullet = NULL;
 	}
 }
 

@@ -10,5 +10,5 @@ public:
 	CREATE_FUNC(Stone);
 	void shoot();
 	void removeStone();
-}
+};
 #endif _STONE_H_

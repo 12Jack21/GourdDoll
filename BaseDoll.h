@@ -15,12 +15,11 @@ typedef enum {
 	SECONDDOLL_1,
 	SECONDDOLL_2,
 	SECONDDOLL_3,
-	FOURTHDOLL_1 = 7,
+	FOURTHDOLL_1,
 	FOURTHDOLL_2,
 	FOURTHDOLL_3,
 	FIFTHDOLL_1,
 	FIFTHDOLL_2,
-	FIFTHDOLL_3,
 	FIFTHDOLL_3,
 	SIXTHDOLL,
 	SEVENTHDOLL_1,
@@ -78,12 +77,12 @@ public:
 protected:
 
 	Sprite * shooter;
-	Sprite * dollBase;
+	//Sprite * dollBase;
 	BaseBullet * curBullet;
 	void initDoll(int level);
 	void addGourd();
 
-	virtual BaseBullet * FirstDollBullet();
+	BaseBullet * FirstDollBullet();
 //	void shoot(float dt);
 
 	virtual void checkNearestMonster();

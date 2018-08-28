@@ -22,9 +22,8 @@ public:
 	Vector<SeventhDollv1*> seventhDollv1Vector;
 	/*Vector<Path*> pathVector;*/
 	Vector<BaseDoll *> baseDollVector;
-	Vector<SeventhDollv1* > seventhDollv1Vector;
 	Vector<BaseMonster *> monsterVector;
-	Vector<BaseBullet*> bulletVector;
+	Vector<BaseBullet*>bulletVector;
 	
 
 		//某关卡是否完成,0表示未完成，1表示完成

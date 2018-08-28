@@ -10,5 +10,5 @@ public:
 	CREATE_FUNC(SixthDoll);
 	void shoot(Point location);
 	void removeSixthDoll();
-}
+};
 #endif _SIXTHDOLL_H_

@@ -14,7 +14,7 @@ public:
 	void updateDoll();
 	void showUpdateMenu();
 	BaseBullet * SecondDollBullet();
-	BaseMonster * checknearestmonster();
+
 private:
 	void updateAnimation();
 	void updateEffectAnimation(float dt);

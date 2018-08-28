@@ -1,3 +1,4 @@
+#pragma once
 #ifndef _LASER_H_
 #define _LASER_H_
 #include "cocos2d.h"
@@ -10,6 +11,6 @@ public:
 	CREATE_FUNC(Laser);
 	void shoot();
 	void removeLaser();
-}
+};
 #endif
 

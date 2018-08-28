@@ -28,6 +28,7 @@ public:
 	virtual void seventhdollv1Death();
 	BaseMonster* nearestMonster;
 	virtual void updateSoldier(int level) {};
+	void shoot(float dt);
 protected:
 	//ÑªÌõµÄÉèÖÃ
 	virtual void createAndSetHpBar();
@@ -56,6 +57,7 @@ protected:
 	CREATE_FUNC(SeventhDollv1);
 	void updateDoll();
 	void showUpdateMenu();
+
 	BaseBullet * SeventhDollBullet();
     int attackCount;
 

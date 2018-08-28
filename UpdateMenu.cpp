@@ -30,7 +30,7 @@ bool UpdateMenu::init()
 	sellIcon->setTag(2);
 	addChild(sellIcon);
 
-	couldUpdate = true;
+	canUpdate = true;
 
 	//提示其无法继续升级（锁）
 	lock = Sprite::createWithSpriteFrameName("main_icons_0014.png");
@@ -135,7 +135,6 @@ void UpdateMenu::onTouchEnded(Touch* touch, Event* event)
 	{
 		removeFromParent();
 	}
-}
 		static_cast<BaseLevel*>(this->getParent()->getParent())->playState->showDollInfo();
 		break;
 	case():
@@ -155,7 +154,7 @@ void UpdateMenu::onTouchEnded(Touch* touch, Event* event)
 		break;
 	default:
 		break;
-	}
+	
 }
 
 void UpdateMenu::onTouchEnded(Touch* touch, Event* event)
