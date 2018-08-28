@@ -55,8 +55,9 @@ public:
 	//是否被塔攻击
 	CC_SYNTHESIZE(bool, attackByDoll, AttackByDoll);
 
-	//是否处于 攻击状态
-	CC_SYNTHESIZE(bool, isAttacking, IsAttacking);
+	////是否处于 攻击状态
+	//CC_SYNTHESIZE(bool, isAttacking, IsAttacking);
+
 	//移动速度
 	CC_SYNTHESIZE(float, runSpeed, RunSpeed);
 	//最大生命
