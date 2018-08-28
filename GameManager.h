@@ -6,6 +6,7 @@
 #include "BaseDoll.h"
 #include "SeventhDollv1.h"
 #include "TouchLayer.h"
+#include"WayPoint.h"
 
 USING_NS_CC;
 
@@ -17,10 +18,11 @@ public:
 
 		//某关卡是否完成,0表示未完成，1表示完成
 	char LEVELX_ISDONE[20];
-	
-	Vector<Path*> pathVector;//youwenti
-	Vector<SeventhDollv1*> seventhDollv1Vector;
-	/*Vector<Path*> pathVector;*/
+	//路标
+	Vector<WayPoint*> wayPoints;
+
+	/*Vector<SeventhDollv1*> seventhDollv1Vector;*/
+
 	Vector<BaseDoll *> baseDollVector;
 	Vector<BaseMonster *> monsterVector;
 	Vector<BaseBullet*>bulletVector;

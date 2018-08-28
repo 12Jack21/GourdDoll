@@ -23,6 +23,31 @@ BaseMonster::BaseMonster()
 BaseMonster::~BaseMonster()
 {}
 
+WayPoint* BaseMonster::getCurrentWayPoint()
+{
+	GameManager* instance = GameManager::getInstance();
+	WayPoint* wayPoint = (WayPoint *)instance->wayPoints.at(this->curWayPoint);
+	return wayPoint;
+}
+
+WayPoint* BaseMonster::getNextWayPoint()
+{
+	GameManager* instance = GameManager::getInstance();
+
+	if (this->curWayPoint != 6)
+	{
+		this->curWayPoint++;
+	}
+	/*else
+	{
+	}
+	*/
+	log("%d", this->curWayPoint); // ÒÔ¹©²âÊÔ
+
+	WayPoint* wayPoint = (WayPoint *)instance->wayPoints.at(curWayPoint);
+	return wayPoint;
+}
+
 bool BaseMonster::init() {
 	if (!Sprite::init()) {
 		return false;

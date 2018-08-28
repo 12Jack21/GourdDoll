@@ -12,14 +12,15 @@ GameManager* GameManager::getInstance()
 	return instance;
 }
 
-void GameManager::setInstance(int tag)
-{
-	sprintf(SLOTX_DONECOUNT, "Slot%d_DownCount", tag);
-}
+//void GameManager::setInstance(int tag)
+//{
+//	sprintf(SLOTX_DONECOUNT, "Slot%d_DownCount", tag);
+//}
 
 void GameManager::eraseAll()
 {
 	instance->monsterVector.clear();
-	instance->seventhDollv1Vector.clear();
+	/*instance->seventhDollv1Vector.clear();*/
 	instance->baseDollVector.clear();
+	instance->bulletVector.clear();
 }

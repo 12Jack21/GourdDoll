@@ -2,16 +2,41 @@
 
 USING_NS_CC;
 
-Level1* Level1::createGame(int difficulty)
+Level1* Level1::createGame()
 {
 	auto layer = new Level1();
-	if (layer && layer->initWithDifficulty(difficulty)) {
+	if (layer && layer->init()) {
 		layer->autorelease();
 		return layer;
 	}
 	CC_SAFE_DELETE(layer);
 
 	return NULL;
+}
+
+bool Level1::init()
+{
+	if (!Layer::init())
+	{
+		return false;
+	}
+	setLevel(1);
+
+	initMap();
+
+
+
+	//std::vector<Point> points;
+	////road 0提示        技能
+	//points.push_back(Point(980, 40));
+	////road 1 提示		技能
+	//points.push_back(Point(40, 270));
+	//addWaveProgressBars(points);
+	//waveFlags.at(0)->restartWaveFlag();
+	//waveFlags.at(1)->restartWaveFlag();
+	SoundManager::playGameBackMusic();
+	return true;
+
 }
 
 //装饰物
@@ -22,7 +47,7 @@ void Level1::addOrnament()
 
 void Level1::onExit()
 {
-	SpriteFrameCache::getInstance()->removeSpriteFrameByName("sprite_level1_2-hd.plist");
+	SpriteFrameCache::getInstance()->removeSpriteFrameByName(".plist");
 }
 
 ////////////////////////////////////////增加葫芦（设塔点）,位置未定

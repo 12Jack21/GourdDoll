@@ -4,6 +4,7 @@
 #include "SystemHeader.h"
 #include "WaveTip.h"
 #include "TouchLayer.h"
+#include"WayPoint.h"
 
 USING_NS_CC;
 
@@ -22,11 +23,17 @@ public:
 	//触摸层
 	TouchLayer* mTouchLayer;
 
-protected:
+	//增加路标(即路线确定)
+	void addWayPoint();
+
+protected:	
+	
+	//初始化地图(相当于 init())
+	void initMap();
+
 	//初始化触摸层
 	void initTouchLayer();
-	//本关难度
-	int difficulty;
+
 	//当前波数
 	int curWave;
 
@@ -54,22 +61,24 @@ protected:
 	//屏幕尺寸
 	Size winSize;
 
-	//下一波提示精灵 0为路线1,1为路线2
+	////下一波提示精灵 0为路线1,1为路线2
+	//Vector<WaveTip*> waveTips;
 
-	Vector<WaveTip*> waveTips;
-
-	//波数进度条
-	void addWaveProgressBar(std::vector<Point> waveTipLocations);
-	void showWaveProgressBar(float dt);
+	////波数进度条
+	//void addWaveProgressBar(std::vector<Point> waveTipLocations);
+	//void showWaveProgressBar(float dt);
 
 	virtual void onEnterTransitionDidFinish();
 	//不同关卡不同的事件处理
 	virtual void waveEvent();
 	//设置初始地图位置
 	void setMapPosition();
+
 	//更新葫芦和生命
 	void updateGourdAndLife();
+
 	virtual void update(float dt);
+	
 	//胜利函数
 	void gameWin();
 
@@ -78,12 +87,13 @@ protected:
 	//结束标记
 	bool isEnd;
 
+	//增加路标
+	void addWayPoint();
 	//开始新的一波敌人
 	virtual void addWaves(float dt);
 	//添加怪物
 	virtual void addMonsters(float dt);
-	//初始化地图
-	void initMap();
+
 	//添加不同地图装饰物
 	virtual void addOrnament() {};
 

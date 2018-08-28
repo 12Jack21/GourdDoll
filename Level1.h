@@ -10,8 +10,9 @@ class Level1 : public BaseLevel
 public:
 	Level1();
 	~Level1();
-	static Level1* createGame(int difficulty);
-	virtual bool initWithDifficulty(int difficulty);
+	static Level1* createGame();
+	virtual bool init();
+
 private:
 
 	//添加不同关卡的装饰物

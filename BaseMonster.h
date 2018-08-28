@@ -1,8 +1,8 @@
-#pragma once
 #ifndef _BASE_MONSTER_H_
 #define _BASE_MONSTER_H_
 
 #include "cocos2d.h"
+#include"WayPoint.h"
 
 USING_NS_CC;
 
@@ -38,10 +38,15 @@ public:
 	CREATE_FUNC(BaseMonster);
 	Sprite* monsterSprite;
 
+	WayPoint* getCurrentWayPoint();
+	WayPoint* getNextWayPoint();
+	int curWayPoint;
+ 
+
 	//死亡
 	virtual void death();
-	//为判断二娃的激光范围
-	CC_SYNTHESIZE(float, monsterscope, MonsterScope);
+	////为判断二娃的激光范围
+	//CC_SYNTHESIZE(float, monsterscope, MonsterScope);
 
 	CC_SYNTHESIZE(std::vector<Point>, pointsVector, PointsVector);
 
@@ -78,6 +83,9 @@ public:
 
 	//下个运动点
 	Point getNextPoint();
+
+	WayPoint* getNextWayPoint();
+	WayPoint* getCurrentWayPoint();
 
 private:
 
