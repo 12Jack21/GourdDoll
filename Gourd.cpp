@@ -48,7 +48,7 @@ void Gourd::onTouchEnded(Touch* touch, Event* event)
 
 	if (rect.containsPoint(locationInNode) && target->isVisible()) 
 	{
-		if (hideFosterMenu) 
+		if (isFosterMenuShown)
 		{
 			showFosterMenu();
 		}

@@ -25,7 +25,7 @@ bool LoadingScene::init()
 	addChild(bg);
 
 	//“Ï≤Ωº”‘ÿŒ∆¿Ìª∫¥Ê
-<<<<<<< HEAD
+
 	//m_nNumberOfLoaded = 0;
 	//Director::getInstance()->getTextureCache()->addImageAsync("texture/.png",
 	//	CC_CALLBACK_1(LoadingScene::loadingTextureCallBack, this));

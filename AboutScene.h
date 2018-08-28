@@ -5,7 +5,7 @@ USING_NS_CC;
 
 class AboutScene :public Layer
 {
-	KingKong
+
 private:
 	//±³¾°
 	Sprite * bg;

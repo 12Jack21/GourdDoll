@@ -10,6 +10,6 @@ public:
 	CREATE_FUNC(GourdBullet);
 	void shoot();
 	void removeGourdBullet();
-}
+};
 #endif _GOURDBULLET_H_
 

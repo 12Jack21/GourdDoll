@@ -62,35 +62,35 @@ void DollInfoLayer::setDollInfo(DollType dollType)
 	Sprite* dollIcon;
 	switch (dollType)
 	{
-	case(FIRSTDOLL):
+	case(FIRSTDOLL_1):
 		dollIcon = Sprite::createWithSpriteFrameName("portraits_towers_0001.png");
 		dollName->setString("ARCHER TOWER");
 		forceLabel->setString("8");
 		speedLabel->setString("AVERAGE");
 		scopeLabel->setString("SHORT");
 		break;
-	case(SECONDDOLL):
+	case(SECONDDOLL_1):
 		dollIcon = Sprite::createWithSpriteFrameName("portraits_towers_0001.png");
 		dollName->setString("MARKSMEN");
 		forceLabel->setString("12");
 		speedLabel->setString("FAST");
 		scopeLabel->setString("AVERAGE");
 		break;
-	case(FOURTHDOLL):
+	case(FOURTHDOLL_1):
 		dollIcon = Sprite::createWithSpriteFrameName("portraits_towers_0001.png");
 		dollName->setString("SHARPSHOOTER");
 		forceLabel->setString("16");
 		speedLabel->setString("FAST");
 		scopeLabel->setString("LONG");
 		break;
-	case(FIFTHDOLL):
+	case(FIFTHDOLL_1):
 		dollIcon = Sprite::createWithSpriteFrameName("portraits_towers_0009.png");
 		dollName->setString("CROSSBOW");
 		forceLabel->setString("24");
 		speedLabel->setString("FAST");
 		scopeLabel->setString("GREAT");
 		break;
-	case(SEVENTHDOLL):
+	case(SEVENTHDOLL_1):
 		dollIcon = Sprite::createWithSpriteFrameName("portraits_towers_0010.png");
 		dollName->setString("TOTEM TOWER");
 		forceLabel->setString("24");

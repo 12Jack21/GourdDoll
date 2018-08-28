@@ -1,4 +1,6 @@
+#pragma once
 #include "Laser.h"
+#include "BaseMonster.h"
 #include "GameManager.h"
 
 bool Laser::init() {
@@ -34,7 +36,7 @@ void Laser::removeLaser() {
 		auto monster = monsterVector.at(i);
 		auto monsterRect = monster->monsterSprite->getBoundingBox();
 
-		if (monster != NULL && monsterRect.intersectsRect(LaserRect) && monster->getAttackByTower()) {
+		if (monster != NULL && monsterRect.intersectsRect(LaserRect) && monster->getAttackByDoll()) {
 			auto curHp = monster->getCurHp();
 			curHp = curHp - this->getMaxForce();
 			if (curHp <= 0) {
@@ -49,5 +51,4 @@ void Laser::removeLaser() {
 		}
 	}
 	this->removeFromParent();
-}
 }

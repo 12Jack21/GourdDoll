@@ -48,20 +48,19 @@ void TouchLayer::onKingKongTouchEnded(Touch* touch, Event* event)
 {
 	//金刚山释放音效
 	SoundManager::playKingkong();
-<<<<<<< HEAD
-	auto kingKong = KingKong::create();
-=======
+
 	auto kingKong = Kingkong::create();
->>>>>>> 86dbab6f10cc4571c714d43a23050c4a8759cd44
+
+
 	addChild(kingKong);
 	kingKong->shoot(static_cast<TouchLayer*>(event->getCurrentTarget())->convertTouchToNodeSpace(touch));
 
 	//获取父类的玩家状态层，调用startKingKong，重新计时
-<<<<<<< HEAD
+
 	static_cast<BaseLevel*>(this->getParent())->playState->startKingKong();
-=======
-	static_cast<BaseLevel*>(this->getParent())->playerState->startKingKong();
->>>>>>> 86dbab6f10cc4571c714d43a23050c4a8759cd44
+
+	static_cast<BaseLevel*>(this->getParent())->playState->startKingKong();
+
 	//移除遮罩
 	removeKingKongTouchShield();
 }
@@ -78,9 +77,7 @@ void TouchLayer::addWrongPlace(Point location)
 void TouchLayer::removeAllListener()
 {
 	removeKingKongTouchShield();
-<<<<<<< HEAD
 
-=======
 	removeSixthDollTouchShield();
 }
 
@@ -118,7 +115,7 @@ void TouchLayer::onSixthDollTouchEnded(Touch* touch, Event* event)
 	kingKong->shoot(static_cast<TouchLayer*>(event->getCurrentTarget())->convertTouchToNodeSpace(touch));
 
 	//获取父类的玩家状态层，调用startKingKong，重新计时
-	static_cast<BaseLevel*>(this->getParent())->playerState->startSixthDoll();
+	static_cast<BaseLevel*>(this->getParent())->playState->startSixthDoll();
 	//移除遮罩
 	removeSixthDollTouchShield();
 }
@@ -130,5 +127,5 @@ void TouchLayer::addWrongPlace(Point location)
 	addChild(wrongPlace);
 	//错误地点动作
 	wrongPlace->runAction();
->>>>>>> 86dbab6f10cc4571c714d43a23050c4a8759cd44
+
 }

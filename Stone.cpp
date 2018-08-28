@@ -27,7 +27,7 @@ void Stone::removeStone() {
 		auto monster = monsterVector.at(i);
 		auto monsterRect = monster->monsterSprite->getBoundingBox();
 
-		if (monster != NULL && monsterRect.intersectsRect(stoneRect) && monster->getAttackByTower()) {
+		if (monster != NULL && monsterRect.intersectsRect(stoneRect) && monster->getAttackByDoll()) {
 			auto curHp = monster->getCurHp();
 			curHp = curHp - this->getMaxForce();
 			if (curHp <= 0) {

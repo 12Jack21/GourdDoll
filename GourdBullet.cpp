@@ -6,7 +6,7 @@ bool GourdBullet::init() {
 	if (!Sprite::init()) {
 		return false;
 	}
-	bulletSprite = Sprite::createWithSpriteFrameName(/*文件名*/);
+	bulletSprite = Sprite::createWithSpriteFrameName(".png");
 	addChild(bulletSprite);
 	return true;
 }
@@ -29,10 +29,10 @@ void GourdBullet::removeGourdBullet() {
 		auto monster = monsterVector.at(i);
 		auto monsterRect = monster->monsterSprite->getBoundingBox();
 
-		if (monster != NULL && monsterRect.intersectsRect(gourdbulletRect) && monster->getAttackByTower()) {
+		if (monster != NULL && monsterRect.intersectsRect(gourdbulletRect) && monster->getAttackByDoll()) {
 			auto curHpMonster = monster->getCurHp();
-			
-			for (int j = 0; j <seventhDollv1Vector.size(); j++) {
+
+			for (int j = 0; j < seventhDollv1Vector.size(); j++) {
 				auto seventhDoll = seventhDollv1Vector.at(j);
 				auto seventhDollRect = seventhDoll->baseSprite->getBoundingBox();
 				//相当于寻找七娃的葫芦子弹中最近的七娃防御塔
@@ -48,16 +48,17 @@ void GourdBullet::removeGourdBullet() {
 					seventhDoll->setCurHp(curHpSeventhDoll);
 					seventhDoll->getHpBar()->setPercentage((curHpSeventhDoll / seventhDoll->getMaxHp()) * 100);
 					if (curHpSeventhDoll == 0) {
-						seventhDoll->death();
+						seventhDoll->seventhdollv1Death();
 					}
 					break;
-			     }
-		    }
+				}
+			}
 			//直接将0赋给怪物的当前生命值,判断其死亡
 			curHpMonster = 0;
 			monster->death();
 			break;
+		}
+		this->removeFromParent();
 	}
-	this->removeFromParent();
 }
 

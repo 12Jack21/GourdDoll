@@ -22,25 +22,25 @@ bool SecondDollv1::init() {
 	return true;
 }
 
-BaseMonster * BaseDoll::checknearestmonster() {
-	auto instance = GameManager::getInstance();
-	auto monsterVector = instance->monsterVector;
-
-	auto curMinDistance = this->scope;
-
-	BaseMonster * checkedNearestMonster = NULL;
-	//for循环找到在DOLL内最近的MONSTER
-	for (int i = 0; i < monsterVector.size(); i++) {
-		auto monster = monsterVector.at(i);
-		double distance = this->getParent()->getPosition().getDistance(monster->monsterSprite->getPosition());
-		if (distance < curMinDistance && monster->getAttackByTower()) {
-			distance = curMinDistance;
-			checkedNearestMonster = monster;
-		}
-	}
-	nearestMonster = checkedNearestMonster;
-	return nearestMonster;
-}
+//BaseMonster * BaseDoll::checknearestmonster() {
+//	auto instance = GameManager::getInstance();
+//	auto monsterVector = instance->monsterVector;
+//
+//	auto curMinDistance = this->scope;
+//
+//	BaseMonster * checkedNearestMonster = NULL;
+//	//for循环找到在DOLL内最近的MONSTER
+//	for (int i = 0; i < monsterVector.size(); i++) {
+//		auto monster = monsterVector.at(i);
+//		double distance = this->getParent()->getPosition().getDistance(monster->monsterSprite->getPosition());
+//		if (distance < curMinDistance && monster->getAttackByDoll()) {
+//			distance = curMinDistance;
+//			checkedNearestMonster = monster;
+//		}
+//	}
+//	nearestMonster = checkedNearestMonster;
+//	return nearestMonster;
+//}
 
 void SecondDollv1::updateAnimation() {
 	auto update = Sprite::create();
