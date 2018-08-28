@@ -1,7 +1,9 @@
 #include"WelcomeScene.h"
-#include"SoundManager.h"
+//#include"SoundManager.h"
 #include"AboutScene.h"
- 
+#include"TransitionInterface.h"
+#include "LevelViewScene.h"
+
 //触摸的大小未定,各种元素动画（包括菜单回调的）未定
 
 using namespace CocosDenshion;
@@ -21,15 +23,40 @@ bool WelcomeScene::init()
 		return false;
 	}
 	visibleSize = Director::getInstance()->getVisibleSize();
-	 
+
 	//背景
-	bg = Sprite::createWithSpriteFrameName(".png");
+	bg = Sprite::createWithSpriteFrameName("WelcomeBg.png");
 	bg->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
 	//设置 Z order 为-1
 	addChild(bg, -1);
 
+	////动画测试
+	//SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ThirdDoll.plist");
+	//SpriteFrameCache::getInstance()->addSpriteFramesWithFile("longicorn_scorpion_snake.plist");
+	//auto first = Sprite::createWithSpriteFrameName("ThirdDollStand1.png");
+	//first->setPosition(Vec2(visibleSize.width *0.8, visibleSize.height*0.8));
+	//addChild(first);
+
+	//auto firstDoll = Animation::create();
+	//for (int i = 1; i <= 6; i++)
+	//{
+	//	__String* frameName = __String::createWithFormat("ThirdDollStand%d.png", i);
+
+	//	auto frame11 = SpriteFrameCache::getInstance()->getSpriteFrameByName(frameName->getCString());
+	//	if (frame11 != NULL)
+	//	{
+	//		firstDoll->addSpriteFrame(frame11);
+	//	}
+	//}
+	//firstDoll->setDelayPerUnit(1.0f);
+	//firstDoll->setRestoreOriginalFrame(true);
+
+	//first->runAction(RepeatForever::create(Animate::create(firstDoll)));
+
+
+
 	//logo动画(未完善）
-	initLogoAnimation();
+	//initLogoAnimation();
 
 	//初始化装饰精灵
 	initOrnamentSprite();
@@ -69,11 +96,11 @@ void WelcomeScene::initOrnamentSprite()
 
 void WelcomeScene::initStartButton()
 {
-	start_Btn = Sprite::createWithSpriteFrameName(".png");
+	start_Btn = Sprite::createWithSpriteFrameName("start_btn.png");
 	start_Btn->setAnchorPoint(Vec2(0.5f, 0.5f));
-	//start_BtnPoint.x = 
-	//start_BtnPoint.y = 
-	//start_Btn->setPosition(start_BtnPoint);
+	start_BtnPoint.x = visibleSize.width / 2 - 5;
+	start_BtnPoint.y = 196.5;
+	start_Btn->setPosition(start_BtnPoint);
 	addChild(start_Btn, 1);
 
 	//动画实现
@@ -87,38 +114,42 @@ void WelcomeScene::initStartButton()
 		Point locationInNode = target->convertTouchToNodeSpace(touch);
 
 		Size size = target->getContentSize();
-		Rect rect = Rect(0 + 40, 0 + 30, size.width - 80, size.height / 3 + 15);
+		Rect rect = Rect(0, 0, size.width, size.height);
 		if (rect.containsPoint(locationInNode) && target->isVisible())
 		{
-			SoundManager::playClickEffect();
+			//SoundManager::playClickEffect();
 			//改变Button式样达到点击效果
-			target->setSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("menu_startchain_0002.png"));
+			//target->setSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("menu_startchain_0002.png"));
+			target->setScale(1.1f);
 			return true;
 		}
 		return false;
 	};
 	start_Btn_listener->onTouchEnded = [&](Touch* touch, Event* event) {
 		auto target = static_cast<Sprite*>(event->getCurrentTarget());
-		static_cast<Sprite*>(event->getCurrentTarget())->setSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("menu_startchain_0001.png"));
-		about_Btn->setVisible(false);
-		/*
-		回调后的动画
-		*/
-		start_Btn->setVisible(false);
-		
+		//static_cast<Sprite*>(event->getCurrentTarget())->setSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("menu_startchain_0001.png"));
+		//about_Btn->setVisible(false);
+		///*
+		//回调后的动画
+		//*/
+		//start_Btn->setVisible(false);
+		Director::getInstance()->replaceScene(TransitionInterface::create(3.0f, LevelViewScene::createScene()));
+
 	};
+	start_Btn_listener->setSwallowTouches(true);
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(start_Btn_listener, start_Btn);
 
 }
 
 void WelcomeScene::initAboutButton()
 {
-	about_Btn = Sprite::createWithSpriteFrameName(".png");
+	about_Btn = Sprite::createWithSpriteFrameName("about_btn.png");
 	about_Btn->setAnchorPoint(Vec2(0.5f, 0.5f));
 
-	/*about_BtnPoint.x = ;
-	about_BtnPoint.y = ;
-	about_Btn->setPosition(about_BtnPoint);*/
+	about_BtnPoint.x = visibleSize.width / 2;
+	about_BtnPoint.y = 65;
+	about_Btn->setPosition(about_BtnPoint);
+	addChild(about_Btn, 2);
 
 	//动画实现
 
@@ -133,21 +164,23 @@ void WelcomeScene::initAboutButton()
 
 		Size size = target->getContentSize();
 
-		Rect rect = Rect(0 + 40, 0 + 30, size.width - 80, size.height / 3 + 15);//未定
+		Rect rect = Rect(0, 0, size.width, size.height);//未定
 		if (rect.containsPoint(locationInNode) && target->isVisible())
 		{
-			SoundManager::playClickEffect();
+			//SoundManager::playClickEffect();
 			//改变Button式样达到点击效果
-			target->setSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("menu_creditschain_0002.png"));
+			//target->setSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("menu_creditschain_0002.png"));
+			target->setScale(1.1f);
 			return true;
 		}
 		return false;
 	};
 	about_Btn_listener->onTouchEnded = [&](Touch* touch, Event* event) {
-		static_cast<Sprite*>(event->getCurrentTarget())->setSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("menu_creditschain_0001.png"));
+		//static_cast<Sprite*>(event->getCurrentTarget())->setSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("menu_creditschain_0001.png"));
 
-		Director::getInstance()->replaceScene(AboutScene::createScene());
+		Director::getInstance()->replaceScene(TransitionInterface::create(3.0f, AboutScene::createScene()));
 	};
+	about_Btn_listener->setSwallowTouches(true);
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(about_Btn_listener, about_Btn);
 }
 
@@ -158,14 +191,14 @@ void WelcomeScene::initSoundButton()
 
 	//SoundManager::playWelcomebackMusic_Btn();
 
-	if (UserDefault::getInstance()->getIntegerForKey("backMusic_Btn", 1) == 1) 
-	{	
-		//0表示关闭BGM，1表示开启
-		backMusic_Btn = Sprite::createWithSpriteFrameName(".png");
-	}
-	else 
+	if (UserDefault::getInstance()->getIntegerForKey("backMusic_Btn", 1) == 1)
 	{
-		backMusic_Btn = Sprite::createWithSpriteFrameName(".png");
+		//0表示关闭BGM，1表示开启
+		backMusic_Btn = Sprite::createWithSpriteFrameName("music.png");
+	}
+	else
+	{
+		backMusic_Btn = Sprite::createWithSpriteFrameName("music_disable.png");
 	}
 	backMusic_Btn->setPosition(Point(backMusic_Btn->getContentSize().width / 2 + 10,
 		winSize.height - backMusic_Btn->getContentSize().height / 2 - 10));
@@ -182,11 +215,11 @@ void WelcomeScene::initSoundButton()
 		//检测触摸位置是否在规定范围内
 		if (rect.containsPoint(locationInNode))
 		{
-			if (UserDefault::getInstance()->getIntegerForKey("backMusic_Btn", 1) == 1) 
+			if (UserDefault::getInstance()->getIntegerForKey("backMusic_Btn", 1) == 1)
 			{//0表示禁止BGM，1表示开启
 				UserDefault::getInstance()->setIntegerForKey("backMusic_Btn", 0);
 			}
-			else 
+			else
 			{
 				UserDefault::getInstance()->setIntegerForKey("backMusic_Btn", 1);
 			}
@@ -198,31 +231,32 @@ void WelcomeScene::initSoundButton()
 	backMusic_Btn_listener->onTouchEnded = [&](Touch* touch, Event* event) {
 		auto target = static_cast<Sprite*>(event->getCurrentTarget());
 		target->setScale(1.0f);
-		if (UserDefault::getInstance()->getIntegerForKey("backMusic_Btn", 1) == 1) 
+		if (UserDefault::getInstance()->getIntegerForKey("backMusic_Btn", 1) == 1)
 		{//0表示禁止BGM，1表示开启
 			SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
-			target->setSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("options_overlay_buttons_0001.png"));
+			target->setSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("music.png"));
 		}
-		else 
+		else
 		{
 			SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
-			target->setSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("options_overlay_buttons_0002.png"));
+			target->setSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("music_disable.png"));
 		}
 	};
 	//事件监听器（默认在CCNode中）
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(backMusic_Btn_listener, backMusic_Btn);
 
 	Sprite* backEffect_Btn;
-	if (UserDefault::getInstance()->getIntegerForKey("backEffect_Btn", 1) == 1) 
+	if (UserDefault::getInstance()->getIntegerForKey("backEffect_Btn", 1) == 1)
 	{
 		//0表示禁止BGM，1表示开启
-		backEffect_Btn = Sprite::createWithSpriteFrameName("options_overlay_buttons_0003.png");
+		backEffect_Btn = Sprite::createWithSpriteFrameName("effect.png");
 	}
-	else 
+	else
 	{
-		backEffect_Btn = Sprite::createWithSpriteFrameName("options_overlay_buttons_0004.png");
+		backEffect_Btn = Sprite::createWithSpriteFrameName("effect.png");
 	}
-	backEffect_Btn->setPosition(Point(backMusic_Btn->getPosition().x + backMusic_Btn->getContentSize().width, winSize.height - backEffect_Btn->getContentSize().height / 2 - 10));
+	backEffect_Btn->setPosition(Point(backMusic_Btn->getPosition().x + backMusic_Btn->getContentSize().width + 20,
+		winSize.height - backEffect_Btn->getContentSize().height / 2 - 10));
 	addChild(backEffect_Btn);
 	auto backEffect_Btn_listener = EventListenerTouchOneByOne::create();
 	backEffect_Btn_listener->onTouchBegan = [&](Touch* touch, Event* event) {
@@ -235,12 +269,12 @@ void WelcomeScene::initSoundButton()
 		Rect rect = Rect(0, 0, size.width, size.height);
 		if (rect.containsPoint(locationInNode))
 		{
-			if (UserDefault::getInstance()->getIntegerForKey("backEffect_Btn", 1) == 1) 
+			if (UserDefault::getInstance()->getIntegerForKey("backEffect_Btn", 1) == 1)
 			{
 				//0表示禁止BGM，1表示开启
 				UserDefault::getInstance()->setIntegerForKey("backEffect_Btn", 0);
 			}
-			else 
+			else
 			{
 				UserDefault::getInstance()->setIntegerForKey("backEffect_Btn", 1);
 			}
@@ -252,14 +286,14 @@ void WelcomeScene::initSoundButton()
 	backEffect_Btn_listener->onTouchEnded = [&](Touch* touch, Event* event) {
 		auto target = static_cast<Sprite*>(event->getCurrentTarget());
 		target->setScale(1.0f);
-		if (UserDefault::getInstance()->getIntegerForKey("backEffect_Btn", 1) == 1) 
+		if (UserDefault::getInstance()->getIntegerForKey("backEffect_Btn", 1) == 1)
 		{
 			//0表示禁止BGM，1表示开启
-			target->setSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("options_overlay_buttons_0003.png"));
+			target->setSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("effect.png"));
 		}
-		else 
+		else
 		{
-			target->setSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("options_overlay_buttons_0004.png"));
+			target->setSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("effect_disable.png"));
 		}
 	};
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(backEffect_Btn_listener, backEffect_Btn);
@@ -270,11 +304,11 @@ void WelcomeScene::onEnterTransitionDidFinish()
 	//进入欢迎界面后须实现的东西（包括动画）
 	/*
 	auto Sequence = Sequence::create(ScaleTo::create(0.5f, 1.5f, 1.5f),
-		ScaleTo::create(0.2f, 1.0f, 1.0f),
-		CallFuncN::create(CC_CALLBACK_0(WelcomeScene::initLogoAnimation, this)),
-		CallFuncN::create(CC_CALLBACK_0(WelcomeScene::initButton_startAnimation, this)),
-		CallFuncN::create(CC_CALLBACK_0(WelcomeScene::init_creditBtn_startAnimation, this)),
-		NULL);
+	ScaleTo::create(0.2f, 1.0f, 1.0f),
+	CallFuncN::create(CC_CALLBACK_0(WelcomeScene::initLogoAnimation, this)),
+	CallFuncN::create(CC_CALLBACK_0(WelcomeScene::initButton_startAnimation, this)),
+	CallFuncN::create(CC_CALLBACK_0(WelcomeScene::init_creditBtn_startAnimation, this)),
+	NULL);
 	sprite_Logo->runAction(Sequence);
 	*/
 }

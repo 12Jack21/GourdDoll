@@ -21,71 +21,55 @@ void TransitionInterface::onEnter()
 	_inScene->setVisible(false);
 	TransitionScene::onEnter();
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 stLeftBegin, stLeftEnd, stRightBegin, stRightEnd;
 
-	stLeftBegin.setPoint(0, visibleSize.height / 2.0f);
-	stLeftEnd.setPoint(visibleSize.width / 2.0f, visibleSize.height / 2.0f);
+	//三张图的位置
+	auto left = Sprite::createWithSpriteFrameName("left_trans.png");
+	left->setPosition(Vec2(-left->getContentSize().width / 2, left->getContentSize().height / 2));
+	addChild(left);
 
-	stRightBegin.setPoint(visibleSize.width, visibleSize.height / 2.0f);
-	stRightEnd.setPoint(visibleSize.width / 2.0f, visibleSize.height / 2.0f);
+	auto mid = Sprite::createWithSpriteFrameName("mid_trans.png");
+	mid->setPosition(Vec2(623.5f, -mid->getContentSize().height / 2));
+	addChild(mid);
 
-	auto pLeft1 = Sprite::createWithSpriteFrameName(".png");
-	pLeft1->setScaleX();
-	auto pRight1 = Sprite::createWithSpriteFrameName(".png");
-	pRight1->setScaleX();
-	auto pLeft2 = Sprite::createWithSpriteFrameName(".png");
-	auto pRight2 = Sprite::createWithSpriteFrameName(".png");
+	auto right = Sprite::createWithSpriteFrameName("right_trans.png");
+	right->setPosition(Vec2(visibleSize.width + right->getContentSize().width / 2, right->getContentSize().height / 2));
+	addChild(right);
 
-	pLeft1->setAnchorPoint(Vec2(1.0f, 0.5f));
-	pRight1->setAnchorPoint(Vec2(0, 0.5f));
+	//左图向右
+	auto leftAction1 = MoveBy::create(_duration / 3, Vec2(left->getContentSize().width, 0));
 
-	pLeft2->setAnchorPoint(Vec2(1.0f, 0.5f));
-	pRight2->setAnchorPoint(Vec2(0, 0.5f));
+	auto leftAction2 = MoveTo::create(_duration / 3, Vec2(-left->getContentSize().width / 2, left->getContentSize().height / 2));
+	//中图向上
+	auto midAction1 = MoveBy::create(_duration / 3, Vec2(0, mid->getContentSize().height));
+	auto midAction2 = MoveTo::create(_duration / 3, Vec2(623.5f, -mid->getContentSize().height / 2));
+	//右图向左
+	auto rightAction1 = MoveBy::create(_duration / 3, Vec2(-right->getContentSize().width, 0));
 
-	pLeft2->setPosition(Vec2(pLeft1->getContentSize().width, pLeft1->getContentSize().height / 2));
-	pRight2->setPosition(Vec2(0, pRight1->getContentSize().height / 2));
+	auto rightAction2 = MoveBy::create(_duration / 3, Vec2(visibleSize.width + right->getContentSize().width / 2, right->getContentSize().height / 2));
 
-	addChild(pLeft1, 1);
-	addChild(pRight1, 1);
-
-	//左图翻转
-	pRight1->setFlippedX(true);
-	pLeft1->setPosition(stLeftBegin);
-	pRight1->setPosition(stRightBegin);
-
-	pLeft1->addChild(pLeft2);
-	pRight1->addChild(pRight2);
-	//左图向右移动
-	auto pActionLeft1 = MoveTo::create(_duration / 3, stLeftEnd);
-	//右图向左移动
-	auto pActionRight1 = MoveTo::create(_duration / 3, stRightEnd);
-
-	//两图反向
-	auto pActionLeft2 = MoveTo::create(_duration / 3, stLeftBegin);
-	auto pActionRight2 = MoveTo::create(_duration / 3, stRightBegin);
-
-	if (UserDefault::getInstance()->getIntegerForKey("backeffect", 1) == 1)
-	{
-		SimpleAudioEngine::getInstance()->playEffect(".wav");
-	}
+	//if (UserDefault::getInstance()->getIntegerForKey("backeffect", 1) == 1)
+	//{
+	//	SimpleAudioEngine::getInstance()->playEffect(".wav");
+	//}
 	//间隔时间
 	auto delayTime = DelayTime::create(1.0f);
-	pLeft1->runAction(Sequence::create(
-		pActionLeft1,
+	left->runAction(Sequence::create(
+		leftAction1,
 		CallFuncN::create(CC_CALLBACK_0(TransitionInterface::OnEnterDidFinish, this)),
 		delayTime,
-		pActionLeft2,
+		leftAction2,
 		CallFuncN::create(CC_CALLBACK_0(TransitionScene::finish, this)),
 		NULL));
-	pRight1->runAction(Sequence::create(pActionRight1, delayTime, pActionRight2, NULL));
+	right->runAction(Sequence::create(rightAction1, delayTime, rightAction2, NULL));
+	mid->runAction(Sequence::create(midAction1, delayTime, midAction2, NULL));
 }
 
 void TransitionInterface::OnEnterDidFinish()
 {
-	if (UserDefault::getInstance()->getIntegerForKey("backeffect", 1) == 1)
-	{
-		SimpleAudioEngine::getInstance()->playEffect(".wav");
-	}
+	//if (UserDefault::getInstance()->getIntegerForKey("backeffect", 1) == 1)
+	//{
+	//	SimpleAudioEngine::getInstance()->playEffect(".wav");
+	//}
 	//下个场景设置为可见
 	_inScene->setVisible(true);
 	//原场景设置为不可见

@@ -19,19 +19,21 @@ bool LoadingScene::init()
 	}
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	//±³¾°Í¼Æ¬
-	auto bg = Sprite::create(".png");
+	auto bg = Sprite::create("my/LoadingScene.jpg");
 
 	bg->setPosition(Point(visibleSize.width / 2, visibleSize.height / 2));
 	addChild(bg);
 
 	//Òì²½¼ÓÔØÎÆÀí»º´æ
-	//m_nNumberOfLoaded = 0;
-	//Director::getInstance()->getTextureCache()->addImageAsync("texture/.png",
-	//	CC_CALLBACK_1(LoadingScene::loadingTextureCallBack, this));
-	//Director::getInstance()->getTextureCache()->addImageAsync("texture/.png",
-	//	CC_CALLBACK_1(LoadingScene::loadingTextureCallBack, this));
-	//Director::getInstance()->getTextureCache()->addImageAsync("texture/.png",
-	//	CC_CALLBACK_1(LoadingScene::loadingTextureCallBack, this));
+	m_nNumberOfLoaded = 0;
+	Director::getInstance()->getTextureCache()->addImageAsync("WelcomeScene.png",
+		CC_CALLBACK_1(LoadingScene::loadingTextureCallBack, this));
+	Director::getInstance()->getTextureCache()->addImageAsync("AboutScene.png",
+		CC_CALLBACK_1(LoadingScene::loadingTextureCallBack, this));
+	Director::getInstance()->getTextureCache()->addImageAsync("LevelView.png",
+		CC_CALLBACK_1(LoadingScene::loadingTextureCallBack, this));
+	Director::getInstance()->getTextureCache()->addImageAsync("TransitionInterface.png",
+		CC_CALLBACK_1(LoadingScene::loadingTextureCallBack, this));
 
 	////Òì²½Ô¤´¦ÀíÉùÒô
 	//_loadingAudioThread = new std::thread(&LoadingScene::loadingAudio, this);
@@ -44,17 +46,24 @@ void LoadingScene::loadingTextureCallBack(Texture2D* texture)
 	switch (m_nNumberOfLoaded++)
 	{
 	case 0:
-		SpriteFrameCache::getInstance()->addSpriteFramesWithFile(".plist", texture);
-		log("home texture ok.");
+		SpriteFrameCache::getInstance()->addSpriteFramesWithFile("WelcomeScene.plist", texture);
+		log("Welcome texture ok.");
+
 		break;
 	case 1:
-		SpriteFrameCache::getInstance()->addSpriteFramesWithFile(".plist", texture);
-		log("setting texture ok.");
+		SpriteFrameCache::getInstance()->addSpriteFramesWithFile("AboutScene.plist", texture);
+		log("About texture ok.");
+
 		break;
 	case 2:
-		SpriteFrameCache::getInstance()->addSpriteFramesWithFile(".plist", texture);
-		log("gameplay texture ok.");
-		this->schedule(schedule_selector(LoadingScene::delayCall), 1, 1, 3);
+		SpriteFrameCache::getInstance()->addSpriteFramesWithFile("LevelView.plist", texture);
+		log("Level texture ok.");
+
+		break;
+	case 3:
+		SpriteFrameCache::getInstance()->addSpriteFramesWithFile("TransitionInterface.plist", texture);
+		log("Transition texture ok.");
+		this->schedule(schedule_selector(LoadingScene::delayCall), 1, 1, 1);
 		break;
 	}
 }
@@ -82,9 +91,9 @@ void LoadingScene::loadingAudio()
 void LoadingScene::onExit()
 {
 	Layer::onExit();
-	_loadingAudioThread->join();
-	CC_SAFE_DELETE(_loadingAudioThread);
-	SpriteFrameCache::getInstance()->removeSpriteFramesFromFile("texture/loading_texture.plist");
-	Director::getInstance()->getTextureCache()->removeTextureForKey("texture/loading_texture.png");
+	//_loadingAudioThread->join();
+	//CC_SAFE_DELETE(_loadingAudioThread);
+	//SpriteFrameCache::getInstance()->removeSpriteFramesFromFile("texture/loading_texture.plist");
+	//Director::getInstance()->getTextureCache()->removeTextureForKey("texture/loading_texture.png");
 	this->unschedule(schedule_selector(LoadingScene::delayCall));
 }
